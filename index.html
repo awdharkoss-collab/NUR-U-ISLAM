@@ -188,6 +188,29 @@ function loadJS(url){
 }
 function trOkunus(t){
   return t
+    .replace(/Bismi Allahi/gi,"Bismillâhi")
+    .replace(/alrrahmani/gi,"errahmâni")
+    .replace(/alrrahimi/gi,"errahîmi")
+    .replace(/Alhamdu/gi,"Elhamdü")
+    .replace(/al'alamina/gi,"âlemîn")
+    .replace(/alddini/gi,"eddîni")
+    .replace(/alddeeni/gi,"eddîni")
+    .replace(/alssirata/gi,"essırâta")
+    .replace(/almustaqeema/gi,"elmüstekîm")
+    .replace(/almaghdoobi/gi,"elmağdûbi")
+    .replace(/alddalleena/gi,"eddâllîn")
+    .replace(/alr/gi,"err")
+    .replace(/als/gi,"ess")
+    .replace(/alsh/gi,"eşş")
+    .replace(/alt/gi,"ett")
+    .replace(/alth/gi,"ess")
+    .replace(/ald/gi,"edd")
+    .replace(/aldh/gi,"ezz")
+    .replace(/alz/gi,"ezz")
+    .replace(/aln/gi,"enn")
+    .replace(/all/gi,"ell")
+    .replace(/al'/gi,"el-")
+    .replace(/al([bcdfghjklmnpqrstvwxyz])/gi,"el-$1")
     .replace(/AA/g,"a'")
     .replace(/aa/g,"â")
     .replace(/ee/g,"î")
@@ -203,7 +226,6 @@ function trOkunus(t){
     .replace(/w/gi,"v")
     .replace(/q/gi,"k");
 }
-
 function openS(num){
   var s=DB.at(num-1);
   document.getElementById("sBox").style.display="none";
