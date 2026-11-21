@@ -195,18 +195,22 @@ async function openS(num){
   var box=document.getElementById('rAyahs');
   box.innerHTML='<p style="color:var(--gold)">Ayetler yükleniyor...</p>';
   try {
-    const r = await fetch('https://jsdelivr.net');
-    if(!r.ok) throw new Error('HTTP ' + r.status);
-    const surah = await r.json();
-    box.innerHTML = surah.verses.map(function(v){
+    const res = await Promise.all([
+      fetch('https://jsdelivr.net').then(function(r){ return r.json(); }),
+      fetch('https://quranenc.com).then(function(r){ return r.json(); })
+    ]);
+    var surah = res.at(0);
+    var trList = res.at(1).result;
+    box.innerHTML = surah.verses.map(function(v, i){
+      var meal = (trList && trList.at(i)) ? trList.at(i).translation : '';
       return '<div class="ayah">'+
         '<div class="ar">'+v.text+' <span style="font-size:18px;color:var(--gold)">﴿'+v.id+'﴾</span></div>'+
         '<div class="tr-read"><strong>Okunuşu:</strong> '+v.transliteration+'</div>'+
-        '<div class="tr-mean"><strong>'+v.id+'. Anlamı:</strong> '+v.translation+'</div>'+
+        '<div class="tr-mean"><strong>'+v.id+'. Anlamı:</strong> '+meal+'</div>'+
       '</div>';
     }).join('');
   } catch(e) {
-    box.innerHTML='<p style="color:#ff8080">Hata: '+e.message+' (F12 > Console sekmesine bakınız)</p>';
+    box.innerHTML='<p style="color:#ff8080">Hata: '+e.message+'</p>';
   }
 }
 
