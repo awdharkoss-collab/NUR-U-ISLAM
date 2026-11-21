@@ -186,6 +186,24 @@ function loadJS(url){
     document.body.appendChild(sc);
   });
 }
+function trOkunus(t){
+  return t
+    .replace(/AA/g,"a'")
+    .replace(/aa/g,"â")
+    .replace(/ee/g,"î")
+    .replace(/oo/g,"û")
+    .replace(/uu/g,"û")
+    .replace(/ii/g,"î")
+    .replace(/sh/gi,"ş")
+    .replace(/gh/gi,"ğ")
+    .replace(/kh/gi,"h")
+    .replace(/th/gi,"s")
+    .replace(/dh/gi,"z")
+    .replace(/ch/gi,"ç")
+    .replace(/w/gi,"v")
+    .replace(/q/gi,"k");
+}
+
 function openS(num){
   var s=DB.at(num-1);
   document.getElementById("sBox").style.display="none";
@@ -197,25 +215,22 @@ function openS(num){
   var box=document.getElementById("rAyahs");
   box.innerHTML='<p style="color:var(--gold)">Ayetler getiriliyor...</p>';
 
-  var uAr = atob("aHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L2doL2Zhd2F6YWhtZWQwL3F1cmFuLWFwaUAxL2VkaXRpb25zL2FyYS1xdXJhbnV0aG1hbmkv") + num + ".json";
-  var uOk = atob("aHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L2doL2Zhd2F6YWhtZWQwL3F1cmFuLWFwaUAxL2VkaXRpb25zL3R1ci1kaXlhbmV0aXNsZXJpLWxhLw==") + num + ".json";
+  var uAr = atob("aHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L25wbS9xdXJhbi1qc29uQDMuMS4yL2Rpc3QvY2hhcHRlcnMv") + num + ".json";
   var uTr = atob("aHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L2doL2Zhd2F6YWhtZWQwL3F1cmFuLWFwaUAxL2VkaXRpb25zL3R1ci1kaXlhbmV0aXNsZXJpLw==") + num + ".json";
 
   Promise.all([
     fetch(uAr).then(function(r){ return r.json(); }),
-    fetch(uOk).then(function(r){ return r.json(); }),
     fetch(uTr).then(function(r){ return r.json(); })
   ]).then(function(res){
-    var arList = res.at(0).chapter;
-    var okList = res.at(1).chapter;
-    var trList = res.at(2).chapter;
+    var arList = res.at(0).verses;
+    var trList = res.at(1).chapter;
     box.innerHTML = arList.map(function(v, i){
-      var okunus = (okList && okList.at(i)) ? okList.at(i).text : "";
       var meal = (trList && trList.at(i)) ? trList.at(i).text : "";
+      var okunus = trOkunus(v.transliteration);
       return '<div class="ayah">'+
-        '<div class="ar">'+v.text+' <span style="font-size:18px;color:var(--gold)">﴿'+v.verse+'﴾</span></div>'+
-        '<div class="tr-read"><strong>Türkçe Okunuşu:</strong> '+okunus+'</div>'+
-        '<div class="tr-mean"><strong>'+v.verse+'. Anlamı:</strong> '+meal+'</div>'+
+        '<div class="ar">'+v.text+' <span style="font-size:18px;color:var(--gold)">﴿'+v.id+'﴾</span></div>'+
+        '<div class="tr-read"><strong>Okunuşu:</strong> '+okunus+'</div>'+
+        '<div class="tr-mean"><strong>'+v.id+'. Anlamı:</strong> '+meal+'</div>'+
       '</div>';
     }).join("");
   }).catch(function(e){
