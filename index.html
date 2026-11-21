@@ -8,41 +8,35 @@
 <style>
 :root{--bg:#071912;--card:#0d261c;--gold:#d4af37;--light:#f3e5ab;--text:#f0f4f2;--muted:#9eb3a8;--border:rgba(212,175,55,0.35)}
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;line-height:1.65}
-header{text-align:center;padding:2.2rem 1rem;border-bottom:1px solid var(--border);background:#04110c}
+body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;line-height:1.6}
+header{text-align:center;padding:2rem 1rem;border-bottom:1px solid var(--border);background:#04110c}
 .logo{font-family:'Amiri',serif;font-size:3.2rem;color:var(--gold)}
 .nav{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;padding:14px;background:#05130e;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:20}
-.nav label{background:var(--card);border:1px solid var(--border);color:var(--text);padding:10px 20px;border-radius:30px;cursor:pointer;font-size:14px;font-weight:600;transition:0.2s}
-.nav label:hover{border-color:var(--gold);color:var(--light)}
+.nav label{background:var(--card);border:1px solid var(--border);color:var(--text);padding:10px 20px;border-radius:30px;cursor:pointer;font-size:14px;font-weight:600}
 input[name="tab"]{display:none}
 #t1:checked~.nav label[for="t1"],#t2:checked~.nav label[for="t2"],#t3:checked~.nav label[for="t3"],#t4:checked~.nav label[for="t4"]{background:var(--gold);color:#05130e;border-color:var(--gold)}
 .wrap{display:none;max-width:1120px;margin:25px auto;padding:0 15px 60px}
 #t1:checked~#sec1,#t2:checked~#sec2,#t3:checked~#sec3,#t4:checked~#sec4{display:block}
-.banner{background:linear-gradient(135deg,#113627,#081d15);border:1px solid var(--gold);border-radius:14px;padding:20px;margin-bottom:20px;text-align:center}
-.banner h2{color:var(--gold);margin-bottom:6px}
-.banner p{color:var(--muted);font-size:14px;max-width:820px;margin:0 auto}
+.banner{background:#0b2319;border:1px solid var(--gold);border-radius:14px;padding:18px;margin-bottom:20px;text-align:center}
+.banner h2{color:var(--gold);margin-bottom:4px}
+.banner p{color:var(--muted);font-size:14px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
-.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px;display:flex;flex-direction:column;justify-content:space-between}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;display:flex;flex-direction:column;justify-content:space-between}
 .tag{display:inline-block;background:rgba(212,175,55,0.18);color:var(--gold);padding:4px 12px;border-radius:6px;font-size:12px;font-weight:700;margin-bottom:10px;align-self:flex-start}
-.card h3{color:var(--gold);font-size:18px;margin-bottom:10px}
-.ar{font-family:'Amiri',serif;font-size:27px;text-align:right;color:var(--light);direction:rtl;line-height:2.1;margin:10px 0;background:rgba(0,0,0,0.25);padding:12px;border-radius:8px}
-.ok{color:var(--gold);font-style:italic;font-size:14.5px;margin-bottom:8px}
-.tr{color:var(--text);font-size:15px;margin-bottom:12px}
-.faz{background:rgba(0,0,0,0.42);border-left:3px solid var(--gold);padding:12px 14px;border-radius:0 8px 8px 0;font-size:13.5px;color:var(--muted)}
-.faz strong{color:var(--light)}
-.inp{width:100%;padding:13px 16px;border-radius:10px;border:1px solid var(--border);background:var(--card);color:#fff;margin-bottom:18px;font-size:15px;outline:none}
-.inp:focus{border-color:var(--gold)}
-.z-bar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;background:rgba(0,0,0,0.45);padding:10px 14px;border-radius:8px;margin-top:14px;border:1px solid rgba(212,175,55,0.2)}
-.btn{background:var(--gold);color:#05130e;border:none;padding:7px 13px;border-radius:6px;font-weight:700;cursor:pointer;font-size:13px}
+.card h3{color:var(--gold);font-size:17px;margin-bottom:8px}
+.ar{font-family:'Amiri',serif;font-size:26px;text-align:right;color:var(--light);direction:rtl;line-height:2.1;margin:8px 0;background:rgba(0,0,0,0.25);padding:10px;border-radius:8px}
+.ok{color:var(--gold);font-style:italic;font-size:14px;margin-bottom:6px}
+.tr{color:var(--text);font-size:14.5px;margin-bottom:10px}
+.faz{background:rgba(0,0,0,0.42);border-left:3px solid var(--gold);padding:10px 12px;border-radius:0 8px 8px 0;font-size:13.5px;color:var(--muted)}
+.inp{width:100%;padding:12px 16px;border-radius:10px;border:1px solid var(--border);background:var(--card);color:#fff;margin-bottom:18px;font-size:15px}
+.z-bar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;background:rgba(0,0,0,0.45);padding:10px;border-radius:8px;margin-top:12px}
+.btn{background:var(--gold);color:#05130e;border:none;padding:8px 13px;border-radius:6px;font-weight:700;cursor:pointer;font-size:13px}
 .btn:hover{background:var(--light)}
 </style>
 </head>
 <body>
 
-<input type="radio" name="tab" id="t1" checked>
-<input type="radio" name="tab" id="t2">
-<input type="radio" name="tab" id="t3">
-<input type="radio" name="tab" id="t4">
+<input type="radio" name="tab" id="t1" checked><input type="radio" name="tab" id="t2"><input type="radio" name="tab" id="t3"><input type="radio" name="tab" id="t4">
 
 <header>
   <div class="logo">نور الحكمة</div>
@@ -58,151 +52,60 @@ input[name="tab"]{display:none}
 </div>
 
 <div id="sec1" class="wrap">
-  <div class="banner">
-    <h2>Kütüb-i Sitte Sahih Hadis Külliyatı</h2>
-    <p>Buhârî, Müslim, Tirmizî, Ebû Dâvûd, Nesâî ve İbn Mâce kaynaklarından derlenen sahih hadis-i şerifler, Arapça metinleri ve manevi hikmetleri.</p>
+  <div class="banner"><h2>Kütüb-i Sitte Sahih Hadis Külliyatı</h2><p>Buhârî, Müslim, Tirmizî ve Ebû Dâvûd kaynaklarından derlenen sahih hadis-i şerifler ve hikmetleri</p></div>
+  <input class="inp" id="hSearch" placeholder="Hadislerde konu veya kelime ara (Örn: Niyet, İstiğfar, Secde, Sabır)..." onkeyup="filterH()">
+  <div id="hGrid" class="grid">
+    <div class="card"><div><span class="tag">Buhârî, Bed'ü'l-Vahy 1 • Niyet</span><div class="ar">إِنَّمَا الأَعْمَالُ بِالنِّيَّاتِ، وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى</div><div class="tr"><strong>Hadis:</strong> “Ameller ancak niyetlere göredir. Herkese ancak niyet ettiği şey vardır.”</div><div class="faz"><strong>Fazileti:</strong> Günlük işlerin bile halis niyetle ibadet sevabı kazandıracağını bildirir.</div></div><button class="btn" style="margin-top:12px;width:100%" onclick="copyCard(this)">📋 Hadisi Kopyala</button></div>
+    <div class="card"><div><span class="tag">Buhârî, Tefsîr 12 • İstiğfar ve Rızık</span><div class="ar">مَنْ لَزِمَ الاسْتِغْفَارَ جَعَلَ اللَّهُ لَهُ مِنْ كُلِّ هَمٍّ فَرَجًا وَمِنْ كُلِّ ضِيقٍ مَخْرَجًا وَرَزَقَهُ مِنْ حَيْثُ لا يَحْتَسِبُ</div><div class="tr"><strong>Hadis:</strong> “Kim istiğfara devam ederse, Allah ona her kederden bir ferahlık, her darlıktan bir çıkış yolu açar ve onu ummadığı yerden rızıklandırır.”</div><div class="faz"><strong>Fazileti:</strong> Maddi darlık ve borçların aşılmasında istiğfarın en tesirli anahtar olduğunu müjdeler.</div></div><button class="btn" style="margin-top:12px;width:100%" onclick="copyCard(this)">📋 Hadisi Kopyala</button></div>
+    <div class="card"><div><span class="tag">Müslim, Zikir 38 • Yardımlaşma</span><div class="ar">مَنْ نَفَّسَ عَنْ مُؤْمِنٍ كُرْبَةً مِنْ كُرَبِ الدُّنْيَا نَفَّسَ اللَّهُ عَنْهُ كُرْبَةً مِنْ كُرَبِ يَوْمِ الْقِيَامَةِ</div><div class="tr"><strong>Hadis:</strong> “Kim bir müminin dünya sıkıntılarından birini giderirse, Allah da onun kıyamet günü sıkıntılarından birini giderir.”</div><div class="faz"><strong>Fazileti:</strong> Başkasının derdine derman olmanın hem dünyada hem ahirette ilahi korumaya vesile olduğunu bildirir.</div></div><button class="btn" style="margin-top:12px;width:100%" onclick="copyCard(this)">📋 Hadisi Kopyala</button></div>
+    <div class="card"><div><span class="tag">Ebû Dâvûd, Vitr 26 • Secde ve Dua</span><div class="ar">أَقْرَبُ مَا يَكُونُ الْعَبْدُ مِنْ رَبِّهِ وَهُوَ سَاجِدٌ فَأَكْثِرُوا الدُّعَاءَ</div><div class="tr"><strong>Hadis:</strong> “Kulun Rabbine en yakın olduğu an secde halidir. Öyleyse secdede duayı çok yapın.”</div><div class="faz"><strong>Fazileti:</strong> Duaların en hızlı kabul edildiği manevi yakınlık makamının secde anı olduğunu haber verir.</div></div><button class="btn" style="margin-top:12px;width:100%" onclick="copyCard(this)">📋 Hadisi Kopyala</button></div>
   </div>
-  <input class="inp" id="hSearch" placeholder="Hadislerde konu veya kelime ara (Örn: Niyet, Sabır, İstiğfar, Rızık, Ahlak, Dua)..." onkeyup="filterH()">
-  <div id="hGrid" class="grid"></div>
 </div>
-
 <div id="sec2" class="wrap">
-  <div class="banner">
-    <h2>Kur'an-ı Kerim'de Geçen Peygamber Duaları (Enbiya Duaları)</h2>
-    <p>Allah'ın Kur'an'da bizzat öğrettiği ve peygamberlerin en zor anlarında okuyup icabet bulduğu sırlı yakarışlar ve faziletleri.</p>
+  <div class="banner"><h2>Kur'an-ı Kerim'de Geçen Peygamber Duaları</h2><p>Peygamberlerin en zor anlarında okuyup icabet bulduğu sırlı yakarışlar ve faziletleri</p></div>
+  <div class="grid">
+    <div class="card"><div><h3>1. Hz. Yunus'un (a.s.) Kurtuluş Duası (Enbiyâ, 87)</h3><div class="ar">لَا إِلٰهَ إِلَّا أَنْتَ سُبْحَانَكَ إِنِّي كُنْتُ مِنَ الظَّالِمِينَ</div><div class="ok"><strong>Okunuşu:</strong> Lâ ilâhe illâ ente sübhâneke innî küntü minezzâlimîn.</div><div class="tr"><strong>Anlamı:</strong> Senden başka hiçbir ilah yoktur. Seni eksikliklerden tenzih ederim. Gerçekten ben nefsine zulmedenlerden oldum.</div><div class="faz"><strong>Fazileti:</strong> Tirmizî'de geçtiği üzere bu dua ile yakaran müminin duası reddedilmez; darlıkta 100 veya 313 kez okunur.</div></div><button class="btn" style="margin-top:12px;width:100%" onclick="copyCard(this)">📋 Duayı Kopyala</button></div>
+    <div class="card"><div><h3>2. Hz. Musa'nın (a.s.) Rızık ve Kapı Açma Duası (Kasas, 24)</h3><div class="ar">رَبِّ إِنِّي لِمَا أَنْزَلْتَ إِلَيَّ مِنْ خَيْرٍ فَقِيرٌ</div><div class="ok"><strong>Okunuşu:</strong> Rabbi innî limâ enzelte ileyye min hayrin fakîr.</div><div class="tr"><strong>Anlamı:</strong> Rabbim! Doğrusu bana indireceğin her hayra muhtacım.</div><div class="faz"><strong>Fazileti:</strong> İş arayanlar, rızık darlığı çekenler ve hayırlı kısmet isteyenler için en makbul Kur'an duasıdır.</div></div><button class="btn" style="margin-top:12px;width:100%" onclick="copyCard(this)">📋 Duayı Kopyala</button></div>
+    <div class="card"><div><h3>3. Hz. Eyyub'un (a.s.) Şifa Duası (Enbiyâ, 83)</h3><div class="ar">أَنِّي مَسَّنِيَ الضُّرُّ وَأَنْتَ أَرْحَمُ الرَّاحِمِينَ</div><div class="ok"><strong>Okunuşu:</strong> Ennî messeniyeddurru ve ente erhamürrâhimîn.</div><div class="tr"><strong>Anlamı:</strong> Rabbim! Bana gerçekten zarar/hastalık dokundu. Sen ise merhametlilerin en merhametlisisin.</div><div class="faz"><strong>Fazileti:</strong> Maddi ve ruhi hastalıklara şifa ve ilahi rahmet celbi için okunur.</div></div><button class="btn" style="margin-top:12px;width:100%" onclick="copyCard(this)">📋 Duayı Kopyala</button></div>
+    <div class="card"><div><h3>4. Ashab-ı Kehf'in Korunma Duası (Kehf, 10)</h3><div class="ar">رَبَّنَا آتِنَا مِنْ لَدُنْكَ رَحْمَةً وَهَيِّئْ لَنَا مِنْ أَمْرِنَا رَشَدًا</div><div class="ok"><strong>Okunuşu:</strong> Rabbenâ âtinâ min ledünke rahmeten ve heyyi' lenâ min emrinâ raşedâ.</div><div class="tr"><strong>Anlamı:</strong> Rabbimiz! Bize katından bir rahmet ver ve işimizde bize kurtuluş ve doğruluk yolunu hazırla.</div><div class="faz"><strong>Fazileti:</strong> Çıkış yolu kapalı görünen davalarda ve zalimlerin şerrinden korunmada okunur.</div></div><button class="btn" style="margin-top:12px;width:100%" onclick="copyCard(this)">📋 Duayı Kopyala</button></div>
   </div>
-  <div id="pGrid" class="grid"></div>
 </div>
 
 <div id="sec3" class="wrap">
-  <div class="banner">
-    <h2>Peygamber Efendimizin (s.a.v.) Okuduğu Me'sur Hadis Duaları</h2>
-    <p>Sahih hadis kaynaklarında yer alan; sıkıntı giderici, şifa verici, borçtan kurtarıcı ve iman koruyucu en faziletli dualar.</p>
+  <div class="banner"><h2>Hadislerden Me'sur Dualar</h2><p>Peygamber Efendimizin (s.a.v.) tavsiye ettiği şifa, borç ödeme ve korunma duaları</p></div>
+  <div class="grid">
+    <div class="card"><div><h3>1. Seyyidü'l-İstiğfar (Buhârî, Deavât 2)</h3><div class="ar">اَللّٰهُمَّ أَنْتَ رَبِّي لَا إِلٰهَ إِلَّا أَنْتَ خَلَقْتَنِي وَأَنَا عَبْدُكَ وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ</div><div class="ok"><strong>Okunuşu:</strong> Allâhümme ente rabbî lâ ilâhe illâ ente halaktenî ve ene abdüke ve ene alâ ahdike ve va'dike mesteta'tü...</div><div class="tr"><strong>Anlamı:</strong> Allah'ım! Sen benim Rabbimsin, Senden başka ilah yoktur. Beni Sen yarattın ve ben Senin kulunum...</div><div class="faz"><strong>Fazileti:</strong> Sabah ve akşam inanarak okuyanın cennet ehlinden olacağı müjdelenmiştir.</div></div><button class="btn" style="margin-top:12px;width:100%" onclick="copyCard(this)">📋 Duayı Kopyala</button></div>
+    <div class="card"><div><h3>2. Borç ve Sıkıntıdan Kurtuluş Duası (Ebû Dâvûd)</h3><div class="ar">اَللّٰهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ، وَأَعُوذُ بِكَ مِنَ الْعَجْزِ وَالْكَسَلِ، وَأَعُوذُ بِكَ مِنَ الْجُبْنِ وَالْبُخْلِ، وَأَعُوذُ بِكَ مِنْ غَلَبَةِ الدَّيْنِ وَقَهْرِ الرِّجَالِ</div><div class="ok"><strong>Okunuşu:</strong> Allâhümme innî eûzü bike minel hemmi vel hazen, ve eûzü bike minel aczi vel kesel, ve eûzü bike minel cübni vel buhl, ve eûzü bike min ğalebetiddeyni ve kahrirricâl.</div><div class="tr"><strong>Anlamı:</strong> Allah'ım! Kederden, üzüntüden, acizlikten, tembellikten, borcun belimi bükmesinden ve insanların kahrından Sana sığınırım.</div><div class="faz"><strong>Fazileti:</strong> Sabah-akşam okunduğunda üzüntüyü giderir ve borçların ödenmesini kolaylaştırır.</div></div><button class="btn" style="margin-top:12px;width:100%" onclick="copyCard(this)">📋 Duayı Kopyala</button></div>
+    <div class="card"><div><h3>3. Her Türlü Afet ve Nazardan Korunma (Tirmizî)</h3><div class="ar">بِسْمِ اللّٰهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ</div><div class="ok"><strong>Okunuşu:</strong> Bismillâhillezî lâ yedurru ma'asmihî şey'ün fil erdı ve lâ fissemâi ve hüvessemîul alîm.</div><div class="tr"><strong>Anlamı:</strong> İsmi sayesinde yerde ve gökte hiçbir şeyin zarar veremeyeceği Allah'ın adıyla!</div><div class="faz"><strong>Fazileti:</strong> Sabah ve akşam 3 kez okuyana hiçbir ani bela ve kötülüğün zarar veremeyeceği bildirilmiştir.</div></div><button class="btn" style="margin-top:12px;width:100%" onclick="copyCard(this)">📋 Duayı Kopyala</button></div>
   </div>
-  <div id="hdGrid" class="grid"></div>
 </div>
-
 <div id="sec4" class="wrap">
-  <div class="banner">
-    <h2>Havas İlmi & Yüksek Ebced Tertipleri (500.000+ Külliyat)</h2>
-    <p>Şems-ül Maârif, Kenz-ül Havas ve klasik ledün kaynaklarında yer alan; Kebir ve Ekber Ebced hesaplamalarıyla 500.000 mertebesini aşan manevi kalkan, rızık fethi, şifa ve hacet tertipleri.</p>
+  <div class="banner"><h2>Havas İlmi & Yüksek Ebced Tertipleri (500.000+)</h2><p>Kebir ve Ekber Ebced hesaplamalarıyla 500.000 mertebesini aşan manevi kalkan, rızık fethi ve şifa tertipleri</p></div>
+  <div class="grid">
+    <div class="card"><div><span class="tag">Ebced: 547.600 (Kebir Terkip)</span><h3>1. İsm-i A'zam & Hacet Kapısı Tertibi</h3><div class="ar">يَا حَيُّ يَا قَيُّومُ بِرَحْمَتِكَ أَسْتَغِيثُ أَصْلِحْ لِي شَأْنِي كُلَّهُ</div><div class="ok"><strong>Okunuşu:</strong> Yâ Hayyü Yâ Kayyûm, bi-rahmetike esteğîsü, aslıh lî şe'nî küllehû.</div><div class="tr"><strong>Anlamı:</strong> Ey Hayy ve Kayyûm olan Allah'ım! Rahmetinle yardımını diliyorum; bütün işlerimi düzelt.</div><div class="faz"><strong>Havas Sırrı:</strong> Hayy (18) ve Kayyûm (156) esmalarının 547.600 devirli terkibidir; kısmet kapalılığı ve ağır sıkıntıların açılması için okunur.</div></div><div><div class="z-bar"><div style="color:var(--gold);font-weight:700"><span id="hvc_0">0</span> / 547.600</div><div><button class="btn" onclick="addHv(0,1)">+1</button> <button class="btn" onclick="addHv(0,100)">+100</button> <button class="btn" onclick="addHv(0,1000)">+1000</button></div></div><button class="btn" style="margin-top:10px;width:100%" onclick="copyCard(this)">📋 Tertibi Kopyala</button></div></div>
+    <div class="card"><div><span class="tag">Ebced: 612.500 (Ekber Hesap)</span><h3>2. Büyük Rızık Fethi Tertibi (Şûrâ, 19)</h3><div class="ar">اَللّٰهُ لَطِيفٌ بِعِبَادِهِ يَرْزُقُ مَنْ يَشَاءُ وَهُوَ الْقَوِيُّ الْعَزِيزُ</div><div class="ok"><strong>Okunuşu:</strong> Allâhu latîfun bi-ibâdihî yerzuku men yeşâu ve hüvel kaviyyül azîz.</div><div class="tr"><strong>Anlamı:</strong> Allah kullarına çok lütufkârdır, dilediğini rızıklandırır. O, mutlak kuvvet sahibidir.</div><div class="faz"><strong>Havas Sırrı:</strong> Yâ Latîf ve Yâ Rezzâk esmalarıyla 612.500 devirli bereket ve rızık kapısı açma tertibidir.</div></div><div><div class="z-bar"><div style="color:var(--gold);font-weight:700"><span id="hvc_1">0</span> / 612.500</div><div><button class="btn" onclick="addHv(1,1)">+1</button> <button class="btn" onclick="addHv(1,100)">+100</button> <button class="btn" onclick="addHv(1,1000)">+1000</button></div></div><button class="btn" style="margin-top:10px;width:100%" onclick="copyCard(this)">📋 Tertibi Kopyala</button></div></div>
+    <div class="card"><div><span class="tag">Ebced: 786.000 (Besmele Devri)</span><h3>3. Zırh-ı Azîm (Tam Manevi Kalkan)</h3><div class="ar">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيمِ ۞ حَسْبُنَا اللّٰهُ وَنِعْمَ الْوَكِيلُ</div><div class="ok"><strong>Okunuşu:</strong> Bismillâhirrahmânirrahîm. Hasbünallâhu ve ni'mel vekîl.</div><div class="tr"><strong>Anlamı:</strong> Rahman ve Rahim olan Allah'ın adıyla. Allah bize yeter, O ne güzel vekildir.</div><div class="faz"><strong>Havas Sırrı:</strong> Besmele'nin 786 ebcedinin 1000 katı (786.000) devirli tam korunma zırhıdır.</div></div><div><div class="z-bar"><div style="color:var(--gold);font-weight:700"><span id="hvc_2">0</span> / 786.000</div><div><button class="btn" onclick="addHv(2,1)">+1</button> <button class="btn" onclick="addHv(2,100)">+100</button> <button class="btn" onclick="addHv(2,1000)">+1000</button></div></div><button class="btn" style="margin-top:10px;width:100%" onclick="copyCard(this)">📋 Tertibi Kopyala</button></div></div>
+    <div class="card"><div><span class="tag">Ebced: 518.400 (Nûr & Şâfî)</span><h3>4. Şifâ-i Kübrâ Tertibi (İsrâ, 82)</h3><div class="ar">وَنُنَزِّلُ مِنَ الْقُرْاٰنِ مَا هُوَ شِفَاءٌ وَرَحْمَةٌ لِلْمُؤْمِنِينَ</div><div class="ok"><strong>Okunuşu:</strong> Ve nünezzilü minel kur'âni mâ hüve şifâün ve rahmetün lil mü'minîn.</div><div class="tr"><strong>Anlamı:</strong> Biz Kur'an'dan, iman edenler için şifa ve rahmet olan ayetler indiriyoruz.</div><div class="faz"><strong>Havas Sırrı:</strong> Yâ Nûr ve Yâ Şâfî esmalarının 518.400 ebced değerine ulaşan maddi ve manevi şifa tertibidir.</div></div><div><div class="z-bar"><div style="color:var(--gold);font-weight:700"><span id="hvc_3">0</span> / 518.400</div><div><button class="btn" onclick="addHv(3,1)">+1</button> <button class="btn" onclick="addHv(3,100)">+100</button> <button class="btn" onclick="addHv(3,1000)">+1000</button></div></div><button class="btn" style="margin-top:10px;width:100%" onclick="copyCard(this)">📋 Tertibi Kopyala</button></div></div>
   </div>
-  <div id="hvGrid" class="grid"></div>
 </div>
 
 <script>
-var HADISLER = new Array(
-  {src:"Buhârî, Bed'ü'l-Vahy 1; Müslim, İmâre 155",cat:"Niyet ve İhlas",ar:"إِنَّمَا الأَعْمَالُ بِالنِّيَّاتِ، وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى",tr:"Ameller ancak niyetlere göredir. Herkese ancak niyet ettiği şey vardır.",faz:"İslam alimlerinin 'ilmin üçte biri' saydığı temel hadistir. Helal ve meşru her günlük işin, sırf Allah rızası gözetilerek yapıldığında ibadet sevabı kazandıracağını bildirir."},
-  {src:"Buhârî, Tefsîr 12; Müslim, Zikir 26",cat:"İstiğfar ve Rızık Kapısı",ar:"مَنْ لَزِمَ الاسْتِغْفَارَ جَعَلَ اللَّهُ لَهُ مِنْ كُلِّ هَمٍّ فَرَجًا وَمِنْ كُلِّ ضِيقٍ مَخْرَجًا وَرَزَقَهُ مِنْ حَيْثُ لا يَحْتَسِبُ",tr:"Kim istiğfara (Estağfirullah demeye) devam ederse, Allah ona her kederden bir ferahlık, her darlıktan bir çıkış yolu açar ve onu ummadığı yerden rızıklandırır.",faz:"Maddi tıkanıklıkların, borçların ve manevi bunalımların çözülmesinde istiğfarın en tesirli ilahi anahtar olduğunu müjdeler."},
-  {src:"Müslim, Zikir 38; Tirmizî, İlim 19",cat:"Yardımlaşma ve Korunma",ar:"مَنْ نَفَّسَ عَنْ مُؤْمِنٍ كُرْبَةً مِنْ كُرَبِ الدُّنْيَا نَفَّسَ اللَّهُ عَنْهُ كُرْبَةً مِنْ كُرَبِ يَوْمِ الْقِيَامَةِ",tr:"Kim bir müminin dünya sıkıntılarından birini giderirse, Allah da onun kıyamet günü sıkıntılarından birini giderir. Kul kardeşinin yardımında olduğu sürece Allah da kulunun yardımındadır.",faz:"Başkasının derdine derman olmanın, insanı hem dünya musibetlerinden hem de ahiret dehşetinden koruyan manevi bir zırh olduğunu öğretir."},
-  {src:"Müslim, Zühd 64",cat:"Sabır, Şükür ve Teslimiyet",ar:"عَجَبًا لأَمْرِ الْمُؤْمِنِ إِنَّ أَمْرَهُ كُلَّهُ خَيْرٌ، إِنْ أَصَابَتْهُ سَرَّاءُ شَكَرَ فَكَانَ خَيْرًا لَهُ، وَإِنْ أَصَابَتْهُ ضَرَّاءُ صَبَرَ فَكَانَ خَيْرًا لَهُ",tr:"Mü'minin durumu ne hoştur! Her hali kendisi için hayırlıdır. Sevinçli bir hal dokunursa şükreder, bu onun için hayır olur; başına bir darlık gelirse sabreder, bu da onun için hayır olur.",faz:"Hayatın her imtihanını kazanca dönüştürme sırrını veren, kalbe sükunet ve tevekkül kazandıran hadis-i şeriftir."},
-  {src:"Tirmizî, Birr 16; Ebû Dâvûd, Sünnet 15",cat:"Güzel Ahlak",ar:"أَكْمَلُ الْمُؤْمِنِينَ إِيمَانًا أَحْسَنُهُمْ خُلُقًا",tr:"Mü'minlerin iman bakımından en olgunu, ahlakı en güzel olanıdır.",faz:"İmanın kemalinin yalnızca şekli ibadetlerde değil; merhamet, dürüstlük, sabır ve güzel ahlakta tezahür ettiğini bildirir."},
-  {src:"Ebû Dâvûd, Vitr 26; Müslim, Salât 215",cat:"Secde ve Duanın Kabulü",ar:"أَقْرَبُ مَا يَكُونُ الْعَبْدُ مِنْ رَبِّهِ وَهُوَ سَاجِدٌ فَأَكْثِرُوا الدُّعَاءَ",tr:"Kulun Rabbine en yakın olduğu an secde halidir. Öyleyse secdede duayı çok yapın.",faz:"Duaların reddedilmediği en özel manevi yakınlık makamının secde anı olduğunu haber verir."},
-  {src:"Tirmizî, Deavât 82",cat:"Duada Yakîn ve Kalp Huzuru",ar:"ادْعُوا اللَّهَ وَأَنْتُمْ مُوقِنُونَ بِالإِجَابَةِ، وَاعْلَمُوا أَنَّ اللَّهَ لا يَسْتَجِيبُ دُعَاءً مِنْ قَلْبٍ غَافِلٍ لاهٍ",tr:"Allah'a, kabul edeceğine kesin olarak inanarak dua edin. Bilin ki Allah, gafil ve başka şeylerle meşgul bir kalbin duasını kabul etmez.",faz:"Duanın tesir etmesi için dil ile kalbin bir olması ve Allah'ın rahmetinden zerre şüphe duyulmaması gerektiğini açıklar."},
-  {src:"Buhârî, Rikâk 64; Tirmizî, Zühd 1",cat:"Sağlık ve Zamanın Kıymeti",ar:"نِعْمَتَانِ مَغْبُونٌ فِيهِمَا كَثِيرٌ مِنَ النَّاسِ: الصِّحَّةُ وَالْفَرَاغُ",tr:"İki nimet vardır ki insanların çoğu onların kıymetini bilmez: Sağlık ve boş vakit.",faz:"İnsana emanet edilen en değerli iki sermayenin sıhhat ve zaman olduğunu hatırlatır."},
-  {src:"Tirmizî, Kıyâmet 59; İbn Mâce, Zühd 19",cat:"Tevekkül ve Korunma",ar:"احْفَظِ اللَّهَ يَحْفَظْكَ، احْفَظِ اللَّهَ تَجِدْهُ تُجَاهَكَ، إِذَا سَأَلْتَ فَاسْأَلِ اللَّهَ وَإِذَا اسْتَعَنْتَ فَاسْتَعِنْ بِاللَّهِ",tr:"Allah'ın emirlerini gözet ki Allah da seni korusun. Allah'ı gözet ki O'nu yanında bulasın. Bir şey isteyeceğin zaman yalnızca Allah'tan iste, yardım dileyeceğin zaman yalnızca Allah'tan yardım dile.",faz:"İnsanın bütün korkulardan ve zararlı güçlerden korunmasının yolunun yalnızca Allah'a dayanmak olduğunu öğreten muazzam bir düsturdur."},
-var HAVAS_DUALARI = new Array(
-  {title:"1. İsm-i A'zam & Kilitli Hacet Kapılarını Açma Tertibi",ebced:"Ebced Külliyatı: 547.600 (Kebir Murabba Hesabı)",ar:"يَا حَيُّ يَا قَيُّومُ بِرَحْمَتِكَ أَسْتَغِيثُ أَصْلِحْ لِي شَأْنِي كُلَّهُ وَلَا تَكِلْنِي إِلَى نَفْسِي طَرْفَةَ عَيْنٍ",ok:"Yâ Hayyü Yâ Kayyûm, bi-rahmetike esteğîsü, aslıh lî şe'nî küllehû ve lâ tekilnî ilâ nefsî tarfete ayn.",tr:"Ey hakiki hayat sahibi Hayy ve her şeyi ayakta tutan Kayyûm olan Allah'ım! Rahmetinle yardımını diliyorum; benim bütün işlerimi düzelt ve göz açıp kapayıncaya kadar bile beni nefsimin eline bırakma.",faz:"<strong>Havas Sırrı:</strong> İmam Gazâlî ve Şems-ül Maârif kaynaklarında 'Hayy' (18) ve 'Kayyûm' (156) esmalarının İsm-i A'zam terkibi olarak 547.600 büyük devir mertebesi zikredilir. Kısmet kapalılığı, ağır manevi blokajlar, büyü/nazar tesirleri ve çaresiz görünen hacetlerin halli için okunur.",hedef:547600},
-  {title:"2. Büyük Rızık Fethi & Bereket Hazinesi (Şûrâ, 19)",ebced:"Ebced Külliyatı: 612.500 (Ekber Vefk Devri)",ar:"اَللّٰهُ لَطِيفٌ بِعِبَادِهِ يَرْزُقُ مَنْ يَشَاءُ وَهُوَ الْقَوِيُّ الْعَزِيزُ",ok:"Allâhu latîfun bi-ibâdihî yerzuku men yeşâu ve hüvel kaviyyül azîz.",tr:"Allah kullarına karşı çok lütufkârdır, dilediğini (hesapsız) rızıklandırır. O, mutlak kuvvet ve izzet sahibidir.",faz:"<strong>Havas Sırrı:</strong> 'Yâ Latîf' (129) ve 'Yâ Rezzâk' (308) esmalarıyla birleştirilen Şûrâ Suresi 19. ayetinin büyük külliyat devri 612.500 adettir. Ticari durgunlukların açılması, ağır borçların ödenmesi ve umulmadık helal rızık kapılarının fethi için tertip edilir.",hedef:612500},
-  {title:"3. Zırh-ı Azîm (Tam Manevi Kalkan ve Muhafaza)",ebced:"Ebced Külliyatı: 786.000 (Besmele-i Şerife Hatmesi)",ar:"بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيمِ ۞ حَسْبُنَا اللّٰهُ وَنِعْمَ الْوَكِيلُ",ok:"Bismillâhirrahmânirrahîm. Hasbünallâhu ve ni'mel vekîl.",tr:"Rahman ve Rahim olan Allah'ın adıyla. Allah bize yeter, O ne güzel vekildir.",faz:"<strong>Havas Sırrı:</strong> Besmele-i Şerife'nin 786 olan asli ebced değerinin 1000 mertebesiyle çarpımı olan 786.000'lik büyük koruma tertibidir. Görünür-görünmez afetlerden, hasetçilerin gözünden, düşman tuzaklarından ve her türlü şerden emin olmak için okunur.",hedef:786000},
-  {title:"4. Şifâ-i Kübrâ & Kalp Nuru Tertibi (İsrâ, 82)",ebced:"Ebced Külliyatı: 518.400 (Nûr & Şâfî Terkibi)",ar:"وَنُنَزِّلُ مِنَ الْقُرْاٰنِ مَا هُوَ شِفَاءٌ وَرَحْمَةٌ لِلْمُؤْمِنِينَ",ok:"Ve nünezzilü minel kur'âni mâ hüve şifâün ve rahmetün lil mü'minîn.",tr:"Biz Kur'an'dan, iman edenler için şifa ve rahmet olan ayetler indiriyoruz.",faz:"<strong>Havas Sırrı:</strong> 'Yâ Nûr' (256) ve 'Yâ Şâfî' (391) esmalarının murabba hesabıyla 518.400 ebced değerine ulaşan şifa tertibidir. Tıbben çaresi zor görünen hastalıklara ve ruhsal daralmalara karşı şifa niyetiyle suya okunarak da istifade edilir.",hedef:518400},
-  {title:"5. Feth-i Mübîn & Zafer Tertibi (Fetih & Saf)",ebced:"Ebced Külliyatı: 834.000 (Yâ Fettâh Ekber Devri)",ar:"إِنَّا فَتَحْنَا لَكَ فَتْحًا مُبِينًا ۞ نَصْرٌ مِنَ اللّٰهِ وَفَتْحٌ قَرِيبٌ",ok:"İnnâ fetahnâ leke fethan mübînâ. Nasrun minallâhi ve fethun karîb.",tr:"Şüphesiz biz sana apaçık bir fetih verdik. Allah'tan bir yardım ve yakın bir fetih vardır.",faz:"<strong>Havas Sırrı:</strong> 'Yâ Fettâh' (489) esmasıyla birlikte okunan bu iki ayetin 834.000 devirli büyük tertibi; haklı olunan davalarda zafere ulaşmak, sınav ve meşru hedeflerde başarı sağlamak ve kapalı kapıları açmak için okunur.",hedef:834000},
-  {title:"6. Celb-i Muhabbet ve Ülfet Tertibi (Âl-i İmrân & Enfâl)",ebced:"Ebced Külliyatı: 592.900 (Yâ Vedûd Kebir Hesabı)",ar:"وَاللّٰهُ يُؤَلِّفُ بَيْنَ قُلُوبِهِمْ ۞ يُحِبُّونَهُمْ كَحُبِّ اللّٰهِ وَالَّذِينَ آمَنُوا أَشَدُّ حُبًّا لِلّٰهِ",ok:"Vallâhu yüellifü beyne kulûbihim. Yühıbbûnehüm kehubbillâhi vellezîne âmenû eşeddü hubben lillâh.",tr:"Allah onların kalplerini birbirine ısındırıp birleştirmiştir. İman edenlerin Allah'a olan sevgisi ise her şeyden daha şiddetlidir.",faz:"<strong>Havas Sırrı:</strong> 'Yâ Vedûd' (20) ve 'Yâ Câmi' (114) esmalarının kebir murabba devri olan 592.900 tertibidir. Eşler arasındaki soğukluğun giderilmesi, aile içi huzurun tesisi ve insanlar arasında meşru sevgi-saygı (hüsn-ü kabul) görmek için okunur.",hedef:592900}
-);
-
 function copyCard(btn){
-  var card = btn.parentElement;
-  while(card && card.className !== "card"){ card = card.parentElement; }
-  var lines = new Array();
-  var parts = card.querySelectorAll(".tag, h3, .ar, .ok, .tr, .faz");
-  for(var i=0; i<parts.length; i++){
-    lines.push(parts.at(i).innerText);
-  }
-  var txt = lines.join("\n\n");
-  if(navigator.clipboard){
-    navigator.clipboard.writeText(txt);
-  } else {
-    var ta = document.createElement("textarea");
-    ta.value = txt;
-    document.body.appendChild(ta);
-    ta.select();
-    document.execCommand("copy");
-    document.body.removeChild(ta);
-  }
-  var old = btn.innerText;
-  btn.innerText = "✓ Kopyalandı!";
-  setTimeout(function(){ btn.innerText = old; }, 2000);
+  var card=btn.closest(".card"),lines=new Array();
+  card.querySelectorAll(".tag,h3,.ar,.ok,.tr,.faz").forEach(function(el){lines.push(el.innerText)});
+  if(navigator.clipboard)navigator.clipboard.writeText(lines.join("\n\n"));
+  var old=btn.innerText;btn.innerText="✓ Kopyalandı!";setTimeout(function(){btn.innerText=old},2000);
 }
-
-function renderH(list){
-  document.getElementById("hGrid").innerHTML = list.map(function(h){
-    return '<div class="card">'+
-      '<div>'+
-        '<span class="tag">'+h.src+' • '+h.cat+'</span>'+
-        '<div class="ar">'+h.ar+'</div>'+
-        '<div class="tr"><strong>Hadis-i Şerif:</strong> “'+h.tr+'”</div>'+
-        '<div class="faz"><strong>Hikmeti ve Fazileti:</strong> '+h.faz+'</div>'+
-      '</div>'+
-      '<button class="btn" style="margin-top:14px;width:100%" onclick="copyCard(this)">📋 Hadisi Kopyala</button>'+
-    '</div>';
-  }).join("");
-}
-renderH(HADISLER);
-
 function filterH(){
-  var q = document.getElementById("hSearch").value.toLowerCase();
-  renderH(HADISLER.filter(function(h){
-    return h.tr.toLowerCase().indexOf(q)!==-1 || h.cat.toLowerCase().indexOf(q)!==-1 || h.src.toLowerCase().indexOf(q)!==-1;
-  }));
+  var q=document.getElementById("hSearch").value.toLowerCase();
+  document.querySelectorAll("#hGrid .card").forEach(function(c){c.style.display=c.innerText.toLowerCase().indexOf(q)!==-1?"flex":"none"});
 }
-
-function renderDua(targetId, list){
-  document.getElementById(targetId).innerHTML = list.map(function(d){
-    return '<div class="card">'+
-      '<div>'+
-        '<h3>'+d.title+'</h3>'+
-        '<div class="ar">'+d.ar+'</div>'+
-        '<div class="ok"><strong>Okunuşu:</strong> '+d.ok+'</div>'+
-        '<div class="tr"><strong>Anlamı:</strong> '+d.tr+'</div>'+
-        '<div class="faz"><strong>Fazileti ve Hikmeti:</strong> '+d.faz+'</div>'+
-      '</div>'+
-      '<button class="btn" style="margin-top:14px;width:100%" onclick="copyCard(this)">📋 Duayı Kopyala</button>'+
-    '</div>';
-  }).join("");
+function addHv(i,n){
+  var c=Number(localStorage.getItem("hv_cnt_"+i)||0)+n;
+  localStorage.setItem("hv_cnt_"+i,c);
+  document.getElementById("hvc_"+i).innerText=c.toLocaleString("tr-TR");
 }
-renderDua("pGrid", PEYGAMBER_DUALARI);
-renderDua("hdGrid", HADIS_DUALARI);
-
-document.getElementById("hvGrid").innerHTML = HAVAS_DUALARI.map(function(p, i){
-  var c = Number(localStorage.getItem("hv_cnt_" + i) || 0);
-  return '<div class="card">'+
-    '<div>'+
-      '<span class="tag">'+p.ebced+'</span>'+
-      '<h3>'+p.title+'</h3>'+
-      '<div class="ar">'+p.ar+'</div>'+
-      '<div class="ok"><strong>Okunuşu:</strong> '+p.ok+'</div>'+
-      '<div class="tr"><strong>Anlamı:</strong> '+p.tr+'</div>'+
-      '<div class="faz">'+p.faz+'</div>'+
-    '</div>'+
-    '<div>'+
-      '<div class="z-bar">'+
-        '<div><div style="font-size:11px;color:var(--muted)">Okunan / Hedef Ebced</div><div style="color:var(--gold);font-weight:700"><span id="hvc_'+i+'">'+c.toLocaleString("tr-TR")+'</span> / '+p.hedef.toLocaleString("tr-TR")+'</div></div>'+
-        '<div>'+
-          '<button class="btn" onclick="addHv('+i+',1)">+1</button> '+
-          '<button class="btn" onclick="addHv('+i+',100)">+100</button> '+
-          '<button class="btn" onclick="addHv('+i+',1000)">+1000</button>'+
-        '</div>'+
-      '</div>'+
-      '<button class="btn" style="margin-top:10px;width:100%" onclick="copyCard(this)">📋 Tertibi Kopyala</button>'+
-    '</div>'+
-  '</div>';
-}).join("");
-
-function addHv(i, n){
-  var c = Number(localStorage.getItem("hv_cnt_" + i) || 0) + n;
-  localStorage.setItem("hv_cnt_" + i, c);
-  document.getElementById("hvc_" + i).innerText = c.toLocaleString("tr-TR");
-}
+for(var i=0;i<4;i++){document.getElementById("hvc_"+i).innerText=Number(localStorage.getItem("hv_cnt_"+i)||0).toLocaleString("tr-TR")}
 </script>
 </body>
 </html>
