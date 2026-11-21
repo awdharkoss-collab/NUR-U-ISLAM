@@ -1,376 +1,327 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nur-u Kur'an | Kur'an, Hadis & Kıble</title>
-<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #0a1f1a;
-    --card: rgba(16, 42, 35, 0.75);
-    --gold: #d4af37;
-    --gold-light: #f0d78c;
-    --green: #1a5c45;
-    --text: #e8f0ec;
-    --muted: #a0b8ae;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #061510, #0a1f1a 40%, #0d2b22);
-    color: var(--text);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4af37' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 0;
-  }
-  .container { max-width: 1200px; margin: 0 auto; padding: 20px; position: relative; z-index: 1; }
-  header { text-align: center; padding: 40px 20px 30px; }
-  header h1 {
-    font-family: 'Amiri', serif;
-    font-size: 2.8rem;
-    background: linear-gradient(90deg, var(--gold-light), var(--gold));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 8px;
-  }
-  header p { color: var(--muted); font-size: 1.1rem; }
-  nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin: 30px 0 40px; }
-  .nav-btn {
-    background: var(--card);
-    border: 1px solid rgba(212, 175, 55, 0.3);
-    color: var(--text);
-    padding: 12px 22px;
-    border-radius: 50px;
-    cursor: pointer;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
-  }
-  .nav-btn:hover, .nav-btn.active {
-    background: linear-gradient(135deg, var(--green), #0f3d2e);
-    border-color: var(--gold);
-    color: var(--gold-light);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.2);
-  }
-  .section { display: none; animation: fadeIn 0.4s ease; }
-  .section.active { display: block; }
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(15px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .card {
-    background: var(--card);
-    border: 1px solid rgba(212, 175, 55, 0.2);
-    border-radius: 20px;
-    padding: 25px;
-    margin-bottom: 20px;
-    backdrop-filter: blur(12px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  }
-  .card h2, .card h3 { color: var(--gold); margin-bottom: 15px; font-family: 'Amiri', serif; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
-  .qibla-box { text-align: center; max-width: 420px; margin: 0 auto; }
-  .compass {
-    width: 280px; height: 280px; border-radius: 50%;
-    border: 8px solid var(--gold); margin: 30px auto; position: relative;
-    background: radial-gradient(circle, #0d2b22, #061510);
-    box-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
-  }
-  .needle {
-    position: absolute; top: 50%; left: 50%; width: 6px; height: 110px;
-    background: linear-gradient(to top, #c0392b, #e74c3c);
-    transform-origin: bottom center;
-    transform: translate(-50%, -100%) rotate(0deg);
-    border-radius: 4px; transition: transform 0.3s ease;
-  }
-  .needle::after {
-    content: ''; position: absolute; bottom: -8px; left: 50%;
-    transform: translateX(-50%); width: 16px; height: 16px;
-    background: var(--gold); border-radius: 50%;
-  }
-  .kaaba-icon { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); font-size: 28px; }
-  .surah-item {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 16px 20px; background: rgba(0,0,0,0.25); border-radius: 14px;
-    cursor: pointer; transition: all 0.25s; border: 1px solid transparent;
-  }
-  .surah-item:hover { border-color: var(--gold); background: rgba(26, 92, 69, 0.4); }
-  .surah-num {
-    width: 40px; height: 40px; background: var(--green); border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-weight: 600; color: var(--gold-light);
-  }
-  .badge { font-size: 0.75rem; padding: 4px 10px; border-radius: 20px; background: rgba(212, 175, 55, 0.15); color: var(--gold); }
-  .badge.medeni { background: rgba(46, 134, 193, 0.2); color: #5dade2; }
-  .arabic {
-    font-family: 'Amiri', serif; font-size: 1.6rem; line-height: 2.2;
-    direction: rtl; text-align: right; color: var(--gold-light); margin: 20px 0;
-  }
-  .modal {
-    display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85);
-    z-index: 1000; overflow-y: auto; padding: 40px 20px;
-  }
-  .modal-content {
-    max-width: 800px; margin: 0 auto; background: var(--bg);
-    border: 1px solid var(--gold); border-radius: 24px; padding: 30px; position: relative;
-  }
-  .close-btn {
-    position: absolute; top: 20px; left: 20px; background: none; border: none;
-    color: var(--gold); font-size: 1.8rem; cursor: pointer;
-  }
-  .hadis-card, .dua-card { border-left: 4px solid var(--gold); }
-  footer { text-align: center; padding: 40px 20px; color: var(--muted); font-size: 0.9rem; }
-  @media (max-width: 600px) {
-    header h1 { font-size: 2rem; }
-    .compass { width: 220px; height: 220px; }
-  }
-</style>
-</head>
-<body>
-<div class="container">
-  <header>
-    <h1>نور القرآن</h1>
-    <p>Kur'an-ı Kerim • Hadisler • Kıble • Mucizeler • Dualar</p>
-  </header>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nur-u Kur'an | İslami İlimler, Kıble, Tefsir & Havas Külliyatı</title>
+    <!-- Google Fonts: Zarif İslami Hat ve Modern Tipografi -->
+    <link href="https://googleapis.com" rel="stylesheet">
+    <!-- İkon Kütüphanesi -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+    <style>
+        :root {
+            --bg-deep: #071912;
+            --bg-card: #0d261c;
+            --bg-card-hover: #123326;
+            --gold-primary: #d4af37;
+            --gold-light: #f3e5ab;
+            --gold-glow: rgba(212, 175, 55, 0.25);
+            --text-main: #f0f4f2;
+            --text-muted: #9eb3a8;
+            --border-gold: rgba(212, 175, 55, 0.28);
+        }
 
-  <nav>
-    <button class="nav-btn active" data-section="home">Ana Sayfa</button>
-    <button class="nav-btn" data-section="qibla">Kıble</button>
-    <button class="nav-btn" data-section="surahs">Sureler</button>
-    <button class="nav-btn" data-section="hadiths">Hadisler</button>
-    <button class="nav-btn" data-section="miracles">Mucizeler</button>
-    <button class="nav-btn" data-section="duas">Dualar & Havas</button>
-  </nav>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <div id="home" class="section active">
-    <div class="grid">
-      <div class="card"><h2>📖 Kur'an-ı Kerim</h2><p>114 sure, ayetleri, nüzul dönemleri (Mekkî / Medenî) ve Diyanet meali ile okuyabilirsiniz.</p></div>
-      <div class="card"><h2>🧭 Kıble Yönü</h2><p>Konumunuza göre gerçek zamanlı kıble yönünü gösteren pusula. Cihazınızı düz tutun.</p></div>
-      <div class="card"><h2>✨ Kur'an Mucizeleri</h2><p>İlmi, tarihi ve sayısal mucizelerden seçilmiş örnekler.</p></div>
-      <div class="card"><h2>🤲 Dualar & Havas</h2><p>Korunma, rızık, şifa ve sırlı dualar (havas ilminden derlenmiş).</p></div>
-    </div>
-  </div>
+        body {
+            background-color: var(--bg-deep);
+            background-image: 
+                radial-gradient(circle at 50% 0%, #123829 0%, transparent 65%),
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://w3.org fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4af37' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
 
-  <div id="qibla" class="section">
-    <div class="card qibla-box">
-      <h2>Kıble Pusulası</h2>
-      <p id="location-info">Konum alınıyor...</p>
-      <div class="compass">
-        <div class="kaaba-icon">🕋</div>
-        <div class="needle" id="needle"></div>
-      </div>
-      <p id="qibla-degree" style="font-size:1.4rem; color:var(--gold); margin-top:15px;">--°</p>
-      <p style="color:var(--muted); font-size:0.9rem; margin-top:10px;">Cihazı yatay tutun ve manyetik alan bozulmalarından uzak durun.</p>
-    </div>
-  </div>
+        /* Üst Başlık ve Arapça Hat */
+        header {
+            text-align: center;
+            padding: 3.5rem 1rem 2rem;
+            border-bottom: 1px solid var(--border-gold);
+            background: linear-gradient(180deg, rgba(7,25,18,0.9) 0%, rgba(13,38,28,0.4) 100%);
+        }
 
-  <div id="surahs" class="section">
-    <div class="card">
-      <h2>Kur'an Sureleri</h2>
-      <p style="margin-bottom:20px; color:var(--muted);">Bir sureye tıklayarak Arapça metin ve Türkçe mealini okuyabilirsiniz.</p>
-      <div id="surah-list" style="display:grid; gap:12px;"></div>
-    </div>
-  </div>
+        .arabic-logo {
+            font-family: 'Amiri', serif;
+            font-size: 3.8rem;
+            color: var(--gold-primary);
+            text-shadow: 0 0 25px var(--gold-glow);
+            margin-bottom: 0.2rem;
+            letter-spacing: 2px;
+        }
 
-  <div id="hadiths" class="section">
-    <div class="card"><h2>Seçme Hadis-i Şerifler</h2><div id="hadith-list"></div></div>
-  </div>
+        .app-title {
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 1.5rem;
+            color: var(--gold-light);
+            letter-spacing: 3px;
+            margin-bottom: 0.6rem;
+        }
 
-  <div id="miracles" class="section">
-    <div class="card"><h2>Kur'an-ı Kerim Mucizeleri</h2><div id="miracle-list"></div></div>
-  </div>
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+        }
 
-  <div id="duas" class="section">
-    <div class="card">
-      <h2>Dualar & Havas İlmi</h2>
-      <p style="color:var(--muted); margin-bottom:20px;">Aşağıdaki dualar klasik kaynaklardan ve havas kitaplarından derlenmiştir. Niyet ve ihlas ile okunmalıdır.</p>
-      <div id="dua-list"></div>
-    </div>
-  </div>
+        /* Navigasyon Menüsü */
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            padding: 1.5rem 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(7, 25, 18, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+        }
 
-  <footer>© 2025 Nur-u Kur'an Uygulaması • Allah rızası için yapılmıştır</footer>
-</div>
+        .nav-btn {
+            background: rgba(13, 38, 28, 0.8);
+            border: 1px solid var(--border-gold);
+            color: var(--text-main);
+            padding: 0.65rem 1.4rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
 
-<div class="modal" id="surahModal">
-  <div class="modal-content">
-    <button class="close-btn" onclick="closeModal()">×</button>
-    <h2 id="modalTitle" style="color:var(--gold); text-align:center;"></h2>
-    <div id="modalContent"></div>
-  </div>
-</div>
+        .nav-btn:hover, .nav-btn.active {
+            background: linear-gradient(135deg, #2b6b4f, #1a4734);
+            border-color: var(--gold-primary);
+            color: var(--gold-light);
+            box-shadow: 0 0 18px var(--gold-glow);
+            transform: translateY(-2px);
+        }
 
-<script>
-// ========== NAVIGATION ==========
-function showSection(id, btn) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  if (btn) btn.classList.add('active');
-}
+        /* Ana Konteyner */
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem 4rem;
+        }
 
-document.querySelectorAll('.nav-btn').forEach(btn => {
-  btn.addEventListener('click', function() {
-    showSection(this.dataset.section, this);
-  });
-});
+        .section {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
 
-// ========== SURE LİSTESİ ==========
-const surahs = [
-  {n:1, name:"Fâtiha", ayet:7, type:"Mekkî"},
-  {n:2, name:"Bakara", ayet:286, type:"Medenî"},
-  {n:3, name:"Âl-i İmrân", ayet:200, type:"Medenî"},
-  {n:4, name:"Nisâ", ayet:176, type:"Medenî"},
-  {n:5, name:"Mâide", ayet:120, type:"Medenî"},
-  {n:6, name:"En'âm", ayet:165, type:"Mekkî"},
-  {n:7, name:"A'râf", ayet:206, type:"Mekkî"},
-  {n:8, name:"Enfâl", ayet:75, type:"Medenî"},
-  {n:9, name:"Tevbe", ayet:129, type:"Medenî"},
-  {n:10, name:"Yûnus", ayet:109, type:"Mekkî"},
-  {n:11, name:"Hûd", ayet:123, type:"Mekkî"},
-  {n:12, name:"Yûsuf", ayet:111, type:"Mekkî"},
-  {n:13, name:"Ra'd", ayet:43, type:"Medenî"},
-  {n:14, name:"İbrâhîm", ayet:52, type:"Mekkî"},
-  {n:15, name:"Hicr", ayet:99, type:"Mekkî"},
-  {n:16, name:"Nahl", ayet:128, type:"Mekkî"},
-  {n:17, name:"İsrâ", ayet:111, type:"Mekkî"},
-  {n:18, name:"Kehf", ayet:110, type:"Mekkî"},
-  {n:19, name:"Meryem", ayet:98, type:"Mekkî"},
-  {n:20, name:"Tâhâ", ayet:135, type:"Mekkî"},
-  {n:21, name:"Enbiyâ", ayet:112, type:"Mekkî"},
-  {n:22, name:"Hac", ayet:78, type:"Medenî"},
-  {n:23, name:"Mü'minûn", ayet:118, type:"Mekkî"},
-  {n:24, name:"Nûr", ayet:64, type:"Medenî"},
-  {n:25, name:"Furkân", ayet:77, type:"Mekkî"},
-  {n:26, name:"Şuarâ", ayet:227, type:"Mekkî"},
-  {n:27, name:"Neml", ayet:93, type:"Mekkî"},
-  {n:28, name:"Kasas", ayet:88, type:"Mekkî"},
-  {n:29, name:"Ankebût", ayet:69, type:"Mekkî"},
-  {n:30, name:"Rûm", ayet:60, type:"Mekkî"},
-  {n:31, name:"Lokmân", ayet:34, type:"Mekkî"},
-  {n:32, name:"Secde", ayet:30, type:"Mekkî"},
-  {n:33, name:"Ahzâb", ayet:73, type:"Medenî"},
-  {n:34, name:"Sebe'", ayet:54, type:"Mekkî"},
-  {n:35, name:"Fâtır", ayet:45, type:"Mekkî"},
-  {n:36, name:"Yâsîn", ayet:83, type:"Mekkî"},
-  {n:37, name:"Sâffât", ayet:182, type:"Mekkî"},
-  {n:38, name:"Sâd", ayet:88, type:"Mekkî"},
-  {n:39, name:"Zümer", ayet:75, type:"Mekkî"},
-  {n:40, name:"Mü'min", ayet:85, type:"Mekkî"},
-  {n:41, name:"Fussilet", ayet:54, type:"Mekkî"},
-  {n:42, name:"Şûrâ", ayet:53, type:"Mekkî"},
-  {n:43, name:"Zuhruf", ayet:89, type:"Mekkî"},
-  {n:44, name:"Duhân", ayet:59, type:"Mekkî"},
-  {n:45, name:"Câsiye", ayet:37, type:"Mekkî"},
-  {n:46, name:"Ahkâf", ayet:35, type:"Mekkî"},
-  {n:47, name:"Muhammed", ayet:38, type:"Medenî"},
-  {n:48, name:"Fetih", ayet:29, type:"Medenî"},
-  {n:49, name:"Hucurât", ayet:18, type:"Medenî"},
-  {n:50, name:"Kâf", ayet:45, type:"Mekkî"},
-  {n:51, name:"Zâriyât", ayet:60, type:"Mekkî"},
-  {n:52, name:"Tûr", ayet:49, type:"Mekkî"},
-  {n:53, name:"Necm", ayet:62, type:"Mekkî"},
-  {n:54, name:"Kamer", ayet:55, type:"Mekkî"},
-  {n:55, name:"Rahmân", ayet:78, type:"Medenî"},
-  {n:56, name:"Vâkıa", ayet:96, type:"Mekkî"},
-  {n:57, name:"Hadîd", ayet:29, type:"Medenî"},
-  {n:58, name:"Mücâdele", ayet:22, type:"Medenî"},
-  {n:59, name:"Haşr", ayet:24, type:"Medenî"},
-  {n:60, name:"Mümtehine", ayet:13, type:"Medenî"},
-  {n:61, name:"Saf", ayet:14, type:"Medenî"},
-  {n:62, name:"Cum'a", ayet:11, type:"Medenî"},
-  {n:63, name:"Münâfikûn", ayet:11, type:"Medenî"},
-  {n:64, name:"Teğâbun", ayet:18, type:"Medenî"},
-  {n:65, name:"Talâk", ayet:12, type:"Medenî"},
-  {n:66, name:"Tahrîm", ayet:12, type:"Medenî"},
-  {n:67, name:"Mülk", ayet:30, type:"Mekkî"},
-  {n:68, name:"Kalem", ayet:52, type:"Mekkî"},
-  {n:69, name:"Hâkka", ayet:52, type:"Mekkî"},
-  {n:70, name:"Meâric", ayet:44, type:"Mekkî"},
-  {n:71, name:"Nûh", ayet:28, type:"Mekkî"},
-  {n:72, name:"Cin", ayet:28, type:"Mekkî"},
-  {n:73, name:"Müzzemmil", ayet:20, type:"Mekkî"},
-  {n:74, name:"Müddessir", ayet:56, type:"Mekkî"},
-  {n:75, name:"Kıyâme", ayet:40, type:"Mekkî"},
-  {n:76, name:"İnsan", ayet:31, type:"Medenî"},
-  {n:77, name:"Mürselât", ayet:50, type:"Mekkî"},
-  {n:78, name:"Nebe'", ayet:40, type:"Mekkî"},
-  {n:79, name:"Nâziât", ayet:46, type:"Mekkî"},
-  {n:80, name:"Abese", ayet:42, type:"Mekkî"},
-  {n:81, name:"Tekvîr", ayet:29, type:"Mekkî"},
-  {n:82, name:"İnfitâr", ayet:19, type:"Mekkî"},
-  {n:83, name:"Mutaffifîn", ayet:36, type:"Mekkî"},
-  {n:84, name:"İnşikâk", ayet:25, type:"Mekkî"},
-  {n:85, name:"Bürûc", ayet:22, type:"Mekkî"},
-  {n:86, name:"Târık", ayet:17, type:"Mekkî"},
-  {n:87, name:"A'lâ", ayet:19, type:"Mekkî"},
-  {n:88, name:"Gâşiye", ayet:26, type:"Mekkî"},
-  {n:89, name:"Fecr", ayet:30, type:"Mekkî"},
-  {n:90, name:"Beled", ayet:20, type:"Mekkî"},
-  {n:91, name:"Şems", ayet:15, type:"Mekkî"},
-  {n:92, name:"Leyl", ayet:21, type:"Mekkî"},
-  {n:93, name:"Duhâ", ayet:11, type:"Mekkî"},
-  {n:94, name:"İnşirâh", ayet:8, type:"Mekkî"},
-  {n:95, name:"Tîn", ayet:8, type:"Mekkî"},
-  {n:96, name:"Alak", ayet:19, type:"Mekkî"},
-  {n:97, name:"Kadir", ayet:5, type:"Mekkî"},
-  {n:98, name:"Beyyine", ayet:8, type:"Medenî"},
-  {n:99, name:"Zilzâl", ayet:8, type:"Medenî"},
-  {n:100, name:"Âdiyât", ayet:11, type:"Mekkî"},
-  {n:101, name:"Kâria", ayet:11, type:"Mekkî"},
-  {n:102, name:"Tekâsür", ayet:8, type:"Mekkî"},
-  {n:103, name:"Asr", ayet:3, type:"Mekkî"},
-  {n:104, name:"Hümeze", ayet:9, type:"Mekkî"},
-  {n:105, name:"Fîl", ayet:5, type:"Mekkî"},
-  {n:106, name:"Kureyş", ayet:4, type:"Mekkî"},
-  {n:107, name:"Mâûn", ayet:7, type:"Mekkî"},
-  {n:108, name:"Kevser", ayet:3, type:"Mekkî"},
-  {n:109, name:"Kâfirûn", ayet:6, type:"Mekkî"},
-  {n:110, name:"Nasr", ayet:3, type:"Medenî"},
-  {n:111, name:"Tebbet", ayet:5, type:"Mekkî"},
-  {n:112, name:"İhlâs", ayet:4, type:"Mekkî"},
-  {n:113, name:"Felak", ayet:5, type:"Mekkî"},
-  {n:114, name:"Nâs", ayet:6, type:"Mekkî"}
-];
+        .section.active {
+            display: block;
+        }
 
-function renderSurahs() {
-  const list = document.getElementById('surah-list');
-  list.innerHTML = surahs.map(s => `
-    <div class="surah-item" data-num="${s.n}" data-name="${s.name}">
-      <div style="display:flex; align-items:center; gap:15px;">
-        <div class="surah-num">${s.n}</div>
-        <div>
-          <strong>${s.name}</strong>
-          <div style="font-size:0.85rem; color:var(--muted);">${s.ayet} Ayet</div>
-        </div>
-      </div>
-      <span class="badge ${s.type === 'Medenî' ? 'medeni' : ''}">${s.type}</span>
-    </div>
-  `).join('');
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-  document.querySelectorAll('.surah-item').forEach(item => {
-    item.addEventListener('click', function() {
-      openSurah(parseInt(this.dataset.num), this.dataset.name);
-    });
-  });
-}
+        /* Kart Izgarası */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
 
-async function openSurah(num, name) {
-  const modal = document.getElementById('surahModal');
-  const title = document.getElementById('modalTitle');
-  const content = document.getElementById('modalContent');
-  
-  title.textContent = `${num}. ${name} Suresi`;
-  content.innerHTML = '<p style="text-align:center; padding:40px;">Yükleniyor...</p>';
-  modal.style.display = 'block';
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-gold);
+            border-radius: 16px;
+            padding: 1.8rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        }
 
-  try {
-    const [arRes, 
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+            opacity: 0.6;
+        }
+
+        .card:hover {
+            background: var(--bg-card-hover);
+            transform: translateY(-4px);
+            border-color: var(--gold-primary);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px var(--gold-glow);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            background: rgba(212, 175, 55, 0.12);
+            border: 1px solid var(--border-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-primary);
+            font-size: 1.2rem;
+        }
+
+        .card h3 {
+            color: var(--gold-primary);
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .card-action {
+            margin-top: 1.2rem;
+            display: inline-block;
+            color: var(--gold-light);
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        /* Kur'an ve Sureler Bölümü */
+        .search-bar {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-gold);
+            background: var(--bg-card);
+            color: var(--text-main);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            outline: none;
+        }
+
+        .search-bar:focus {
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 15px var(--gold-glow);
+        }
+
+        .surah-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .surah-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-gold);
+            border-radius: 12px;
+            padding: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        .surah-item:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--gold-primary);
+        }
+
+        .surah-num {
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--gold-primary);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-right: 0.8rem;
+        }
+
+        .badge {
+            font-size: 0.72rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.08);
+            color: var(--gold-light);
+        }
+
+        /* Sure Okuma ve Tefsir Modalı */
+        .reader-box {
+            background: var(--bg-card);
+            border: 1px solid var(--gold-primary);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 1.5rem;
+            display: none;
+        }
+
+        .ayah-box {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .arabic-text {
+            font-family: 'Amiri', serif;
+            font-size: 2rem;
+            text-align: right;
+            color: var(--gold-light);
+            line-height: 2.2;
+            margin-bottom: 0.8rem;
+            direction: rtl;
+        }
+
+        .turkish-meal {
+            color: var(--text-main);
+            font-size: 1.05rem;
+        }
+
+        .tefsir-note {
+            margin-top: 0.8rem;
+            padding: 0.8rem 1rem;
+            background: rgba(7, 25, 18, 0.6);
+            border-left: 3px solid var(--gold-primary);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Kıble Pusulası */
+        .compass-container {
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            border: 1px solid var(--border-gold);
+            border-radius: 20px;
+            padding: 2.5rem;
+        }
+
+        .compass-dial {
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            border: 4px solid var(--gold-primary);
+            margin: 1.5rem auto;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
