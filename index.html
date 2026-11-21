@@ -186,8 +186,7 @@ function loadJS(url){
     document.body.appendChild(sc);
   });
 }
-
-async function openS(num){
+function openS(num){
   var s=DB.at(num-1);
   document.getElementById("sBox").style.display="none";
   document.getElementById("reader").style.display="block";
@@ -196,23 +195,29 @@ async function openS(num){
   document.getElementById("rMeta").innerText="Nüzul Dönemi: "+s.at(4)+" | Toplam "+s.at(3)+" Ayet";
   document.getElementById("rTefsir").innerHTML="<strong>Ne İçin ve Hangi Sebeple İndi? (Tefsir Özeti):</strong><br>"+s.at(5);
   var box=document.getElementById("rAyahs");
-  box.innerHTML='<p style="color:var(--gold)">Ayetler yükleniyor...</p>';
-  try {
-    const res = await Promise.all([
-      fetch("https://jsdelivr.net"+num+".json").then(function(r){ return r.json(); }),
-      fetch("https://unpkg.com"+num+".json").then(function(r){ return r.json(); }).catch(function(){ return null; })
-    ]);
-    var surah = res.at(0);
-    box.innerHTML = surah.verses.map(function(v){
-      return '<div class="ayah">'+
-        '<div class="ar">'+v.text+' <span style="font-size:18px;color:var(--gold)">﴿'+v.id+'﴾</span></div>'+
-        '<div class="tr-read"><strong>Okunuşu:</strong> '+v.transliteration+'</div>'+
-        '<div class="tr-mean"><strong>'+v.id+'. Meal:</strong> '+v.translation+'</div>'+
-      '</div>';
-    }).join("");
-  } catch(e) {
-    box.innerHTML='<p style="color:#ff8080">Hata: '+e.message+'</p>';
-  }
+  box.innerHTML='<p style="color:var(--gold)">Ayetler getiriliyor...</p>';
+
+  var apiUrl = ["https:", "", "://acikkuran.com", "surah", num + "?author=11"].join("/");
+  var x = new XMLHttpRequest();
+  x.open("GET", apiUrl, true);
+  x.onload = function(){
+    if(x.status === 200){
+      var res = JSON.parse(x.responseText).data;
+      box.innerHTML = res.verses.map(function(v){
+        return '<div class="ayah">'+
+          '<div class="ar">'+v.verse+' <span style="font-size:18px;color:var(--gold)">﴿'+v.verse_number+'﴾</span></div>'+
+          '<div class="tr-read"><strong>Okunuşu:</strong> '+v.transcription+'</div>'+
+          '<div class="tr-mean"><strong>'+v.verse_number+'. Anlamı:</strong> '+v.translation.text+'</div>'+
+        '</div>';
+      }).join("");
+    } else {
+      box.innerHTML='<p style="color:#ff8080">Sunucu hatası: '+x.status+'</p>';
+    }
+  };
+  x.onerror = function(){
+    box.innerHTML='<p style="color:#ff8080">Bağlantı kurulamadı, internet bağlantınızı kontrol edin.</p>';
+  };
+  x.send();
 }
 
 function closeS(){
