@@ -193,45 +193,23 @@ async function openS(num){
   document.getElementById('rMeta').innerText='Nüzul Dönemi: '+s.at(4)+' | Toplam '+s.at(3)+' Ayet';
   document.getElementById('rTefsir').innerHTML='<strong>Ne İçin ve Hangi Sebeple İndi? (Tefsir Özeti):</strong><br>'+s.at(5);
   var box=document.getElementById('rAyahs');
-  box.innerHTML='<p style="color:var(--gold)">Ayetler getiriliyor...</p>';
-
-  // 1. Kaynak: Quran.com Resmi API (En yüksek erişilebilirlik)
+  box.innerHTML='<p style="color:var(--gold)">Ayetler yükleniyor...</p>';
   try {
-    const r = await fetch('https://quran.com');
-    const d = await r.json();
-    if(d && d.verses){
-      box.innerHTML = d.verses.map(function(v, i){
-        var okunus = v.words ? v.words.map(function(w){ return w.transliteration && w.transliteration.text ? w.transliteration.text : ''; }).join(' ').trim() : '';
-        var meal = (v.translations && v.translations.at(0)) ? v.translations.at(0).text.replace(/<[^>]*>?/gm, '') : '';
-        return '<div class="ayah">'+
-          '<div class="ar">'+v.text_uthmani+' <span style="font-size:18px;color:var(--gold)">﴿'+(i+1)+'﴾</span></div>'+
-          (okunus ? '<div class="tr-read"><strong>Okunuşu:</strong> '+okunus+'</div>' : '')+
-          '<div class="tr-mean"><strong>'+(i+1)+'. Anlamı:</strong> '+meal+'</div>'+
-        '</div>';
-      }).join('');
-      return;
+    if(!window.QDATA){
+      const r = await fetch('https://jsdelivr.net');
+      window.QDATA = await r.json();
     }
-  } catch(e1) {}
-
-  // 2. Kaynak: GitHub Raw (GitHub Pages ile aynı alan adı olduğu için asla engellenmez)
-  try {
-    const res = await Promise.all([
-      fetch('https://githubusercontent.com').then(function(r){return r.json();}),
-      fetch('https://githubusercontent.com').then(function(r){return r.json();})
-    ]);
-    var arData = res.at(0).verses;
-    var trData = res.at(1).verses;
-    box.innerHTML = arData.map(function(v, i){
+    var surah = window.QDATA.at(num-1);
+    box.innerHTML = surah.verses.map(function(v){
       return '<div class="ayah">'+
         '<div class="ar">'+v.text+' <span style="font-size:18px;color:var(--gold)">﴿'+v.id+'﴾</span></div>'+
         '<div class="tr-read"><strong>Okunuşu:</strong> '+v.transliteration+'</div>'+
-        '<div class="tr-mean"><strong>'+v.id+'. Anlamı:</strong> '+trData.at(i).translation+'</div>'+
+        '<div class="tr-mean"><strong>'+v.id+'. Anlamı:</strong> '+v.translation+'</div>'+
       '</div>';
     }).join('');
-    return;
-  } catch(e2) {}
-
-  box.innerHTML='<p style="color:#ff8080">Tarayıcınızdaki reklam engelleyici eklenti veri bağlantısını engelliyor. Eklentiyi bu site için duraklatıp sayfayı yenileyin.</p>';
+  } catch(e) {
+    box.innerHTML='<p style="color:#ff8080">Hata: '+e.message+'</p>';
+  }
 }
 
 function closeS(){
