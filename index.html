@@ -184,6 +184,7 @@ function filt(){
     return s.at(1).toLowerCase().indexOf(q)!==-1 || String(s.at(0))===q;
   }));
 }
+
 async function openS(num){
   var s=DB.at(num-1);
   document.getElementById('sBox').style.display='none';
