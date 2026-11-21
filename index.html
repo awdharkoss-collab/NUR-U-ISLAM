@@ -184,7 +184,6 @@ function filt(){
     return s.at(1).toLowerCase().indexOf(q)!==-1 || String(s.at(0))===q;
   }));
 }
-
 async function openS(num){
   var s=DB.at(num-1);
   document.getElementById('sBox').style.display='none';
@@ -198,19 +197,20 @@ async function openS(num){
   try{
     const res=await Promise.all([
       fetch('https://jsdelivr.net').then(function(r){return r.json();}),
-      fetch('https://jsdelivr.net').then(function(r){return r.json();}),
+      fetch('https://jsdelivr.net').then(function(r){return r.json();}).catch(function(){return null;}),
       fetch('https://jsdelivr.net').then(function(r){return r.json();})
     ]);
     var ar=res.at(0), trRead=res.at(1), trMean=res.at(2);
     box.innerHTML=ar.chapter.map(function(x,i){
+      var okunus = (trRead && trRead.chapter && trRead.chapter.at(i)) ? '<div class="tr-read"><strong>Okunuşu:</strong> '+trRead.chapter.at(i).text+'</div>' : '';
       return '<div class="ayah">'+
       '<div class="ar">'+x.text+' <span style="font-size:18px;color:var(--gold)">﴿'+x.verse+'﴾</span></div>'+
-      '<div class="tr-read"><strong>Okunuşu:</strong> '+trRead.chapter.at(i).text+'</div>'+
+      okunus+
       '<div class="tr-mean"><strong>'+x.verse+'. Anlamı:</strong> '+trMean.chapter.at(i).text+'</div>'+
       '</div>';
     }).join('');
   }catch(e){
-    box.innerHTML='<p style="color:var(--gold)">Ayet metinleri çekilirken bağlantı hatası oluştu, lütfen sayfayı yenileyip tekrar deneyin.</p>';
+    box.innerHTML='<p style="color:var(--gold)">Ayetler yüklenirken geçici bir ağ hatası oluştu, lütfen tekrar deneyin.</p>';
   }
 }
 
@@ -221,5 +221,4 @@ function closeS(){
 </script>
 </body>
 </html>
-
 
