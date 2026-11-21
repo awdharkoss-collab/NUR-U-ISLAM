@@ -18,7 +18,7 @@ input[name="t"]{display:none}
 #t1:checked~.nav label[for="t1"],#t2:checked~.nav label[for="t2"],#t3:checked~.nav label[for="t3"],#t4:checked~.nav label[for="t4"],#t5:checked~.nav label[for="t5"],#t6:checked~.nav label[for="t6"]{background:#1b4d38;border-color:var(--gold);color:var(--light)}
 .sec{display:none;max-width:1100px;margin:25px auto;padding:0 15px 50px}
 #t1:checked~#s1,#t2:checked~#s2,#t3:checked~#s3,#t4:checked~#s4,#t5:checked~#s5,#t6:checked~#s6{display:block}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
 .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px}
 .card h3{color:var(--gold);margin-bottom:8px}
 .card p{color:var(--muted);font-size:14px}
@@ -34,21 +34,10 @@ input[name="t"]{display:none}
 </style>
 </head>
 <body>
-<input type="radio" name="t" id="t1" checked>
-<input type="radio" name="t" id="t2">
-<input type="radio" name="t" id="t3">
-<input type="radio" name="t" id="t4">
-<input type="radio" name="t" id="t5">
-<input type="radio" name="t" id="t6">
+<input type="radio" name="t" id="t1" checked><input type="radio" name="t" id="t2"><input type="radio" name="t" id="t3"><input type="radio" name="t" id="t4"><input type="radio" name="t" id="t5"><input type="radio" name="t" id="t6">
 <header><div class="logo">نور القرآن</div><h2 style="color:var(--light)">NUR-U KUR'AN KÜLLİYATI</h2><p style="color:var(--muted);font-size:13px">Kur'an • Tefsir • Hadisler • Kıble • Mucizeler • Havas & 500.000+ Ebced</p></header>
-<div class="nav">
-<label for="t1">Ana Sayfa</label>
-<label for="t2">Sureler & Tefsir</label>
-<label for="t3">Kıble Yönü</label>
-<label for="t4">Sahih Hadisler</label>
-<label for="t5">Kur'an Mucizeleri</label>
-<label for="t6">Havas & 500.000+ Ebced</label>
-</div>
+<div class="nav"><label for="t1">Ana Sayfa</label><label for="t2">Sureler & Tefsir</label><label for="t3">Kıble Yönü</label><label for="t4">Sahih Hadisler</label><label for="t5">Kur'an Mucizeleri</label><label for="t6">Havas & 500.000+ Ebced</label></div>
+
 <div id="s1" class="sec"><div class="grid">
 <div class="card"><h3>Kur'an-ı Kerim & Tefsir</h3><p>114 surenin tamamı, Arapça hatları, Diyanet meali, Mekkî/Medenî nüzul dönemleri ve sesli tilavet.</p><label for="t2" class="btn">Surelere Git</label></div>
 <div class="card"><h3>Gerçek Zamanlı Kıble</h3><p>GPS konumunuza göre Kabe-i Muazzama'nın gerçek açısını hesaplayan hassas pusula.</p><label for="t3" class="btn">Kıbleyi Bul</label></div>
@@ -56,37 +45,50 @@ input[name="t"]{display:none}
 <div class="card"><h3>Kur'an Mucizeleri</h3><p>Modern bilimin keşfettiği astronomik, jeolojik hakikatler ve Kur'an'daki sayısal simetriler.</p><label for="t5" class="btn">Mucizeleri Gör</label></div>
 <div class="card"><h3>Havas & 500.000+ Ebced</h3><p>Korunma, rızık fethi, şifa ve 500.000 üzeri yüksek ebced değerine sahip özel Esma ve ayet tertipleri.</p><label for="t6" class="btn">Tertipleri Aç</label></div>
 </div></div>
+
 <div id="s2" class="sec">
 <div id="reader" class="card" style="display:none;margin-bottom:15px">
 <div style="display:flex;justify-content:space-between"><h3 id="rTitle">Sure</h3><button class="btn" onclick="closeS()">Listeye Dön</button></div>
 <div id="rMeta" class="tag"></div><div id="rTefsir" class="note"></div>
 <audio id="rAudio" controls style="width:100%;margin:10px 0"></audio><div id="rAyahs"></div>
 </div>
-<div id="sBox"><input class="inp" id="sIn" placeholder="Sure adı veya numarası ara..." onkeyup="filt()"><div id="sList" class="grid">Yükleniyor...</div></div>
+<div id="sBox"><input class="inp" id="sIn" placeholder="Sure adı veya numarası ara..." onkeyup="filt()"><div id="sList" class="grid">Sureler yükleniyor...</div></div>
 </div>
+
 <div id="s3" class="sec"><div class="card" style="max-width:420px;margin:auto;text-align:center">
 <h3>Kıble Pusulası</h3><div class="dial"><div id="ndl" class="needle"></div></div>
 <div id="qTxt" style="color:var(--light)">Konum bekleniyor...</div>
 <button class="btn" onclick="qibla()">Konumumu Bul ve Kıbleyi Göster</button>
 </div></div>
-<div id="s4" class="sec"><div id="hList" class="grid"></div></div>
-<div id="s5" class="sec"><div id="mList" class="grid"></div></div>
-<div id="s6" class="sec"><div id="hvList" class="grid"></div></div>
-<script>
+
+<div id="s4" class="sec"><div class="grid">
+<div class="card"><span class="tag">Buhari & Müslim</span><h3>Niyet ve Ameller</h3><p style="color:#fff">“Ameller ancak niyetlere göredir. Herkese ancak niyet ettiği şey vardır.”</p></div>
+<div class="card"><span class="tag">Tirmizi, Birr 16</span><h3>Güzel Ahlak</h3><p style="color:#fff">“Mü'minlerin iman bakımından en olgunu, ahlakı en güzel olanıdır.”</p></div>
+<div class="card"><span class="tag">Müslim, Zikir 38</span><h3>İlim Yolu</h3><p style="color:#fff">“Kim bir ilim öğrenmek için yola çıkarsa, Allah ona cennete giden yolu kolaylaştırır.”</p></div>
+<div class="card"><span class="tag">Buhari, Edeb 31</span><h3>Merhamet</h3><p style="color:#fff">“İnsanlara merhamet etmeyene Allah da merhamet etmez.”</p></div>
+<div class="card"><span class="tag">Ebu Davud, Vitr 26</span><h3>Secde ve Dua</h3><p style="color:#fff">“Kulun Rabbine en yakın olduğu an secde halidir. Öyleyse secdede duayı çok yapın.”</p></div>
+</div></div>
+
+<div id="s5" class="sec"><div class="grid">
+<div class="card"><h3>Evrenin Genişlemesi (Zâriyât, 47)</h3><p>“Göğü biz kudretimizle bina ettik ve şüphesiz biz onu genişleticiyiz.” Modern kozmolojinin 20. yüzyılda keşfettiği evrenin genişlemesi 1400 yıl önce bildirilmiştir.</p></div>
+<div class="card"><h3>Demirin İndirilmesi (Hadîd, 25)</h3><p>“...Ve kendisinde çetin bir sertlik ve insanlar için birçok faydalar bulunan demiri indirdik.” Demirin dünyada oluşmadığı, süpernova patlamalarıyla uzaydan dünyaya indiği kanıtlanmıştır.</p></div>
+<div class="card"><h3>Denizlerin Karışmaması (Rahmân, 19-20)</h3><p>“İki denizi birbirine kavuşmak üzere salıvermiştir. Aralarında bir engel vardır, birbirine geçip karışmazlar.” Yüzey gerilimi nedeniyle sular birbirine karışmaz.</p></div>
+<div class="card"><h3>Kelime Simetrileri (İ'câz-ı Adedî)</h3><p>Kur'an-ı Kerim'de 'Dünya' 115 kez, 'Ahiret' 115 kez; 'Melek' 88 kez, 'Şeytan' 88 kez; 'Gün' tekil olarak tam 365 kez geçmektedir.</p></div>
+</div></div>
+
+<div id="s6" class="sec"><div class="grid">
+<div class="card"><span class="tag">Ebced Değeri: 547.600 (Kebir Terkip)</span><h3>1. İsm-i A'zam & Hacet Kapısı Tertibi</h3><div class="ar">يَا حَيُّ يَا قَيُّومُ بِرَحْمَتِكَ أَسْتَغِيثُ أَصْلِحْ لِي شَأْنِي كُلَّهُ</div><p style="color:var(--light)"><i>Yâ Hayyü Yâ Kayyûm, bi-rahmetike esteğîsü, aslıh lî şe'nî küllehû.</i></p><div class="note">Hayy (18) ve Kayyûm (156) isimlerinin cümle-i azime çarpımıyla 547.600 mertebesine ulaşan büyük devir zikridir. Büyü, nazar ve ağır sıkıntıların izalesi için okunur.</div><div style="margin-top:10px;color:var(--gold);font-weight:700"><span id="c0">0</span> / 547.600</div><button class="btn" onclick="zk(0,1)">+1</button> <button class="btn" onclick="zk(0,100)">+100</button> <button class="btn" onclick="zk(0,1000)">+1000</button></div>
+
+<div class="card"><span class="tag">Ebced Değeri: 612.500 (Ekber Hesap)</span><h3>2. Büyük Rızık Fethi & Bereket Hazinesi</h3><div class="ar">اَللّٰهُ لَطِيفٌ بِعِبَادِهِ يَرْزُقُ مَنْ يَشَاءُ وَهُوَ الْقَوِيُّ الْعَزِيزُ</div><p style="color:var(--light)"><i>Allâhu latîfun bi-ibâdihî yerzuku men yeşâu ve hüvel kaviyyül azîz. (Şûrâ, 19)</i></p><div class="note">Yâ Latîf (129) ve Yâ Rezzâk (308) esmalarıyla birleştirilen Şûrâ 19. ayetin büyük vefk devri 612.500 adettir. Maddi tıkanıklıkların açılması için tertip edilir.</div><div style="margin-top:10px;color:var(--gold);font-weight:700"><span id="c1">0</span> / 612.500</div><button class="btn" onclick="zk(1,1)">+1</button> <button class="btn" onclick="zk(1,100)">+100</button> <button class="btn" onclick="zk(1,1000)">+1000</button></div>
+Ebced Değeri: 786.000 (Besmele Devri)3. Zırh-ı Azîm (Manevi Kalkan)بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيمِ ۞ حَسْبُنَا اللّٰهُ وَنِعْمَ الْوَكِيلُBismillâhirrahmânirrahîm. Hasbünallâhu ve ni'mel vekîl.Besmele-i Şerife'nin 786 ebced değerinin 1000 katı (786.000) olan büyük hatme tertibidir. Her türlü şer, haset ve görünür-görünmez afetlerden korunmak için okunur.0 / 786.000+1 +100 +1000
+Ebced Değeri: 518.400 (Nûr & Şâfî)4. Şifâ-i Kübrâ & Kalp Nuru Tertibiوَنُنَزِّلُ مِنَ الْقُرْاٰنِ مَا هُوَ شِفَاءٌ وَرَحْمَةٌ لِلْمُؤْمِنِينَVe nünezzilü minel kur'âni mâ hüve şifâün ve rahmetün lil mü'minîn. (İsrâ, 82)Yâ Nûr (256) ve Yâ Şâfî (391) isimlerinin murabba çarpımıyla 518.400 ebced değerine tekabül eder. Maddi ve manevi hastalıklara şifa niyetiyle okunur.0 / 518.400+1 +100 +1000
 const trN=["Fâtiha","Bakara","Âl-i İmrân","Nisâ","Mâide","En'âm","A'râf","Enfâl","Tevbe","Yûnus","Hûd","Yûsuf","Ra'd","İbrâhîm","Hicr","Nahl","İsrâ","Kehf","Meryem","Tâ-Hâ","Enbiyâ","Hac","Mü'minûn","Nûr","Furkân","Şuarâ","Neml","Kasas","Ankebût","Rûm","Lokmân","Secde","Ahzâb","Sebe'","Fâtır","Yâsîn","Sâffât","Sâd","Zümer","Mü'min","Fussilet","Şûrâ","Zuhruf","Duhân","Câsiye","Ahkâf","Muhammed","Fetih","Hucurât","Kâf","Zâriyât","Tûr","Necm","Kamer","Rahmân","Vâkıa","Hadîd","Mücâdele","Haşr","Mümtehine","Saf","Cuma","Münâfikûn","Tegâbün","Talâk","Tahrîm","Mülk","Kalem","Hâkka","Meâric","Nûh","Cin","Müzzemmil","Müddessir","Kıyâme","İnsan","Mürselât","Nebe'","Nâziât","Abese","Tekvîr","İnfitâr","Mutaffifîn","İnşikâk","Bürûc","Târık","A'lâ","Gâşiye","Fecr","Beled","Şems","Leyl","Duhâ","İnşirâh","Tîn","Alak","Kadir","Beyyine","Zilzâl","Âdiyât","Kâria","Tekâsür","Asr","Hümeze","Fîl","Kureyş","Mâûn","Kevser","Kâfirûn","Nasr","Tebbet","İhlâs","Felak","Nâs"];
 let allS=[];
-fetch('https://alquran.cloud').then(r=>r.json()).then(d=>{allS=d.data;drawS(allS)});
-function drawS(a){document.getElementById('sList').innerHTML=a.map(s=>{let n=trN[s.number-1]||s.englishName,d=s.revelationType==='Meccan'?'Mekkî':'Medenî';return`<div class="s-item" onclick="openS(${s.number},'${n}','${d}',${s.numberOfAyahs})"><div><strong style="color:var(--gold)">${s.number}. ${n}</strong><div style="font-size:12px;color:var(--muted)">${d} • ${s.numberOfAyahs} Ayet</div></div><div style="font-family:'Amiri',serif;font-size:22px;color:var(--gold)">${s.name}</div></div>`}).join('')}
+fetch('alquran.cloud').then(r=>r.json()).then(d=>{allS=d.data;drawS(allS)});
+function drawS(a){document.getElementById('sList').innerHTML=a.map(s=>{let n=trN[s.number-1]||s.englishName,d=s.revelationType==='Meccan'?'Mekkî':'Medenî';return<div class="s-item" onclick="openS(${s.number},'${n}','${d}',${s.numberOfAyahs})"><div><strong style="color:var(--gold)">${s.number}. ${n}</strong><div style="font-size:12px;color:var(--muted)">${d} • ${s.numberOfAyahs} Ayet</div></div><div style="font-family:'Amiri',serif;font-size:22px;color:var(--gold)">${s.name}</div></div>}).join('')}
 function filt(){let q=document.getElementById('sIn').value.toLowerCase();drawS(allS.filter(s=>(trN[s.number-1]||'').toLowerCase().includes(q)||String(s.number)===q))}
-async function openS(num,n,d,c){document.getElementById('sBox').style.display='none';document.getElementById('reader').style.display='block';document.getElementById('rTitle').innerText=num+'. '+n+' Suresi';document.getElementById('rMeta').innerText=d+' Dönemi • '+c+' Ayet';document.getElementById('rTefsir').innerText=n+' Suresi '+d+' döneminde nazil olmuştur.';document.getElementById('rAudio').src='https://mp3quran.net [ar,tr]=await Promise.all([fetch('https://alquran.cloud/'+num).then(r=>r.json()),fetch('https://alquran.cloud/'+num+'/tr.diyanet').then(r=>r.json())]);document.getElementById('rAyahs').innerHTML=ar.data.ayahs.map((x,i)=>`<div style="padding:10px 0;border-bottom:1px solid #1d4434"><div class="ar">${x.text} (${x.numberInSurah})</div><div style="font-size:14px">${x.numberInSurah}. ${tr.data.ayahs[i].text}</div></div>`).join('')}
+async function openS(num,n,d,c){document.getElementById('sBox').style.display='none';document.getElementById('reader').style.display='block';document.getElementById('rTitle').innerText=num+'. '+n+' Suresi';document.getElementById('rMeta').innerText=d+' Dönemi • '+c+' Ayet';document.getElementById('rTefsir').innerText=n+' Suresi '+d+' döneminde nazil olmuştur.';document.getElementById('rAudio').src='mp3quran.net [ar,tr]=await Promise.all([fetch('alquran.cloud).then(r=>r.json()),fetch('alquran.cloud+'/tr.diyanet').then(r=>r.json())]);document.getElementById('rAyahs').innerHTML=ar.data.ayahs.map((x,i)=><div style="padding:10px 0;border-bottom:1px solid #1d4434"><div class="ar">${x.text} (${x.numberInSurah})</div><div style="font-size:14px">${x.numberInSurah}. ${tr.data.ayahs[i].text}</div></div>).join('')}
 function closeS(){document.getElementById('reader').style.display='none';document.getElementById('sBox').style.display='block';document.getElementById('rAudio').pause()}
-function qibla(){const q=document.getElementById('qTxt');if(!navigator.geolocation)return q.innerText='Konum desteklenmiyor';q.innerText='Hesaplanıyor...';navigator.geolocation.getCurrentPosition(p=>{let l1=p.coords.latitude*Math.PI/180,o1=p.coords.longitude*Math.PI/180,l2=21.4225*Math.PI/180,o2=39.8262*Math.PI/180,dl=o2-o1;let b=(Math.atan2(Math.sin(dl)*Math.cos(l2),Math.cos(l1)*Math.sin(l2)-Math.sin(l1)*Math.cos(l2)*Math.cos(dl))*180/Math.PI+360)%360;document.getElementById('ndl').style.transform=`rotate(${b}deg)`;q.innerHTML='Kıble Açısı: <b>'+b.toFixed(1)+'°</b>'},()=>q.innerText='Konum izni verilmedi')}
-document.getElementById('hList').innerHTML=[{s:'Buhari & Müslim',t:'Niyet',m:'Ameller ancak niyetlere göredir.'},{s:'Tirmizi',t:'Güzel Ahlak',m:'Müminlerin iman bakımından en olgunu, ahlakı en güzel olanıdır.'},{s:'Müslim',t:'İlim',m:'Kim bir ilim öğrenmek için yola çıkarsa Allah ona cennet yolunu kolaylaştırır.'},{s:'Buhari',t:'Merhamet',m:'İnsanlara merhamet etmeyene Allah da merhamet etmez.'}].map(x=><div class="card"><span class="tag">${x.s}</span><h3>${x.t}</h3><p style="color:#fff">“${x.m}”</p></div>).join('');
-document.getElementById('mList').innerHTML=[{t:'Evrenin Genişlemesi (Zâriyât 47)',m:'Göğü biz kudretimizle bina ettik ve şüphesiz biz onu genişleticiyiz.'},{t:'Demirin İndirilmesi (Hadîd 25)',m:'Demirin dünyada oluşmadığı, süpernova patlamalarıyla uzaydan indiği modern astrofizikle kanıtlanmıştır.'},{t:'Denizlerin Karışmaması (Rahmân 19-20)',m:'İki denizi salıvermiştir; aralarında bir engel vardır, birbirine karışmazlar.'},{t:'Kelime Simetrileri',m:'Kur’an’da Dünya ve Ahiret 115’er kez, Melek ve Şeytan 88’er kez, Gün kelimesi tam 365 kez geçer.'}].map(x=><div class="card"><h3>${x.t}</h3><p>${x.m}</p></div>).join('');
-document.getElementById('hvList').innerHTML=[
-{t:'1. İsm-i Azam & Hacet Tertibi',e:'Ebced: 547.600',ar:'يَا حَيُّ يَا قَيُّومُ بِرَحْمَتِكَ أَسْتَغِيثُ',ok:'Yâ Hayyü Yâ Kayyûm, bi-rahmetike esteğîsü.',not:'Hayy ve Kayyûm isimlerinin kebir çarpımıyla 547.600 mertebesine ulaşan büyük hacet ve kilit açma zikridir.',h:547600},
-{t:'2. Büyük Rızık Fethi Tertibi',e:'Ebced: 612.500',ar:'اَللّٰهُ لَطِيفٌ بِعِبَادِهِ يَرْزُقُ مَنْ يَشَاءُ',ok:'Allâhu latîfun bi-ibâdihî yerzuku men yeşâu. (Şûrâ 19)',not:'Yâ Latîf ve Yâ Rezzâk esmalarıyla birleştirilen Şûrâ 19. ayetin 612.500 devirli bereket ve rızık tertibidir.',h:612500},
-{t:'3. Zırh-ı Azîm (Manevi Kalkan)',e:'Ebced: 786.000',ar:'بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيمِ ۞ حَسْبُنَا اللّٰهُ وَنِعْمَ الْوَكِيلُ',ok:'Bismillâhirrahmânirrahîm. Hasbünallâhu ve ni’mel vekîl.',not:'Besmele-i Şerife’nin 786 değerinin 1000 katı olan 786.000 devirli tam korunma zırhıdır.',h:786000},
-{t:'4. Şifâ-i Kübrâ Tertibi',e:'Ebced: 518.400',ar:'وَنُنَزِّلُ مِنَ الْقُرْاٰنِ مَا هُوَ شِفَاءٌ وَرَحْمَةٌ',ok:'Ve nünezzilü minel kur’âni mâ hüve şifâün ve rahmetün. (İsrâ 82)',not:'Yâ Nûr ve Yâ Şâfî isimlerinin murabba hesabıyla 518.400 ebced değerine ulaşan şifa tertibidir.',h:518400}
-].map((p,i)=>{let c=Number(localStorage.getItem('z'+i)||0);return<div class="card"><span class="tag">${p.e}</span><h3>${p.t}</h3><div class="ar">${p.ar}</div><p style="color:var(--light)"><i>${p.ok}</i></p><div class="note">${p.not}</div><div style="margin-top:10px;color:var(--gold);font-weight:700"><span id="c${i}">${c.toLocaleString('tr-TR')}</span> / ${p.h.toLocaleString('tr-TR')}</div><button class="btn" onclick="zk(${i},1)">+1</button> <button class="btn" onclick="zk(${i},100)">+100</button> <button class="btn" onclick="zk(${i},1000)">+1000</button></div>}).join('');
+function qibla(){const q=document.getElementById('qTxt');if(!navigator.geolocation)return q.innerText='Konum desteklenmiyor';q.innerText='Hesaplanıyor...';navigator.geolocation.getCurrentPosition(p=>{let l1=p.coords.latitudeMath.PI/180,o1=p.coords.longitudeMath.PI/180,l2=21.4225Math.PI/180,o2=39.8262Math.PI/180,dl=o2-o1;let b=(Math.atan2(Math.sin(dl)*Math.cos(l2),Math.cos(l1)*Math.sin(l2)-Math.sin(l1)*Math.cos(l2)*Math.cos(dl))*180/Math.PI+360)%360;document.getElementById('ndl').style.transform=rotate(${b}deg);q.innerHTML='Kıble Açısı: '+b.toFixed(1)+'°'},()=>q.innerText='Konum izni verilmedi')}
 function zk(i,n){let c=Number(localStorage.getItem('z'+i)||0)+n;localStorage.setItem('z'+i,c);document.getElementById('c'+i).innerText=c.toLocaleString('tr-TR')}
+[0,1,2,3].forEach(i=>{document.getElementById('c'+i).innerText=Number(localStorage.getItem('z'+i)||0).toLocaleString('tr-TR')});
