@@ -1,327 +1,107 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nur-u Kur'an | İslami İlimler, Kıble, Tefsir & Havas Külliyatı</title>
-    <link href="https://googleapis.com" rel="stylesheet">
-    <link rel="stylesheet" href="https://cloudflare.com">
-    <style>
-        :root {
-            --bg-deep: #071912;
-            --bg-card: #0d261c;
-            --bg-card-hover: #123326;
-            --gold-primary: #d4af37;
-            --gold-light: #f3e5ab;
-            --gold-glow: rgba(212, 175, 55, 0.25);
-            --text-main: #f0f4f2;
-            --text-muted: #9eb3a8;
-            --border-gold: rgba(212, 175, 55, 0.28);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            background-color: var(--bg-deep);
-            background-image: radial-gradient(circle at 50% 0%, #123829 0%, transparent 65%);
-            color: var(--text-main);
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            min-height: 100vh;
-            line-height: 1.6;
-        }
-
-        header {
-            text-align: center;
-            padding: 3rem 1rem 2rem;
-            border-bottom: 1px solid var(--border-gold);
-            background: linear-gradient(180deg, rgba(7,25,18,0.95) 0%, rgba(13,38,28,0.5) 100%);
-        }
-
-        .arabic-logo {
-            font-family: 'Amiri', serif;
-            font-size: 3.8rem;
-            color: var(--gold-primary);
-            text-shadow: 0 0 25px var(--gold-glow);
-            margin-bottom: 0.2rem;
-        }
-
-        .app-title {
-            font-family: 'Cinzel Decorative', cursive;
-            font-size: 1.5rem;
-            color: var(--gold-light);
-            letter-spacing: 3px;
-            margin-bottom: 0.5rem;
-        }
-
-        .subtitle {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        nav {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            padding: 1.2rem 1rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(7, 25, 18, 0.95);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-        }
-
-        .nav-btn {
-            background: rgba(13, 38, 28, 0.9);
-            border: 1px solid var(--border-gold);
-            color: var(--text-main);
-            padding: 0.65rem 1.3rem;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .nav-btn:hover, .nav-btn.active {
-            background: linear-gradient(135deg, #2b6b4f, #1a4734);
-            border-color: var(--gold-primary);
-            color: var(--gold-light);
-            box-shadow: 0 0 18px var(--gold-glow);
-            transform: translateY(-2px);
-        }
-
-        main {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1.5rem 4rem;
-        }
-
-        .section { display: none; animation: fadeIn 0.35s ease; }
-        .section.active { display: block; }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .grid-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-gold);
-            border-radius: 16px;
-            padding: 1.8rem;
-            transition: all 0.3s ease;
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-        }
-
-        .card:hover {
-            background: var(--bg-card-hover);
-            transform: translateY(-4px);
-            border-color: var(--gold-primary);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px var(--gold-glow);
-        }
-
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            margin-bottom: 1rem;
-        }
-
-        .card-icon {
-            width: 42px;
-            height: 42px;
-            border-radius: 10px;
-            background: rgba(212, 175, 55, 0.15);
-            border: 1px solid var(--border-gold);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--gold-primary);
-            font-size: 1.2rem;
-        }
-
-        .card h3 { color: var(--gold-primary); font-size: 1.2rem; }
-        .card p { color: var(--text-muted); font-size: 0.95rem; }
-
-        .card-action {
-            margin-top: 1.2rem;
-            display: inline-block;
-            color: var(--gold-light);
-            font-size: 0.85rem;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .search-bar {
-            width: 100%;
-            padding: 1rem 1.5rem;
-            border-radius: 12px;
-            border: 1px solid var(--border-gold);
-            background: var(--bg-card);
-            color: var(--text-main);
-            font-size: 1rem;
-            margin-bottom: 1.5rem;
-            outline: none;
-        }
-
-        .search-bar:focus { border-color: var(--gold-primary); }
-
-        .surah-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1rem;
-        }
-
-        .surah-item {
-            background: var(--bg-card);
-            border: 1px solid var(--border-gold);
-            border-radius: 12px;
-            padding: 1.2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            transition: 0.25s;
-        }
-
-        .surah-item:hover {
-            background: var(--bg-card-hover);
-            border-color: var(--gold-primary);
-        }
-
-        .surah-num {
-            background: rgba(212, 175, 55, 0.15);
-            color: var(--gold-primary);
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            margin-right: 0.8rem;
-        }
-
-        .badge {
-            font-size: 0.75rem;
-            padding: 0.25rem 0.7rem;
-            border-radius: 20px;
-            background: rgba(212, 175, 55, 0.15);
-            color: var(--gold-light);
-        }
-
-        .reader-box {
-            background: var(--bg-card);
-            border: 1px solid var(--gold-primary);
-            border-radius: 16px;
-            padding: 2rem;
-            margin-bottom: 1.5rem;
-            display: none;
-        }
-
-        .ayah-box {
-            padding: 1.5rem 0;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
-        }
-
-        .arabic-text {
-            font-family: 'Amiri', serif;
-            font-size: 2rem;
-            text-align: right;
-            color: var(--gold-light);
-            line-height: 2.2;
-            margin-bottom: 0.8rem;
-            direction: rtl;
-        }
-
-        .turkish-meal { color: var(--text-main); font-size: 1.05rem; }
-
-        .tefsir-note {
-            margin-top: 0.8rem;
-            padding: 0.9rem 1.1rem;
-            background: rgba(7, 25, 18, 0.7);
-            border-left: 3px solid var(--gold-primary);
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            border-radius: 0 8px 8px 0;
-        }
-
-        .compass-container {
-            text-align: center;
-            max-width: 500px;
-            margin: 0 auto;
-            background: var(--bg-card);
-            border: 1px solid var(--border-gold);
-            border-radius: 20px;
-            padding: 2.5rem;
-        }
-
-        .compass-dial {
-            width: 230px;
-            height: 230px;
-            border-radius: 50%;
-            border: 4px solid var(--gold-primary);
-            margin: 1.5rem auto;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: radial-gradient(circle, #143d2d 0%, #071912 100%);
-            box-shadow: 0 0 30px var(--gold-glow);
-        }
-
-        .compass-needle {
-            width: 6px;
-            height: 170px;
-            background: linear-gradient(to bottom, #d4af37 50%, #4a5c54 50%);
-            border-radius: 4px;
-            transition: transform 0.4s ease-out;
-            position: relative;
-        }
-
-        .kaaba-icon {
-            position: absolute;
-            top: -20px;
-            left: -11px;
-            font-size: 1.5rem;
-            color: var(--gold-primary);
-        }
-
-        .ebced-banner {
-            background: linear-gradient(135deg, #133b2b, #092117);
-            border: 1px solid var(--gold-primary);
-            border-radius: 16px;
-            padding: 1.8rem;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-
-        .ebced-counter-box {
-            background: rgba(7, 25, 18, 0.85);
-            border: 1px solid var(--border-gold);
-            border-radius: 12px;
-            padding: 1rem;
-            margin-top: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .zikir-btn {
-            background: var(--gold-primary);
-            color: #071912;
-            border: none;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nur-u Kur'an | İslami İlimler Külliyatı</title>
+<link href="https://googleapis.com" rel="stylesheet">
+<link rel="stylesheet" href="https://cloudflare.com">
+<style>
+:root{--bg:#071912;--card:#0d261c;--hover:#133628;--gold:#d4af37;--light:#f3e5ab;--text:#f0f4f2;--muted:#9eb3a8;--border:rgba(212,175,55,0.3)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;min-height:100vh;line-height:1.6}
+header{text-align:center;padding:2.5rem 1rem 1.5rem;border-bottom:1px solid var(--border);background:#05130e}
+.ar-logo{font-family:'Amiri',serif;font-size:3.5rem;color:var(--gold);text-shadow:0 0 20px rgba(212,175,55,0.3)}
+.title{font-family:'Cinzel Decorative',cursive;font-size:1.4rem;color:var(--light);letter-spacing:2px}
+.sub{color:var(--muted);font-size:0.9rem;margin-top:0.4rem}
+nav{display:flex;justify-content:center;flex-wrap:wrap;gap:0.6rem;padding:1rem;background:#071912;position:sticky;top:0;z-index:99;border-bottom:1px solid var(--border)}
+.btn{background:var(--card);border:1px solid var(--border);color:var(--text);padding:0.6rem 1.2rem;border-radius:30px;cursor:pointer;font-size:0.88rem;font-weight:600;transition:0.25s}
+.btn:hover,.btn.active{background:#1d523c;border-color:var(--gold);color:var(--light);box-shadow:0 0 15px rgba(212,175,55,0.25)}
+.wrap{max-width:1150px;margin:2rem auto;padding:0 1.2rem 4rem}
+.tab{display:none}.tab.active{display:block}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.3rem}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.6rem;transition:0.3s;box-shadow:0 8px 25px rgba(0,0,0,0.4)}
+.card:hover{background:var(--hover);border-color:var(--gold);transform:translateY(-3px)}
+.card h3{color:var(--gold);margin-bottom:0.6rem;font-size:1.15rem}
+.card p{color:var(--muted);font-size:0.92rem}
+.tag{display:inline-block;background:rgba(212,175,55,0.18);color:var(--gold);padding:0.25rem 0.7rem;border-radius:6px;font-size:0.8rem;font-weight:700;margin-bottom:0.7rem}
+.search{width:100%;padding:0.9rem 1.2rem;border-radius:10px;border:1px solid var(--border);background:var(--card);color:#fff;font-size:1rem;margin-bottom:1.2rem}
+.surah-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:0.9rem}
+.s-item{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
+.s-item:hover{border-color:var(--gold);background:var(--hover)}
+.reader{background:var(--card);border:1px solid var(--gold);border-radius:14px;padding:1.8rem;display:none}
+.ayah{padding:1.2rem 0;border-bottom:1px solid rgba(212,175,55,0.15)}
+.ar{font-family:'Amiri',serif;font-size:1.9rem;text-align:right;color:var(--light);direction:rtl;line-height:2.1}
+.note{background:rgba(0,0,0,0.35);border-left:3px solid var(--gold);padding:0.8rem;margin-top:0.8rem;font-size:0.88rem;color:var(--muted)}
+.compass{max-width:450px;margin:0 auto;text-align:center;background:var(--card);border:1px solid var(--border);border-radius:18px;padding:2rem}
+.dial{width:210px;height:210px;border-radius:50%;border:4px solid var(--gold);margin:1.5rem auto;display:flex;align-items:center;justify-content:center;background:radial-gradient(#154230,#05130e)}
+.needle{width:6px;height:155px;background:linear-gradient(#d4af37 50%,#44554e 50%);border-radius:4px;transition:0.4s;position:relative}
+.kaaba{position:absolute;top:-18px;left:-10px;color:var(--gold);font-size:1.4rem}
+.z-box{background:rgba(0,0,0,0.4);border:1px solid var(--border);border-radius:10px;padding:0.9rem;margin-top:1rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem}
+.z-btn{background:var(--gold);color:#05130e;border:none;padding:0.5rem 0.9rem;border-radius:6px;font-weight:700;cursor:pointer}
+.z-btn:hover{background:var(--light)}
+audio{width:100%;margin:1rem 0}
+</style>
+</head>
+<body>
+<header>
+<div class="ar-logo">نور القرآن</div>
+<div class="title">NUR-U KUR'AN KÜLLİYATI</div>
+<div class="sub">Kur'an-ı Kerim • Tefsir & Nüzul • Hadisler • Kıble • Mucizeler • Havas & 500.000+ Ebced</div>
+</header>
+<nav>
+<button class="btn active" onclick="go('home',this)"><i class="fa-solid fa-mosque"></i> Ana Sayfa</button>
+<button class="btn" onclick="go('quran',this)"><i class="fa-solid fa-book-quran"></i> Sureler & Tefsir</button>
+<button class="btn" onclick="go('qibla',this)"><i class="fa-solid fa-compass"></i> Kıble Yönü</button>
+<button class="btn" onclick="go('hadith',this)"><i class="fa-solid fa-scroll"></i> Sahih Hadisler</button>
+<button class="btn" onclick="go('miracles',this)"><i class="fa-solid fa-atom"></i> Kur'an Mucizeleri</button>
+<button class="btn" onclick="go('havas',this)"><i class="fa-solid fa-wand-magic-sparkles"></i> Havas & Yüksek Ebced (500.000+)</button>
+</nav>
+<div class="wrap">
+<div id="home" class="tab active">
+<div class="grid">
+<div class="card" onclick="clickNav(1)" style="cursor:pointer"><h3><i class="fa-solid fa-book-quran"></i> Kur'an-ı Kerim & Tefsir</h3><p>114 surenin tamamı, Arapça hatları, Diyanet meali, Mekkî/Medenî nüzul dönemleri, tefsir özetleri ve sesli tilavet.</p></div>
+<div class="card" onclick="clickNav(2)" style="cursor:pointer"><h3><i class="fa-solid fa-compass"></i> Gerçek Zamanlı Kıble</h3><p>GPS konumunuza göre Kabe-i Muazzama'nın gerçek açısını ve mesafesini hesaplayan hassas pusula.</p></div>
+<div class="card" onclick="clickNav(3)" style="cursor:pointer"><h3><i class="fa-solid fa-scroll"></i> Kütüb-i Sitte Hadisleri</h3><p>Buhari, Müslim, Tirmizi ve Ebu Davud kaynaklarından derlenen sahih hadis-i şerifler.</p></div>
+<div class="card" onclick="clickNav(4)" style="cursor:pointer"><h3><i class="fa-solid fa-atom"></i> Kur'an Mucizeleri</h3><p>Modern bilimin keşfettiği astronomik, jeolojik, embriyolojik hakikatler ve sayısal simetriler.</p></div>
+<div class="card" onclick="clickNav(5)" style="cursor:pointer"><h3><i class="fa-solid fa-wand-magic-sparkles"></i> Havas & 500.000+ Ebced</h3><p>Korunma, rızık fethi, şifa ve 500.000 üzeri yüksek ebced değerine sahip özel Esma ve ayet tertipleri.</p></div>
+</div>
+</div>
+<div id="quran" class="tab">
+<div id="reader" class="reader">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem"><h2 id="rTitle" style="color:var(--gold)">Sure</h2><button class="btn" onclick="closeSurah()">Listeye Dön</button></div>
+<div id="rMeta" class="tag">Dönem</div>
+<div id="rTefsir" class="note"></div>
+<audio id="rAudio" controls></audio>
+<div id="rAyahs"></div>
+</div>
+<div id="sContainer">
+<input type="text" id="sInput" class="search" placeholder="Sure adı veya numarası ara (Örn: Yasin, 36, Bakara)..." onkeyup="filterS()">
+<div id="sList" class="surah-grid">Sureler yükleniyor...</div>
+</div>
+</div>
+<div id="qibla" class="tab">
+<div class="compass">
+<h2 style="color:var(--gold)">Kıble Pusulası</h2>
+<p style="color:var(--muted);font-size:0.9rem">Konum izni vererek Kabe açısını hesaplayın.</p>
+<div class="dial"><div id="needle" class="needle"><i class="fa-solid fa-kaaba kaaba"></i></div></div>
+<div id="qInfo" style="margin:1rem 0;color:var(--light)">Konum bekleniyor...</div>
+<button class="z-btn" onclick="findQibla()">Konumumu Bul ve Kıbleyi Göster</button>
+</div>
+</div>
+<div id="hadith" class="tab"><div id="hList" class="grid"></div></div>
+<div id="miracles" class="tab"><div id="mList" class="grid"></div></div>
+<div id="havas" class="tab">
+<div class="card" style="margin-bottom:1.5rem;text-align:center;border-color:var(--gold)">
+<h2 style="color:var(--gold)">Havas İlmi & 500.000+ Yüksek Ebced Tertipleri</h2>
+<p>Klasik Havas ve Ledün kaynaklarında yer alan, Kebir ve Ekber Ebced hesaplamalarıyla 500.000 mertebesini aşan manevi kalkan, rızık fethi ve şifa tertipleri.</p>
+</div>
+<div id="hvList" class="grid"></div>
+</div>
+</div>
+<script>
+function go(id,el){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.btn').forEach(b=>b.classList.remove('active'));document.getElementById(id).classList.add('active');el.classList.add('active')}
+function clickNav(i){document.querySelectorAll('nav .btn')[i].click()}
+const trNames=["Fâtiha","Bakara","Âl-i İmrân","Nisâ","Mâide","En'âm","A'râf","Enfâl","Tevbe","Yûnus","Hûd","Yûsuf","Ra'd","İbrâhîm","Hicr","Nahl","İsrâ","Kehf","Meryem","Tâ-Hâ","Enbiyâ","Hac","Mü'minûn","Nûr","Furkân","Şuarâ","Neml","Kasas","Ankebût","Rûm","Lokmân","Secde","Ahzâb","Sebe'","Fâtır","Yâsîn","Sâffât","Sâd","Zümer","Mü'min","Fussilet","Şûrâ","Zuhruf","Duhân","Câsiye","Ahkâf","Muhammed","Fetih","Hucurât","Kâf","Zâriyât","Tûr","Necm","Kamer","Rahmân","Vâkıa","Hadîd","Mücâdele","Haşr","Mümtehine","Saf","Cuma","Münâfikûn","Tegâbün","Talâk","Tahrîm","Mülk","Kalem","Hâkka","Meâric","Nûh","Cin","Müzzemmil","Müddessir","Kıyâme","İnsan","Mürselât","Nebe'","Nâziât","Abese","Tekvîr","İnfitâr","Mutaffifîn","İnşikâk","Bürûc","Târık","A'lâ","Gâşiye","Fecr","Beled","Şems","Leyl","Duhâ","İnşirâh","Tîn","Alak","Kadir","Beyyine","Zilzâl","Âdiyât","Kâria","Tekâsür","Asr","Hümeze","Fîl","Kureyş","Mâûn","Kevser","Kâfirûn","Nasr","Tebbet","İhlâs","Felak","Nâs"];
+let surahs=[];
+fetch('https://alquran.cloud').then(r=>r.json()).then(d=>{surahs=d.data;drawSurahs(surahs)});
