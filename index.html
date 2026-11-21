@@ -177,13 +177,16 @@ function drawS(arr){
   }).join("");
 }
 drawS(DB);
-
-function filt(){
-  var q=document.getElementById("sIn").value.toLowerCase();
-  drawS(DB.filter(function(s){
-    return s.at(1).toLowerCase().indexOf(q)!==-1 || String(s.at(0))===q;
-  }));
+function loadJS(url){
+  return new Promise(function(ok, err){
+    var sc = document.createElement("script");
+    sc.src = url;
+    sc.onload = ok;
+    sc.onerror = err;
+    document.body.appendChild(sc);
+  });
 }
+
 async function openS(num){
   var s=DB.at(num-1);
   document.getElementById("sBox").style.display="none";
@@ -197,16 +200,14 @@ async function openS(num){
   try {
     const res = await Promise.all([
       fetch("https://jsdelivr.net"+num+".json").then(function(r){ return r.json(); }),
-      fetch("https://jsdelivr.net"+num+".json").then(function(r){ return r.json(); })
+      fetch("https://unpkg.com"+num+".json").then(function(r){ return r.json(); }).catch(function(){ return null; })
     ]);
     var surah = res.at(0);
-    var trList = res.at(1).chapter;
-    box.innerHTML = surah.verses.map(function(v, i){
-      var meal = (trList && trList.at(i)) ? trList.at(i).text : "";
+    box.innerHTML = surah.verses.map(function(v){
       return '<div class="ayah">'+
         '<div class="ar">'+v.text+' <span style="font-size:18px;color:var(--gold)">﴿'+v.id+'﴾</span></div>'+
         '<div class="tr-read"><strong>Okunuşu:</strong> '+v.transliteration+'</div>'+
-        '<div class="tr-mean"><strong>'+v.id+'. Anlamı:</strong> '+meal+'</div>'+
+        '<div class="tr-mean"><strong>'+v.id+'. Meal:</strong> '+v.translation+'</div>'+
       '</div>';
     }).join("");
   } catch(e) {
