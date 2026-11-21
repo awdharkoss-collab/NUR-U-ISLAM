@@ -3,63 +3,216 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nur-u Kur'an | 114 Sure & Sahih Hadisler</title>
+<title>Nur-u Kur'an | 114 Sure, Okunuş, Meal & Tefsir</title>
 <link href="https://googleapis.com" rel="stylesheet">
 <style>
 :root{--bg:#071912;--card:#0d261c;--gold:#d4af37;--light:#f3e5ab;--text:#f0f4f2;--muted:#9eb3a8;--border:rgba(212,175,55,0.35)}
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;line-height:1.6}
-header{text-align:center;padding:2rem 1rem;border-bottom:1px solid var(--border);background:#04110c}
+header{text-align:center;padding:2.2rem 1rem;border-bottom:1px solid var(--border);background:#04110c}
 .logo{font-family:'Amiri',serif;font-size:3.2rem;color:var(--gold)}
-.nav{display:flex;justify-content:center;gap:12px;padding:12px;background:#071912;position:sticky;top:0;z-index:10;border-bottom:1px solid var(--border)}
-.nav label{background:var(--card);border:1px solid var(--border);color:var(--text);padding:10px 22px;border-radius:25px;cursor:pointer;font-size:15px;font-weight:600}
-input[name="t"]{display:none}
-#t1:checked~.nav label[for="t1"],#t2:checked~.nav label[for="t2"]{background:#1b4d38;border-color:var(--gold);color:var(--light)}
-.sec{display:none;max-width:1100px;margin:25px auto;padding:0 15px 50px}
-#t1:checked~#s1,#t2:checked~#s2{display:block}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:15px}
-.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px}
-.card h3{color:var(--gold);margin-bottom:8px}
-.tag{display:inline-block;background:rgba(212,175,55,0.2);color:var(--gold);padding:3px 10px;border-radius:5px;font-size:12px;font-weight:700;margin-bottom:8px}
-.ar{font-family:'Amiri',serif;font-size:28px;text-align:right;color:var(--light);direction:rtl;margin:10px 0;line-height:2.1}
-.btn{background:var(--gold);color:#05130e;border:none;padding:8px 16px;border-radius:6px;font-weight:700;cursor:pointer}
-.s-item{background:var(--card);border:1px solid var(--border);padding:14px;border-radius:10px;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
-.s-item:hover{border-color:var(--gold);background:#123326}
-.inp{width:100%;padding:12px;border-radius:8px;border:1px solid var(--border);background:var(--card);color:#fff;margin-bottom:15px;font-size:15px}
+.wrap{max-width:1100px;margin:25px auto;padding:0 15px 50px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px}
+.tag{display:inline-block;background:rgba(212,175,55,0.2);color:var(--gold);padding:4px 12px;border-radius:6px;font-size:12px;font-weight:700;margin-bottom:10px}
+.tefsir-box{background:rgba(0,0,0,0.4);border-left:3px solid var(--gold);padding:14px;border-radius:0 8px 8px 0;margin-bottom:20px;font-size:14px;color:var(--text)}
+.ayah{padding:18px 0;border-bottom:1px solid rgba(212,175,55,0.18)}
+.ar{font-family:'Amiri',serif;font-size:30px;text-align:right;color:var(--light);direction:rtl;line-height:2.2;margin-bottom:8px}
+.tr-read{color:var(--gold);font-style:italic;font-size:15px;margin-bottom:6px}
+.tr-mean{color:var(--text);font-size:15px}
+.btn{background:var(--gold);color:#05130e;border:none;padding:9px 18px;border-radius:6px;font-weight:700;cursor:pointer}
+.s-item{background:var(--card);border:1px solid var(--border);padding:15px;border-radius:10px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;transition:0.2s}
+.s-item:hover{border-color:var(--gold);background:#123326;transform:translateY(-2px)}
+.inp{width:100%;padding:14px;border-radius:10px;border:1px solid var(--border);background:var(--card);color:#fff;margin-bottom:18px;font-size:15px;outline:none}
+.inp:focus{border-color:var(--gold)}
 </style>
 </head>
 <body>
-<input type="radio" name="t" id="t1" checked><input type="radio" name="t" id="t2">
-<header><div class="logo">نور القرآن</div><h2 style="color:var(--light)">NUR-U KUR'AN & SAHİH HADİSLER</h2><p style="color:var(--muted);font-size:13px">114 Sure • Tüm Ayetler & Diyanet Meali • Sesli Tilavet • Kütüb-i Sitte Hadisleri</p></header>
-<div class="nav"><label for="t1">Kur'an-ı Kerim (114 Sure)</label><label for="t2">Sahih Hadisler</label></div>
+<header>
+<div class="logo">نور القرآن</div>
+<h2 style="color:var(--light)">NUR-U KUR'AN • 114 SURE KÜLLİYATI</h2>
+<p style="color:var(--muted);font-size:13px">Arapça Metin • Türkçe Okunuşu • Diyanet Meali • Nüzul Dönemi ve Tefsiri</p>
+</header>
 
-<div id="s1" class="sec">
-<div id="reader" class="card" style="display:none;margin-bottom:15px">
-<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><h2 id="rTitle" style="color:var(--gold)">Sure</h2><button class="btn" onclick="closeS()">Listeye Dön</button></div>
+<div class="wrap">
+<div id="reader" class="card" style="display:none">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:10px">
+<h2 id="rTitle" style="color:var(--gold)">Sure</h2>
+<button class="btn" onclick="closeS()">← Tüm Surelere Dön</button>
+</div>
 <div id="rMeta" class="tag"></div>
-<audio id="rAudio" controls style="width:100%;margin:10px 0"></audio>
+<div id="rTefsir" class="tefsir-box"></div>
 <div id="rAyahs"></div>
 </div>
-<div id="sBox"><input class="inp" id="sIn" placeholder="Sure adı veya numarası ara (Örn: Bakara, Yasin, 36)..." onkeyup="filt()"><div id="sList" class="grid">114 Sure yükleniyor...</div></div>
+
+<div id="sBox">
+<input class="inp" id="sIn" placeholder="Sure adı veya numarası ara (Örn: Fatiha, Bakara, Yasin, 36)..." onkeyup="filt()">
+<div id="sList" class="grid"></div>
+</div>
 </div>
 
-<div id="s2" class="sec"><div class="grid">
-<div class="card"><span class="tag">Buhari & Müslim</span><h3>Niyet ve Ameller</h3><p>“Ameller ancak niyetlere göredir. Herkese ancak niyet ettiği şey vardır.”</p></div>
-<div class="card"><span class="tag">Tirmizi, Birr 16</span><h3>Güzel Ahlak</h3><p>“Mü'minlerin iman bakımından en olgunu, ahlakı en güzel olanıdır.”</p></div>
-<div class="card"><span class="tag">Müslim, Zikir 38</span><h3>İlim Yolu</h3><p>“Kim bir ilim öğrenmek için yola çıkarsa, Allah ona cennete giden yolu kolaylaştırır.”</p></div>
-<div class="card"><span class="tag">Buhari, Edeb 31</span><h3>Merhamet</h3><p>“İnsanlara merhamet etmeyene Allah da merhamet etmez.”</p></div>
-<div class="card"><span class="tag">Ebu Davud, Vitr 26</span><h3>Secde ve Dua</h3><p>“Kulun Rabbine en yakın olduğu an secde halidir. Öyleyse secdede duayı çok yapın.”</p></div>
-<div class="card"><span class="tag">İbn Mace, Zühd 19</span><h3>Sabır ve Şükür</h3><p>“Mü'minin durumu ne hoştur! Her hali kendisi için hayırlıdır. Sevinirse şükreder, başına darlık gelirse sabreder.”</p></div>
-</div></div>
-
 <script>
-const trN=["Fâtiha","Bakara","Âl-i İmrân","Nisâ","Mâide","En'âm","A'râf","Enfâl","Tevbe","Yûnus","Hûd","Yûsuf","Ra'd","İbrâhîm","Hicr","Nahl","İsrâ","Kehf","Meryem","Tâ-Hâ","Enbiyâ","Hac","Mü'minûn","Nûr","Furkân","Şuarâ","Neml","Kasas","Ankebût","Rûm","Lokmân","Secde","Ahzâb","Sebe'","Fâtır","Yâsîn","Sâffât","Sâd","Zümer","Mü'min","Fussilet","Şûrâ","Zuhruf","Duhân","Câsiye","Ahkâf","Muhammed","Fetih","Hucurât","Kâf","Zâriyât","Tûr","Necm","Kamer","Rahmân","Vâkıa","Hadîd","Mücâdele","Haşr","Mümtehine","Saf","Cuma","Münâfikûn","Tegâbün","Talâk","Tahrîm","Mülk","Kalem","Hâkka","Meâric","Nûh","Cin","Müzzemmil","Müddessir","Kıyâme","İnsan","Mürselât","Nebe'","Nâziât","Abese","Tekvîr","İnfitâr","Mutaffifîn","İnşikâk","Bürûc","Târık","A'lâ","Gâşiye","Fecr","Beled","Şems","Leyl","Duhâ","İnşirâh","Tîn","Alak","Kadir","Beyyine","Zilzâl","Âdiyât","Kâria","Tekâsür","Asr","Hümeze","Fîl","Kureyş","Mâûn","Kevser","Kâfirûn","Nasr","Tebbet","İhlâs","Felak","Nâs"];
-let allS=[];
-fetch('https://alquran.cloud').then(r=>r.json()).then(d=>{allS=d.data;drawS(allS)});
-function drawS(a){document.getElementById('sList').innerHTML=a.map(s=>{let n=trN[s.number-1]||s.englishName,d=s.revelationType==='Meccan'?'Mekkî':'Medenî';return'<div class="s-item" onclick="openS('+s.number+',\''+n+'\',\''+d+'\','+s.numberOfAyahs+')"><div><strong style="color:var(--gold)">'+s.number+'. '+n+'</strong><div style="font-size:12px;color:var(--muted)">'+d+' • '+s.numberOfAyahs+' Ayet</div></div><div style="font-family:\'Amiri\',serif;font-size:24px;color:var(--gold)">'+s.name+'</div></div>'}).join('')}
-function filt(){let q=document.getElementById('sIn').value.toLowerCase();drawS(allS.filter(s=>(trN[s.number-1]||'').toLowerCase().includes(q)||String(s.number)===q))}
-async function openS(num,n,d,c){document.getElementById('sBox').style.display='none';document.getElementById('reader').style.display='block';document.getElementById('rTitle').innerText=num+'. '+n+' Suresi';document.getElementById('rMeta').innerText=d+' Dönemi • '+c+' Ayet';document.getElementById('rAudio').src='https://mp3quran.net ve Diyanet Meali yükleniyor...';const [ar,tr]=await Promise.all([fetch('https://alquran.cloud/'+num).then(r=>r.json()),fetch('https://alquran.cloud/'+num+'/tr.diyanet').then(r=>r.json())]);document.getElementById('rAyahs').innerHTML=ar.data.ayahs.map((x,i)=>'<div style="padding:14px 0;border-bottom:1px solid #1d4434"><div class="ar">'+x.text+' ('+x.numberInSurah+')</div><div style="font-size:15px"><strong>'+x.numberInSurah+'.</strong> '+tr.data.ayahs[i].text+'</div></div>').join('')}
-function closeS(){document.getElementById('reader').style.display='none';document.getElementById('sBox').style.display='block';document.getElementById('rAudio').pause()}
+const DB=[
+[1,"Fâtiha","الفاتحة",7,"Mekkî Dönem (Hicret Öncesi)","Kur'an-ı Kerim'in ilk suresi ve 'Ümmü'l-Kitâb' (Kitabın Anası) olarak bilinir. İslam'ın temel özeti olan hamd, tevhid, ahiret inancı ve yalnızca Allah'a kulluk edip O'ndan hidayet dileme bilincini öğretmek için nazil olmuştur."],
+[2,"Bakara","البقرة",286,"Medenî Dönem (Hicret Sonrası)","Kur'an'ın en uzun suresidir. İslam toplumunun hukuki, sosyal ve ibadi temellerini (namaz, oruç, hac, zekat, aile hukuku, faiz yasağı) belirlemek ve mümin, kafir, münafık tiplerini tanıtmak amacıyla Medine'de indirilmiştir."],
+[3,"Âl-i İmrân","آل عمران",200,"Medenî Dönem (Hicret Sonrası)","Bedir ve Uhud savaşlarının derslerini değerlendirmek, müminlere sabır ve sebat aşılamak ve Necran Hristiyan heyetiyle yapılan tevhid münazaralarına açıklık getirmek için nazil olmuştur."],
+[4,"Nisâ","النساء",176,"Medenî Dönem (Hicret Sonrası)","Uhud Savaşı sonrası yetimlerin ve kadınların haklarını korumak, miras hukukunu adaletle düzenlemek ve aile içi toplumsal düzeni kurmak amacıyla indirilmiştir."],
+[5,"Mâide","المائدة",120,"Medenî Dönem (Veda Haccı Dönemi)","Nüzulü en son tamamlanan surelerdendir. Ahitlere vefa, helal-haram sınırları, abdest/teyemmüm hükümleri ve dinin kemale erdiğini müjdelemek için nazil olmuştur."],
+[6,"En'âm","الأنعام",165,"Mekkî Dönem (Hicret Öncesi)","Mekke müşriklerinin putperestlik ve batıl kurban/adak geleneklerini reddetmek, tevhid, nübüvvet ve öldükten sonra diriliş akidesini kesin delillerle yerleştirmek için indirilmiştir."],
+[7,"A'râf","الأعراف",206,"Mekkî Dönem (Hicret Öncesi)","Hz. Adem'den itibaren peygamberlerin kavimleriyle mücadelesini anlatarak hak ile batıl arasındaki ebedi savaşı ve mahşer günü cennetle cehennem arasındaki A'raf ehlini bildirmek için nazil olmuştur."],
+[8,"Enfâl","الأنفال",75,"Medenî Dönem (Bedir Savaşı Sonrası)","Bedir Zaferi'nin ardından savaş ganimetlerinin taksimi, ilahi yardımın sırrı ve İslam savaş ahlakını öğretmek için indirilmiştir."],
+[9,"Tevbe","التوبة",129,"Medenî Dönem (Tebük Seferi Dönemi)","Kur'an'da başında Besmele bulunmayan tek suredir. Müşriklerle yapılan antlaşmaların feshi, Tebük Seferi'nde samimi müminlerle münafıkların ayrışması ve samimi tövbenin kabulü için nazil olmuştur."],
+[10,"Yûnus","يونس",109,"Mekkî Dönem (Hicret Öncesi)","Vahiy ve peygamberliğe şüpheyle yaklaşan Mekke müşriklerine kainattaki ilahi düzeni ve Hz. Yunus'un kavminin tövbe ederek azaptan kurtuluşunu ibret olarak sunmak için indirilmiştir."],
+[11,"Hûd","هود",123,"Mekkî Dönem (Hicret Öncesi)","Peygamber Efendimize 'Beni Hûd suresi ihtiyarlattı' dedirten bu sure; Nuh, Hud, Salih, Lut ve Şuayb peygamberlerin kavimlerinin helakini anlatarak istikamet üzere olmayı emretmek için nazil olmuştur."],
+[12,"Yûsuf","يونس / يوسف",111,"Mekkî Dönem (Hüzün Yılı)","Peygamberimizin amcası Ebu Talip ve eşi Hz. Hatice'yi kaybettiği 'Hüzün Yılı'nda teselli vermek ve Hz. Yusuf'un kuyudan Mısır sultanlığına uzanan sabır ve iffet zaferini anlatmak için tek seferde indirilmiştir."],
+[13,"Ra'd","الرعد",43,"Medenî Dönem","Tabiat olaylarının (gök gürültüsü, şimşek, yağmur) Allah'ın kudretine işaret ettiğini ve hak ile batılın su üzerindeki köpük misali ayrışacağını göstermek için nazil olmuştur."],
+[14,"İbrâhîm","إبراهيم",52,"Mekkî Dönem (Hicret Öncesi)","İnsanları karanlıklardan aydınlığa çıkarmak, nimetlere şükrün bereketini bildirmek ve Hz. İbrahim'in Kabe ve nesli için yaptığı duaları aktarmak amacıyla indirilmiştir."],
+[15,"Hicr","الحجر",99,"Mekkî Dönem (Hicret Öncesi)","Kur'an-ı Kerim'in kıyamete kadar bizzat Allah tarafından korunacağını müjdelemek ve Semud kavmi ile Hicr halkının akıbetinden ibret alınmasını sağlamak için nazil olmuştur."],
+[16,"Nahl","النحل",128,"Mekkî Dönem (Hicret Öncesi)","Arının bal yapmasından gökten inen yağmura kadar insanlığa sunulan sayısız nimetleri hatırlatarak şükür ve tefekkür bilinci oluşturmak için indirilmiştir."],
+[17,"İsrâ","الإسراء",111,"Mekkî Dönem (Miraç Gecesi Dönemi)","Peygamberimizin Mescid-i Haram'dan Mescid-i Aksa'ya yürütülüşünü (İsra) bildirmek ve anne-babaya iyilik, yetim hakkı, dürüstlük gibi temel ahlak ilkelerini vazetmek için nazil olmuştur."],
+[18,"Kehf","الكهف",110,"Mekkî Dönem (Hicret Öncesi)","Mekke müşriklerinin Yahudi alimlerden öğrenip sorduğu Ashab-ı Kehf, Hz. Musa-Hızır kıssası ve Zülkarneyn sorularına cevap vermek ve ahir zaman fitnelerinden korunma yolunu göstermek için indirilmiştir."],
+[19,"Meryem","مريم",98,"Mekkî Dönem (Habeşistan Hicreti Dönemi)","Habeşistan'a hicret eden sahabelerin Necaşi huzurunda okuduğu suredir; Hz. Zekeriya, Hz. Yahya, Hz. Meryem ve Hz. İsa'nın mucizevi doğumlarını anlatarak tevhidi savunmak için nazil olmuştur."],
+[20,"Tâ-Hâ","طه",135,"Mekkî Dönem (Hz. Ömer'in İslam'a Giriş Dönemi)","Hz. Ömer'in okuyup Müslüman olmasına vesile olan suredir; Hz. Musa'nın Firavun'a karşı mücadelesini anlatarak Peygamberimize teselli ve güç vermek için indirilmiştir."],
+[21,"Enbiyâ","الأنبياء",112,"Mekkî Dönem (Hicret Öncesi)","Bütün peygamberlerin aynı tevhid mesajıyla gönderildiğini vurgulamak ve Hz. İbrahim'in ateşe atılması ile Hz. Yunus'un duası gibi kurtuluş mucizelerini hatırlatmak için nazil olmuştur."],
+[22,"Hac","الحج",78,"Medenî Dönem","Hac ibadetinin hikmetlerini, Kabe'nin tevhid merkezi oluşunu ve haksızlığa uğrayan müminlere ilk kez meşru savunma (savaş) izninin verildiğini bildirmek için indirilmiştir."],
+[23,"Mü'minûn","المؤمنون",118,"Mekkî Dönem (Hicret Öncesi)","Kurtuluşa eren gerçek müminlerin vasıflarını (huşu ile namaz, boş işlerden yüz çevirme, zekat, iffet ve emanete riayet) tanıtmak için nazil olmuştur."],
+[24,"Nûr","النور",64,"Medenî Dönem (İfk Hadisesi Sonrası)","Hz. Aişe validemize atılan iftirayı (İfk hadisesi) kesin olarak temize çıkarmak, aile mahremiyeti, örtünme ve toplumsal iffet kurallarını belirlemek için indirilmiştir."],
+[25,"Furkân","الفرقان",77,"Mekkî Dönem (Hicret Öncesi)","Hak ile batılı ayıran Kur'an'ın ilahi kaynaklı olduğunu ispatlamak ve 'Rahmân'ın has kulları'nın (İbâdü'r-Rahmân) mütevazı yaşam tarzını örnek göstermek için nazil olmuştur."],
+[26,"Şuarâ","الشعراء",227,"Mekkî Dönem (Hicret Öncesi)","Peygamberimizi inkarcıların tutumu yüzünden kendini harap etmemesi konusunda teselli etmek ve hakikat şairleri ile heva peşinde koşan şairlerin farkını açıklamak için indirilmiştir."],
+[27,"Neml","النمل",93,"Mekkî Dönem (Hicret Öncesi)","Hz. Süleyman'ın karınca vadisinden geçişini, Hüdhüd kuşu ve Sebe Melikesi Belkıs'ın İslam'a girişini anlatarak ilim ve hikmetin üstünlüğünü göstermek için nazil olmuştur."],
+[28,"Kasas","القصص",88,"Mekkî Dönem (Hicret Yolculuğu Sırası)","Mekke'den Medine'ye hicret ederken Cuhfe mevkiinde nazil olmuş, Hz. Musa'nın Firavun sarayında büyüyüp Mısır'a dönüşü gibi Peygamberimizin de Mekke'ye muzaffer döneceğini müjdelemiştir."],
+[29,"Ankebût","العنكبوت",69,"Mekkî Dönem (Hicret Öncesi)","İman edenlerin mutlaka imtihandan geçirileceğini bildirmek ve Allah'tan başka dost edinenlerin durumunu örümcek ağı (beytü'l-ankebût) kadar çürük diye tanımlamak için indirilmiştir."],
+[30,"Rûm","الروم",60,"Mekkî Dönem (M.S. 615 Civarı)","Sasanilere yenilen Bizans'ın (Rûm) birkaç yıl içinde galip geleceği gayb haberini vermek ve kainattaki zıtlıkların Allah'ın varlığına delil olduğunu göstermek için nazil olmuştur."],
+[31,"Lokmân","لقمان",34,"Mekkî Dönem (Hicret Öncesi)","Hz. Lokman'ın oğluna verdiği hikmetli öğütler üzerinden şirkten sakınmayı, anne-babaya saygıyı, namazı ve alçakgönüllülüğü öğretmek için indirilmiştir."],
+[32,"Secde","السجدة",30,"Mekkî Dönem (Hicret Öncesi)","Vahyin alemlerin Rabbi tarafından indirildiğini teyit etmek, gece ibadetine kalkan müminleri övmek ve kıyamet gerçeğini hatırlatmak için nazil olmuştur."],
+[33,"Ahzâb","الأحزاب",73,"Medenî Dönem (Hendek Savaşı Sonrası)","Hendek Savaşı'ndaki ilahi yardımı anlatmak, Peygamberimizin aile hayatını düzenlemek ve evlatlık/tesettür hükümlerini açıklamak için indirilmiştir."],
+[34,"Sebe'","سبأ",54,"Mekkî Dönem (Hicret Öncesi)","Hz. Davud ve Hz. Süleyman'a verilen nimetlere karşılık şükredenlerle, nimete nankörlük edip Arim seliyle helak olan Sebe halkının ibretlik sonunu karşılaştırmak için nazil olmuştur."],
+[35,"Fâtır","فاطر",45,"Mekkî Dönem (Hicret Öncesi)","Gökleri ve yeri yoktan yaratan Allah'ın sonsuz kudretini, meleklerin mahiyetini ve gerçek alimlerin Allah'a karşı derin saygı (haşyet) duyduğunu bildirmek için nazil olmuştur."],
+[36,"Yâsîn","يس",83,"Mekkî Dönem (Hicret Öncesi)","'Kur'an'ın Kalbi' olarak nitelendirilir. Peygamberimizin risaletini, Antakya halkına gelen elçileri, kainattaki diriliş delillerini ve ahiret hesabını sarsıcı bir üslupla hatırlatmak için indirilmiştir."],
+[37,"Sâffât","الصافات",182,"Mekkî Dönem (Hicret Öncesi)","Saf saf dizilen melekler üzerine yeminle başlayarak meleklerin Allah'ın kızları olduğu yönündeki cahiliye inancını yıkmak ve Hz. İbrahim ile Hz. İsmail'in teslimiyetini anlatmak için nazil olmuştur."],
+[38,"Sâd","ص",88,"Mekkî Dönem (Hicret Öncesi)","Mekke ileri gelenlerinin tevhid çağrısına karşı kibirlenmelerini eleştirmek ve Hz. Davud, Hz. Süleyman ile Hz. Eyyub'un sabır imtihanlarını örnek göstermek için indirilmiştir."],
+[39,"Zümer","الزمر",75,"Mekkî Dönem (Hicret Öncesi)","İbadetin yalnızca Allah'a has kılınmasını (ihlas) emretmek, günaha batmış kullara Allah'ın rahmetinden ümit kesmemeleri gerektiğini müjdelemek ve cennet ile cehennem zümrelerini tasvir etmek için nazil olmuştur."],
+[40,"Mü'min","غافر",85,"Mekkî Dönem (Hicret Öncesi)","Firavun ailesinden olup imanını gizleyen yiğit müminin hakikati savunuşunu anlatmak ve 'Bana dua edin, size icabet edeyim' müjdesini vermek için indirilmiştir."],
+[41,"Fussilet","فصلت",54,"Mekkî Dönem (Hicret Öncesi)","Utbe bin Rebîa'nın Peygamberimize teklif getirmesi üzerine okunan, ayetleri apaçık açıklanmış Kur'an'ın hem kainatta hem insanın kendi nefsindeki ayetlerle doğrulandığını bildiren suredir."],
+[42,"Şûrâ","الشورى",53,"Mekkî Dönem (Hicret Öncesi)","Bütün peygamberlere aynı dinin vahyedildiğini bildirmek ve müminlerin işlerini kendi aralarında istişare (şûrâ) ile yürütmeleri ilkesini koymak için nazil olmuştur."],
+[43,"Zuhruf","الزخرف",89,"Mekkî Dönem (Hicret Öncesi)","Dünya süs ve zenginliğinin (zuhruf) üstünlük ölçüsü olmadığını, asıl değerin takva ve Kur'an'a sarılmak olduğunu vurgulamak için indirilmiştir."],
+[44,"Duhân","الدخان",59,"Mekkî Dönem (Hicret Öncesi)","Mekke'de yaşanan şiddetli kıtlık ve göğü kaplayan duman (duhan) hadisesi üzerine Kur'an'ın mübarek bir gecede (Kadir Gecesi) indirildiğini hatırlatmak için nazil olmuştur."],
+[45,"Câsiye","الجاثية",37,"Mekkî Dönem (Hicret Öncesi)","Hesap günü korkudan diz üstü çökecek (câsiye) ümmetleri tasvir ederek zamanın her şeyi yok ettiğini sanan materyalist (dehriyye) anlayışı çürütmek için indirilmiştir."],
+[46,"Ahkâf","الأحقاف",35,"Mekkî Dönem (Hicret Öncesi)","Taif dönüşü Nahle vadisinde Peygamberimizden Kur'an dinleyip iman eden cin topluluğunu haber vermek ve anne-babaya iyiliği emretmek için nazil olmuştur."],
+[47,"Muhammed","محمد",38,"Medenî Dönem (Hicret Sonrası)","İman edip salih amel işleyenlerin günahlarının örtüleceğini müjdelemek ve hak uğruna mücadele eden müminlere ilahi yardımın şartlarını bildirmek için indirilmiştir."],
+[48,"Fetih","الفتح",29,"Medenî Dönem (Hudeybiye Dönüşü)","Hudeybiye Antlaşması'ndan dönerken nazil olmuş, görünürde taviz gibi duran bu antlaşmanın aslında 'apaçık bir fetih' (Feth-i Mübîn) ve Mekke'nin fethinin başlangıcı olduğunu müjdelemiştir."],
+[49,"Hucurât","الحجرات",18,"Medenî Dönem (Heyetler Yılı)","İslam toplumunun adab-ı muaşeret yasasıdır: Peygambere saygı, haberleri araştırmadan inanmama, alay etmeme, lakap takmama, suizan ve gıybetten kaçınma ile üstünlüğün ancak takvada olduğunu bildirmek için indirilmiştir."],
+[50,"Kâf","ق",45,"Mekkî Dönem (Hicret Öncesi)","Öldükten sonra dirilişi inkar edenlere insanın yaratılışını, şah damarından yakın olan Allah'ı ve sağ-sol omuzdaki yazıcı melekleri hatırlatmak için nazil olmuştur."],
+[51,"Zâriyât","الذاريات",60,"Mekkî Dönem (Hicret Öncesi)","Rüzgarlar üzerine yeminle başlayarak rızkın Allah'ın katında olduğunu, evrenin genişletildiğini ve cinlerle insanların yalnızca Allah'a kulluk için yaratıldığını bildirmek için indirilmiştir."],
+[52,"Tûr","الطور",49,"Mekkî Dönem (Hicret Öncesi)","Tûr dağı ve Beyt-i Ma'mûr üzerine yeminle başlayarak inkarcıların azabının kesinliğini ve müminlerin cennet nimetlerini anlatmak için nazil olmuştur."],
+[53,"Necm","النجم",62,"Mekkî Dönem (Hicret Öncesi)","Peygamberimizin kendi hevasından konuşmadığını, Miraç gecesi Sidretü'l-Müntehâ'da gördüğü büyük ayetleri ve insana ancak kendi çalışmasının karşılığı olduğunu bildirmek için indirilmiştir."],
+[54,"Kamer","القمر",55,"Mekkî Dönem (Hicret Öncesi)","Müşriklerin mucize isteği üzerine Ay'ın ikiye yarılması (Şakk-ı Kamer) mucizesini haber vermek ve Kur'an'ın öğüt almak için kolaylaştırıldığını vurgulamak için nazil olmuştur."],
+[55,"Rahmân","الرحمن",78,"Medenî Dönem","'O halde Rabbinizin hangi nimetlerini yalanlayabilirsiniz?' ayetiyle kainattaki maddi ve manevi nimetleri sayarak insanları ve cinleri şükre davet etmek için indirilmiştir."],
+[56,"Vâkıa","الواقعة",96,"Mekkî Dönem (Hicret Öncesi)","Kıyamet koptuğunda insanların üç sınıfa (Ashab-ı Meymene, Ashab-ı Meş'eme ve Sâbikûn) ayrılacağını ve her birinin akıbetini detaylıca tasvir etmek için nazil olmuştur."],
+[57,"Hadîd","الحديد",29,"Medenî Dönem","Göklerdeki ve yerdeki her şeyin Allah'ı tesbih ettiğini, demirin insanlık için büyük faydalarla indirildiğini ve Allah yolunda infak etmenin değerini öğretmek için nazil olmuştur."],
+[58,"Mücâdele","المجادلة",22,"Medenî Dönem","Zıhar yaparak eşini mağdur eden kocasını Peygamberimize şikayet eden Havle binti Sa'lebe'nin duasının kabul edildiğini bildirmek ve gizli fısıldaşma (necvâ) adabını düzenlemek için indirilmiştir."],
+[59,"Haşr","الحشر",24,"Medenî Dönem (Benî Nadîr Sürgünü)","Antlaşmayı bozan Benî Nadîr Yahudilerinin Medine'den sürülüşünü, Ensar ile Muhacir arasındaki eşsiz kardeşliği ve Allah'ın en güzel isimlerini (Esma-ül Hüsna) bildirmek için indirilmiştir."],
+[60,"Mümtehine","الممتحنة",13,"Medenî Dönem (Mekke Fethi Öncesi)","Hâtıb bin Ebî Beltea'nın Mekke'ye gizli mektup göndermesi üzerine nazil olmuş, müminlerin düşmanlarla dostluk sınırlarını ve hicret eden kadınların imtihan edilmesini düzenlemiştir."],
+[61,"Saf","الصف",14,"Medenî Dönem","Yapmayacakları şeyleri söyleyenleri uyarmak, Allah yolunda kenetlenmiş bir bina gibi saf tutmayı emretmek ve Hz. İsa'nın 'Ahmed' adıyla müjdelediği son peygamberi hatırlatmak için nazil olmuştur."],
+[62,"Cuma","الجمعة",11,"Medenî Dönem","Cuma ezanı okunduğunda alışverişi bırakıp Allah'ı anmaya koşmayı emretmek ve ilmiyle amel etmeyenleri 'kitap yüklü merkepler' benzetmesiyle uyarmak için nazil olmuştur."],
+[63,"Münâfikûn","المنافقون",11,"Medenî Dönem (Benî Müstalik Seferi)","Münafıkların başı Abdullah bin Übey'in fitne sözlerini ifşa etmek ve mal-evlat sevgisinin Allah'ı anmaktan alıkoymaması gerektiğini hatırlatmak için nazil olmuştur."],
+[64,"Tegâbün","التغابن",18,"Medenî Dönem","Kıyamet gününün kimin karlı kimin zararlı çıktığının anlaşılacağı 'Aldanma/Kazanma Günü' (Yevmü't-Tegâbün) olduğunu hatırlatmak için nazil olmuştur."],
+[65,"Talâk","الطلاق",12,"Medenî Dönem","Boşanma (talak) ve iddet hükümlerini adaletle düzenlemek, Allah'tan sakınanlara (takva) ummadıkları yerden çıkış yolu ve rızık verileceğini müjdelemek için indirilmiştir."],
+[66,"Tahrîm","التحريم",12,"Medenî Dönem","Allah'ın helal kıldığı bir şeyi kişinin kendisine haram kılmaması gerektiğini bildirmek ve Firavun'un saliha eşi Hz. Asiye ile Hz. Meryem'i müminlere örnek göstermek için nazil olmuştur."],
+[67,"Mülk","الملك",30,"Mekkî Dönem (Hicret Öncesi)","Kabir azabından koruyucu (Mânia) olarak bilinir. Hayatın ve ölümün hangimizin daha güzel amel işleyeceğini sınamak için yaratıldığını ve göklerdeki kusursuz düzeni anlatmak için indirilmiştir."],
+[68,"Kalem","القلم",52,"Mekkî Dönem (İlk İnen Surelerden)","Müşriklerin Peygamberimize 'mecnun' demelerine karşılık O'nun 'yüce bir ahlak' (huluk-ı azîm) üzere olduğunu ilan etmek ve fakirlerin hakkını vermemek için erken davranan bahçe sahiplerinin ibretlik sonunu anlatmak için nazil olmuştur."],
+[69,"Hâkka","الحاقة",52,"Mekkî Dönem (Hicret Öncesi)","Gerçekleşmesi kesin olan kıyameti (Hâkka), amel defteri sağından verilenlerin sevincini ve solundan verilenlerin pişmanlığını canlı bir dille tasvir etmek için indirilmiştir."],
+[70,"Meâric","المعارج",44,"Mekkî Dönem (Hicret Öncesi)","Azabın ne zaman geleceğini alayla soran Nadr bin Haris'e cevap vermek, elli bin yıl sürecek kıyamet gününü ve sabırlı müminlerin vasıflarını bildirmek için nazil olmuştur."],
+[71,"Nûh","نوح",28,"Mekkî Dönem (Hicret Öncesi)","Hz. Nuh'un 950 yıl boyunca kavmini gece-gündüz, gizli-açık tevhide davet edişini anlatarak Peygamberimize sabır ve azim örneği sunmak için indirilmiştir."],
+[72,"Cin","الجن",28,"Mekkî Dönem (Hicret Öncesi)","Cinlerden bir topluluğun Kur'an'ı dinleyip hayran kalarak iman edişini ve gayb bilgisinin yalnızca Allah'a ait olduğunu bildirmek için nazil olmuştur."],
+[73,"Müzzemmil","المزمل",20,"Mekkî Dönem (Vahyin Başlangıcı)","İlk vahyin heyecanıyla örtüsüne bürünen Peygamberimize gece kalkıp tertil üzere Kur'an okumasını (teheccüd) ve ağır sorumluluğa hazırlanmasını emretmek için indirilmiştir."],
+[74,"Müddessir","المدثر",56,"Mekkî Dönem (Vahyin Başlangıcı)","Fetret-i vahiy döneminin ardından 'Ey örtüsüne bürünen, kalk ve uyar!' emriyle aleni tebliğ görevini başlatmak ve temizlik ile sabrı emretmek için nazil olmuştur."],
+[75,"Kıyâme","القيامة",40,"Mekkî Dönem (Hicret Öncesi)","İnsanın parmak uçlarına kadar yeniden diriltileceğini ispatlamak ve vahyi unutmamak için dilini aceleyle oynatan Peygamberimize Kur'an'ı toplama ve okutma garantisi vermek için indirilmiştir."],
+[76,"İnsan","الإنسان",31,"Medenî Dönem","İnsanın bir zamanlar anılmaya değer bir şey değilken imtihan için yaratıldığını, yoksula, yetime ve esire sırf Allah rızası için yemek yediren ebrarın cennet nimetlerini anlatmak için nazil olmuştur."],
+[77,"Mürselât","المرسلات",50,"Mekkî Dönem (Hicret Öncesi)","Peş peşe gönderilen rüzgarlar ve melekler üzerine yeminle başlayarak hakikati yalanlayanların kıyamet günündeki çaresizliğini 'Yalanlayanların vay haline!' uyarısıyla vurgulamak için nazil olmuştur."],
+[78,"Nebe'","النبأ",40,"Mekkî Dönem (Hicret Öncesi)","Müşriklerin kendi aralarında tartışıp durdukları 'Büyük Haber'in (kıyamet ve diriliş) kesin gerçek olduğunu kainat delilleriyle ispatlamak için indirilmiştir."],
+[79,"Nâziât","النازعات",46,"Mekkî Dönem (Hicret Öncesi)","Ruhları çekip alan melekler üzerine yeminle başlayarak Firavun'un azgınlığının sonunu ve nefsini kötü arzulardan alıkoyanların cennete gireceğini bildirmek için nazil olmuştur."],
+[80,"Abese","عبس",42,"Mekkî Dönem (Hicret Öncesi)","Kureyş ileri gelenlerine İslam'ı anlatırken yanına gelen görme engelli sahabi Abdullah bin Ümmü Mektum'a yüzünü ekşitmesi üzerine Peygamberimizi nezaketle uyarmak ve İslam'da insan eşitliğini vurgulamak için nazil olmuştur."],
+[81,"Tekvîr","التكوير",29,"Mekkî Dönem (Hicret Öncesi)","Güneşin dürülmesi, yıldızların dökülmesi ve diri diri toprağa gömülen kız çocuğuna 'hangi günahla öldürüldün' diye sorulması gibi kıyamet sahnelerini tasvir etmek için indirilmiştir."],
+[82,"İnfitâr","الانفطار",19,"Mekkî Dönem (Hicret Öncesi)","Göğün yarılıp yıldızların dağıldığı gün herkesin yaptıklarını göreceğini hatırlatmak ve 'Ey insan, seni kerim olan Rabbine karşı ne aldattı?' sorusuyla vicdanları uyandırmak için nazil olmuştur."],
+[83,"Mutaffifîn","المطففين",36,"Mekkî Dönem (Hicret Öncesi)","Ölçü ve tartıda hile yapan (mutaffifîn) tüccarları şiddetle uyarmak ve iyilerin Siccîn'den uzak, İlliyyîn makamında olacağını bildirmek için nazil olmuştur."],
+[84,"İnşikâk","الانشقاق",25,"Mekkî Dönem (Hicret Öncesi)","İnsanın Rabbine doğru çaba harcayarak ilerlediğini, amel defteri sağından verilenlerin kolay bir hesaba çekileceğini bildirmek için indirilmiştir."],
+[85,"Bürûc","البروج",22,"Mekkî Dönem (Hicret Öncesi)","İman ettikleri için ateş dolu hendeklere atılan Ashab-ı Uhdûd şehitlerini anmak, Mekke'de işkence gören müminlere sabır vermek ve Kur'an'ın Levh-i Mahfuz'da korunduğunu bildirmek için nazil olmuştur."],
+[86,"Târık","الطارق",17,"Mekkî Dönem (Hicret Öncesi)","Karanlığı delen parlak yıldız (Târık) üzerine yeminle başlayarak her insanın üzerinde bir koruyucu gözetleyici melek bulunduğunu ve Kur'an'ın hak ile batılı ayıran kesin söz olduğunu bildirmek için nazil olmuştur."],
+[87,"A'lâ","الأعلى",19,"Mekkî Dönem (Hicret Öncesi)","En yüce Rabbin adını tesbih etmeyi emretmek, arınan ve namaz kılanların kurtuluşa ereceğini, dünya hayatının geçici ahiretin ise kalıcı olduğunu hatırlatmak için nazil olmuştur."],
+[88,"Gâşiye","الغاشية",26,"Mekkî Dönem (Hicret Öncesi)","Her şeyi kaplayacak kıyamet gününü ve Allah'ın kudretini görmek için devenin yaratılışına, göğe, dağlara ve yeryüzüne bakılmasını öğütlemek için indirilmiştir."],
+[89,"Fecr","الفجر",30,"Mekkî Dönem (Hicret Öncesi)","Tan yeri ağarmasına ve on geceye yeminle başlayarak Âd, Semûd ve Firavun'un zulümle yıkılışını hatırlatmak ve 'Ey huzura kavuşmuş nefis, Rabbine dön!' müjdesini vermek için nazil olmuştur."],
+[90,"Beled","البلد",20,"Mekkî Dönem (Hicret Öncesi)","İnsanın zorluk ve çile içinde yaratıldığını bildirmek ve gerçek kurtuluşun sarp yokuşu aşmak (köle azat etmek, açlık gününde yetimi ve yoksulu doyurmak) olduğunu öğretmek için indirilmiştir."],
+[91,"Şems","الشمس",15,"Mekkî Dönem (Hicret Öncesi)","Güneş, ay, gündüz ve gece üzerine yeminlerle başlayarak nefsini kötülüklerden arındıranın kurtulduğunu, kirletenin ise hüsrana uğradığını Semud kavmi örneğiyle anlatmak için nazil olmuştur."],
+[92,"Leyl","الليل",21,"Mekkî Dönem (Hicret Öncesi)","Hz. Ebu Bekir'in işkence altındaki köleleri satın alıp azat etmesi üzerine nazil olmuş, Allah rızası için infak eden takva sahiplerine kolaylık yolunun açılacağını müjdelemiştir."],
+[93,"Duhâ","الضحى",11,"Mekkî Dönem (Vahyin Kesildiği Dönem)","Bir süre vahiy gelmeyince müşriklerin 'Rabbi onu terk etti' demeleri üzerine nazil olmuş, Rabbinin Peygamberimizi asla terk etmediğini, ahiretin dünyadan hayırlı olduğunu bildirmiş ve yetimi/isteyeni azarlamamayı emretmiştir."],
+[94,"İnşirâh","الشرح",8,"Mekkî Dönem (Hicret Öncesi)","Peygamberimizin göğsünü açıp ferahlattığını, yükünü hafiflettiğini, şanını yücelttiğini hatırlatmak ve 'Şüphesiz her zorlukla beraber bir kolaylık vardır' müjdesini vermek için nazil olmuştur."],
+[95,"Tîn","التين",8,"Mekkî Dönem (Hicret Öncesi)","İnsanın en güzel biçimde (ahsen-i takvîm) yaratıldığını, ancak iman ve salih amel olmazsa aşağıların aşağısına (esfel-i sâfilîn) düşeceğini bildirmek için indirilmiştir."],
+[96,"Alak","العلق",19,"Mekkî Dönem (İlk Vahiy - Hira)","Hira Mağarası'nda nazil olan ilk ayetleri ('Yaratan Rabbinin adıyla oku!') içerir; okumanın, ilmin ve kalemin değerini ilan etmek ve namaz kılmayı engelleyen Ebu Cehil'i uyarmak için indirilmiştir."],
+[97,"Kadir","القدر",5,"Mekkî Dönem (Hicret Öncesi)","Kur'an'ın indirildiği Kadir Gecesi'nin bin aydan daha hayırlı olduğunu, o gece meleklerin ve Cebrail'in sabaha kadar esenlik ve bereketle yeryüzüne indiğini bildirmek için nazil olmuştur."],
+[98,"Beyyine","البينة",8,"Medenî Dönem","Ehl-i kitap ve müşriklerin ancak apaçık delil (Peygamber ve Kur'an) geldikten sonra ayrılığa düştüklerini ve iman edip salih amel işleyenlerin 'yaratılmışların en hayırlısı' (hayrü'l-beriyye) olduğunu bildirmek için indirilmiştir."],
+[99,"Zilzâl","الزلزلة",8,"Medenî Dönem","Yeryüzünün şiddetli sarsıntıyla içindekileri dışarı attığı gün zerre miktarı hayır işleyenin de zerre miktarı şer işleyenin de karşılığını mutlaka göreceğini bildirmek için nazil olmuştur."],
+[100,"Âdiyât","العاديات",11,"Mekkî Dönem (Hicret Öncesi)","Nefes nefese koşan savaş atları üzerine yeminle başlayarak insanın Rabbine karşı nankörlüğünü ve mal sevgisine aşırı düşkünlüğünü yüzüne vurmak için indirilmiştir."],
+[101,"Kâria","القارعة",11,"Mekkî Dönem (Hicret Öncesi)","Kalpleri dehşetle çarpan kıyamet günü insanların dağılmış pervaneler, dağların atılmış renkli yünler gibi olacağını ve mizanda sevapları ağır basanların kurtulacağını bildirmek için nazil olmuştur."],
+[102,"Tekâsür","التكاثر",8,"Mekkî Dönem (Hicret Öncesi)","Mal ve evlat çokluğuyla övünme yarışının insanları kabirlere girinceye kadar oyaladığını uyarmak ve verilen her nimetten mutlaka sorguya çekileceğimizi hatırlatmak için nazil olmuştur."],
+[103,"Asr","العصر",3,"Mekkî Dönem (Hicret Öncesi)","İmam Şafii'nin 'Kur'an'da başka sure inmeseydi bu sure insanlara yeterdi' dediği suredir; zamanın akıp gittiğini, ancak iman eden, salih amel işleyen, hakkı ve sabrı tavsiye edenlerin ziyandan kurtulacağını bildirmek için nazil olmuştur."],
+[104,"Hümeze","الهمزة",9,"Mekkî Dönem (Hicret Öncesi)","İnsanları arkadan çekiştiren, kaş göz işaretiyle alay eden ve malının kendisini ebedi kılacağını sanan kibirli zenginlerin Hutame ateşine atılacağını bildirmek için indirilmiştir."],
+[105,"Fîl","الفيل",5,"Mekkî Dönem (Hicret Öncesi)","Peygamberimizin doğduğu yıl Kabe'yi yıkmaya gelen Ebrehe ve fil ordusunun Ebabil kuşlarının attığı taşlarla yenilmiş ekin yaprağına çevrilişini hatırlatarak Allah'ın evini koruduğunu bildirmek için nazil olmuştur."],
+[106,"Kureyş","قريش",4,"Mekkî Dönem (Hicret Öncesi)","Fil ordusunun helakinden sonra Kureyş kabilesine sağlanan kış-yaz ticaret güvenliği ve açlıktan kurtulma nimetine karşılık yalnızca Kabe'nin Rabbine kulluk etmeleri gerektiğini hatırlatmak için nazil olmuştur."],
+[107,"Mâûn","الماعون",7,"Mekkî Dönem (Hicret Öncesi)","Yetimi itip kakan, yoksulu doyurmaya teşvik etmeyen, namazını gösteriş için kılan ve en basit yardımı (mâûn) bile esirgeyen riyakarları ifşa etmek için indirilmiştir."],
+[108,"Kevser","الكوثر",3,"Mekkî Dönem (Hicret Öncesi)","Oğlu vefat edince Peygamberimize 'soyu kesik (ebter)' diyen müşriklere cevap olarak nazil olmuş, Peygamberimize Kevser nimetinin verildiğini ve asıl soyu kesik olanların O'na kin besleyenler olduğunu ilan etmiştir."],
+[109,"Kâfirûn","الكافرون",6,"Mekkî Dönem (Hicret Öncesi)","Müşriklerin 'bir yıl sen bizim putlarımıza tap, bir yıl biz senin Allah'ına tapalım' şeklindeki uzlaşma teklifini kesin bir dille reddetmek ve 'Sizin dininiz size, benim dinim bana' ilkesini ilan etmek için nazil olmuştur."],
+[110,"Nasr","النصر",3,"Medenî Dönem (Veda Haccı)","Mekke'nin fethinden sonra insanların bölük bölük İslam'a girişini haber veren ve Peygamberimize Rabbinin hamdiyle tesbih edip istiğfar etmesini emrederek vefatının yaklaştığını işaret eden son suredir."],
+[111,"Tebbet","المسد",5,"Mekkî Dönem (Safa Tepesi Daveti)","Peygamberimiz yakın akrabalarını İslam'a davet ettiğinde 'Ellerin kurusun, bizi bunun için mi topladın?' diyerek hakaret eden amcası Ebu Leheb ve eşi Ümmü Cemil'in akıbetini bildirmek için nazil olmuştur."],
+[112,"İhlâs","الإخلاص",4,"Mekkî Dönem (Hicret Öncesi)","Müşriklerin 'Bize Rabbinin soyunu anlat' sorusu üzerine nazil olmuş; Allah'ın tek (Ehad), her şeyin O'na muhtaç olduğu (Samed), doğmamış ve doğurmamış olduğunu beyan ederek Kur'an'ın üçte birine denk tevhid akidesini özetlemiştir."],
+[113,"Felak","الفلق",5,"Mekkî Dönem (Hicret Öncesi)","Yaratılmışların şerrinden, karanlık çöktüğündeki gecenin kötülüklerinden, düğümlere üfleyen büyücülerin ve hasetçilerin şerrinden sabahın Rabbine sığınmayı öğretmek için indirilmiştir."],
+[114,"Nâs","الناس",6,"Mekkî Dönem (Hicret Öncesi)","İnsanların Rabbine, Melikine ve İlahına sığınarak; sinelere sinsice vesvese veren cin ve insan şeytanlarının şerrinden korunma duasını öğretmek için nazil olan Kur'an'ın son suresidir."]
+];
+
+function drawS(arr){
+  document.getElementById('sList').innerHTML=arr.map(s=>
+    '<div class="s-item" onclick="openS('+s+')"><div><strong style="color:var(--gold)">'+s+'. '+s+' Suresi</strong><div style="font-size:12px;color:var(--muted)">'+s+' • '+s+' Ayet</div></div><div style="font-family:\'Amiri\',serif;font-size:24px;color:var(--gold)">'+s+'</div></div>'
+  ).join('');
+}
+drawS(DB);
+
+function filt(){
+  let q=document.getElementById('sIn').value.toLowerCase();
+  drawS(DB.filter(s=>s.toLowerCase().includes(q)||String(s)===q));
+}
+
+async function openS(num){
+  let s=DB[num-1];
+  document.getElementById('sBox').style.display='none';
+  document.getElementById('reader').style.display='block';
+  window.scrollTo(0,0);
+  document.getElementById('rTitle').innerText=s+'. '+s+' Suresi ('+s+')';
+  document.getElementById('rMeta').innerText='Nüzul Dönemi: '+s+' | Toplam '+s+' Ayet';
+  document.getElementById('rTefsir').innerHTML='<strong>Ne İçin ve Hangi Sebeple İndi? (Tefsir Özeti):</strong><br>'+s;
+  const box=document.getElementById('rAyahs');
+  box.innerHTML='<p style="color:var(--gold)">Ayetlerin Arapça metni, Türkçe okunuşu ve Diyanet meali yükleniyor...</p>';
+  try{
+    const [ar,trRead,trMean]=await Promise.all([
+      fetch('https://jsdelivr.net').then(r=>r.json()),
+      fetch('https://jsdelivr.net').then(r=>r.json()),
+      fetch('https://jsdelivr.net').then(r=>r.json())
+    ]);
+    box.innerHTML=ar.chapter.map((x,i)=>
+      '<div class="ayah">'+
+      '<div class="ar">'+x.text+' <span style="font-size:18px;color:var(--gold)">﴿'+x.verse+'﴾</span></div>'+
+      '<div class="tr-read"><strong>Okunuşu:</strong> '+trRead.chapter[i].text+'</div>'+
+      '<div class="tr-mean"><strong>'+x.verse+'. Anlamı:</strong> '+trMean.chapter[i].text+'</div>'+
+      '</div>'
+    ).join('');
+  }catch(e){
+    box.innerHTML='<p style="color:var(--gold)">Ayet metinleri çekilirken bağlantı hatası oluştu, lütfen sayfayı yenileyip tekrar deneyin.</p>';
+  }
+}
+
+function closeS(){
+  document.getElementById('reader').style.display='none';
+  document.getElementById('sBox').style.display='block';
+}
 </script>
 </body>
 </html>
