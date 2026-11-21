@@ -195,11 +195,9 @@ async function openS(num){
   var box=document.getElementById('rAyahs');
   box.innerHTML='<p style="color:var(--gold)">Ayetler yükleniyor...</p>';
   try {
-    if(!window.QDATA){
-      const r = await fetch('https://jsdelivr.net');
-      window.QDATA = await r.json();
-    }
-    var surah = window.QDATA.at(num-1);
+    const r = await fetch('https://jsdelivr.net');
+    if(!r.ok) throw new Error('HTTP ' + r.status);
+    const surah = await r.json();
     box.innerHTML = surah.verses.map(function(v){
       return '<div class="ayah">'+
         '<div class="ar">'+v.text+' <span style="font-size:18px;color:var(--gold)">﴿'+v.id+'﴾</span></div>'+
@@ -208,7 +206,7 @@ async function openS(num){
       '</div>';
     }).join('');
   } catch(e) {
-    box.innerHTML='<p style="color:#ff8080">Hata: '+e.message+'</p>';
+    box.innerHTML='<p style="color:#ff8080">Hata: '+e.message+' (F12 > Console sekmesine bakınız)</p>';
   }
 }
 
