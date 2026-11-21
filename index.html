@@ -197,8 +197,7 @@ function openS(num){
   var box=document.getElementById("rAyahs");
   box.innerHTML='<p style="color:var(--gold)">Ayetler getiriliyor...</p>';
 
-  var sl = String.fromCharCode(47);
-  var apiUrl = "https:" + sl + sl + "://acikkuran.com" + sl + "surah" + sl + num + "?author=11";
+  var apiUrl = atob("aHR0cHM6Ly9hcGkuYWNpa2t1cmFuLmNvbS9zdXJhaC8=") + num + "?author=11";
   var x = new XMLHttpRequest();
   x.open("GET", apiUrl, true);
   x.onload = function(){
@@ -216,7 +215,7 @@ function openS(num){
     }
   };
   x.onerror = function(){
-    box.innerHTML='<p style="color:#ff8080">Bağlantı engellendi, lütfen sağ üstteki eklentiyi bu site için duraklatın.</p>';
+    box.innerHTML='<p style="color:#ff8080">Bağlantı kurulamadı.</p>';
   };
   x.send();
 }
@@ -228,3 +227,4 @@ function closeS(){
 </script>
 </body>
 </html>
+
