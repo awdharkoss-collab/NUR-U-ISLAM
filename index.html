@@ -193,24 +193,24 @@ async function openS(num){
   document.getElementById('rMeta').innerText='Nüzul Dönemi: '+s.at(4)+' | Toplam '+s.at(3)+' Ayet';
   document.getElementById('rTefsir').innerHTML='<strong>Ne İçin ve Hangi Sebeple İndi? (Tefsir Özeti):</strong><br>'+s.at(5);
   var box=document.getElementById('rAyahs');
-  box.innerHTML='<p style="color:var(--gold)">Ayetlerin Arapça metni, Türkçe okunuşu ve Diyanet meali yükleniyor...</p>';
+  box.innerHTML='<p style="color:var(--gold)">Ayetlerin Arapça metni, okunuşu ve Türkçe meali getiriliyor...</p>';
   try{
     const res=await Promise.all([
-      fetch('https://jsdelivr.net').then(function(r){return r.json();}),
-      fetch('https://jsdelivr.net').then(function(r){return r.json();}).catch(function(){return null;}),
-      fetch('https://jsdelivr.net').then(function(r){return r.json();})
+      fetch('https://alquran.cloud').then(function(r){return r.json();})
     ]);
-    var ar=res.at(0), trRead=res.at(1), trMean=res.at(2);
-    box.innerHTML=ar.chapter.map(function(x,i){
-      var okunus = (trRead && trRead.chapter && trRead.chapter.at(i)) ? '<div class="tr-read"><strong>Okunuşu:</strong> '+trRead.chapter.at(i).text+'</div>' : '';
+    var ed=res.at(0).data;
+    var ar=ed.at(0).ayahs;
+    var ok=ed.at(1).ayahs;
+    var tr=ed.at(2).ayahs;
+    box.innerHTML=ar.map(function(x,i){
       return '<div class="ayah">'+
-      '<div class="ar">'+x.text+' <span style="font-size:18px;color:var(--gold)">﴿'+x.verse+'﴾</span></div>'+
-      okunus+
-      '<div class="tr-mean"><strong>'+x.verse+'. Anlamı:</strong> '+trMean.chapter.at(i).text+'</div>'+
+      '<div class="ar">'+x.text+' <span style="font-size:18px;color:var(--gold)">﴿'+x.numberInSurah+'﴾</span></div>'+
+      '<div class="tr-read"><strong>Okunuşu:</strong> '+ok.at(i).text+'</div>'+
+      '<div class="tr-mean"><strong>'+x.numberInSurah+'. Anlamı:</strong> '+tr.at(i).text+'</div>'+
       '</div>';
     }).join('');
   }catch(e){
-    box.innerHTML='<p style="color:var(--gold)">Ayetler yüklenirken geçici bir ağ hatası oluştu, lütfen tekrar deneyin.</p>';
+    box.innerHTML='<p style="color:#ff8080">Bağlantı hatası: '+e.message+' (Lütfen internet bağlantınızı kontrol edip tekrar deneyin)</p>';
   }
 }
 
@@ -221,4 +221,3 @@ function closeS(){
 </script>
 </body>
 </html>
-
