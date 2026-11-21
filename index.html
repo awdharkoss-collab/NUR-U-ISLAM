@@ -50,58 +50,20 @@ audio{width:100%;margin:1rem 0}
 <div class="sub">Kur'an-ı Kerim • Tefsir & Nüzul • Hadisler • Kıble • Mucizeler • Havas & 500.000+ Ebced</div>
 </header>
 <nav>
-<button class="btn active" onclick="go('home',this)"><i class="fa-solid fa-mosque"></i> Ana Sayfa</button>
-<button class="btn" onclick="go('quran',this)"><i class="fa-solid fa-book-quran"></i> Sureler & Tefsir</button>
-<button class="btn" onclick="go('qibla',this)"><i class="fa-solid fa-compass"></i> Kıble Yönü</button>
-<button class="btn" onclick="go('hadith',this)"><i class="fa-solid fa-scroll"></i> Sahih Hadisler</button>
-<button class="btn" onclick="go('miracles',this)"><i class="fa-solid fa-atom"></i> Kur'an Mucizeleri</button>
-<button class="btn" onclick="go('havas',this)"><i class="fa-solid fa-wand-magic-sparkles"></i> Havas & Yüksek Ebced (500.000+)</button>
+<button class="btn active" data-tab="home"><i class="fa-solid fa-mosque"></i> Ana Sayfa</button>
+<button class="btn" data-tab="quran"><i class="fa-solid fa-book-quran"></i> Sureler & Tefsir</button>
+<button class="btn" data-tab="qibla"><i class="fa-solid fa-compass"></i> Kıble Yönü</button>
+<button class="btn" data-tab="hadith"><i class="fa-solid fa-scroll"></i> Sahih Hadisler</button>
+<button class="btn" data-tab="miracles"><i class="fa-solid fa-atom"></i> Kur'an Mucizeleri</button>
+<button class="btn" data-tab="havas"><i class="fa-solid fa-wand-magic-sparkles"></i> Havas & Yüksek Ebced (500.000+)</button>
 </nav>
 <div class="wrap">
 <div id="home" class="tab active">
 <div class="grid">
-<div class="card" onclick="clickNav(1)" style="cursor:pointer"><h3><i class="fa-solid fa-book-quran"></i> Kur'an-ı Kerim & Tefsir</h3><p>114 surenin tamamı, Arapça hatları, Diyanet meali, Mekkî/Medenî nüzul dönemleri, tefsir özetleri ve sesli tilavet.</p></div>
-<div class="card" onclick="clickNav(2)" style="cursor:pointer"><h3><i class="fa-solid fa-compass"></i> Gerçek Zamanlı Kıble</h3><p>GPS konumunuza göre Kabe-i Muazzama'nın gerçek açısını ve mesafesini hesaplayan hassas pusula.</p></div>
-<div class="card" onclick="clickNav(3)" style="cursor:pointer"><h3><i class="fa-solid fa-scroll"></i> Kütüb-i Sitte Hadisleri</h3><p>Buhari, Müslim, Tirmizi ve Ebu Davud kaynaklarından derlenen sahih hadis-i şerifler.</p></div>
-<div class="card" onclick="clickNav(4)" style="cursor:pointer"><h3><i class="fa-solid fa-atom"></i> Kur'an Mucizeleri</h3><p>Modern bilimin keşfettiği astronomik, jeolojik, embriyolojik hakikatler ve sayısal simetriler.</p></div>
-<div class="card" onclick="clickNav(5)" style="cursor:pointer"><h3><i class="fa-solid fa-wand-magic-sparkles"></i> Havas & 500.000+ Ebced</h3><p>Korunma, rızık fethi, şifa ve 500.000 üzeri yüksek ebced değerine sahip özel Esma ve ayet tertipleri.</p></div>
+<div class="card" data-go="quran" style="cursor:pointer"><h3><i class="fa-solid fa-book-quran"></i> Kur'an-ı Kerim & Tefsir</h3><p>114 surenin tamamı, Arapça hatları, Diyanet meali, Mekkî/Medenî nüzul dönemleri, tefsir özetleri ve sesli tilavet.</p></div>
+<div class="card" data-go="qibla" style="cursor:pointer"><h3><i class="fa-solid fa-compass"></i> Gerçek Zamanlı Kıble</h3><p>GPS konumunuza göre Kabe-i Muazzama'nın gerçek açısını ve mesafesini hesaplayan hassas pusula.</p></div>
+<div class="card" data-go="hadith" style="cursor:pointer"><h3><i class="fa-solid fa-scroll"></i> Kütüb-i Sitte Hadisleri</h3><p>Buhari, Müslim, Tirmizi ve Ebu Davud kaynaklarından derlenen sahih hadis-i şerifler.</p></div>
+<div class="card" data-go="miracles" style="cursor:pointer"><h3><i class="fa-solid fa-atom"></i> Kur'an Mucizeleri</h3><p>Modern bilimin keşfettiği astronomik, jeolojik, embriyolojik hakikatler ve sayısal simetriler.</p></div>
+<div class="card" data-go="havas" style="cursor:pointer"><h3><i class="fa-solid fa-wand-magic-sparkles"></i> Havas & 500.000+ Ebced</h3><p>Korunma, rızık fethi, şifa ve 500.000 üzeri yüksek ebced değerine sahip özel Esma ve ayet tertipleri.</p></div>
 </div>
 </div>
-<div id="quran" class="tab">
-<div id="reader" class="reader">
-<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem"><h2 id="rTitle" style="color:var(--gold)">Sure</h2><button class="btn" onclick="closeSurah()">Listeye Dön</button></div>
-<div id="rMeta" class="tag">Dönem</div>
-<div id="rTefsir" class="note"></div>
-<audio id="rAudio" controls></audio>
-<div id="rAyahs"></div>
-</div>
-<div id="sContainer">
-<input type="text" id="sInput" class="search" placeholder="Sure adı veya numarası ara (Örn: Yasin, 36, Bakara)..." onkeyup="filterS()">
-<div id="sList" class="surah-grid">Sureler yükleniyor...</div>
-</div>
-</div>
-<div id="qibla" class="tab">
-<div class="compass">
-<h2 style="color:var(--gold)">Kıble Pusulası</h2>
-<p style="color:var(--muted);font-size:0.9rem">Konum izni vererek Kabe açısını hesaplayın.</p>
-<div class="dial"><div id="needle" class="needle"><i class="fa-solid fa-kaaba kaaba"></i></div></div>
-<div id="qInfo" style="margin:1rem 0;color:var(--light)">Konum bekleniyor...</div>
-<button class="z-btn" onclick="findQibla()">Konumumu Bul ve Kıbleyi Göster</button>
-</div>
-</div>
-<div id="hadith" class="tab"><div id="hList" class="grid"></div></div>
-<div id="miracles" class="tab"><div id="mList" class="grid"></div></div>
-<div id="havas" class="tab">
-<div class="card" style="margin-bottom:1.5rem;text-align:center;border-color:var(--gold)">
-<h2 style="color:var(--gold)">Havas İlmi & 500.000+ Yüksek Ebced Tertipleri</h2>
-<p>Klasik Havas ve Ledün kaynaklarında yer alan, Kebir ve Ekber Ebced hesaplamalarıyla 500.000 mertebesini aşan manevi kalkan, rızık fethi ve şifa tertipleri.</p>
-</div>
-<div id="hvList" class="grid"></div>
-</div>
-</div>
-<script>
-function go(id,el){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.btn').forEach(b=>b.classList.remove('active'));document.getElementById(id).classList.add('active');el.classList.add('active')}
-function clickNav(i){document.querySelectorAll('nav .btn')[i].click()}
-const trNames=["Fâtiha","Bakara","Âl-i İmrân","Nisâ","Mâide","En'âm","A'râf","Enfâl","Tevbe","Yûnus","Hûd","Yûsuf","Ra'd","İbrâhîm","Hicr","Nahl","İsrâ","Kehf","Meryem","Tâ-Hâ","Enbiyâ","Hac","Mü'minûn","Nûr","Furkân","Şuarâ","Neml","Kasas","Ankebût","Rûm","Lokmân","Secde","Ahzâb","Sebe'","Fâtır","Yâsîn","Sâffât","Sâd","Zümer","Mü'min","Fussilet","Şûrâ","Zuhruf","Duhân","Câsiye","Ahkâf","Muhammed","Fetih","Hucurât","Kâf","Zâriyât","Tûr","Necm","Kamer","Rahmân","Vâkıa","Hadîd","Mücâdele","Haşr","Mümtehine","Saf","Cuma","Münâfikûn","Tegâbün","Talâk","Tahrîm","Mülk","Kalem","Hâkka","Meâric","Nûh","Cin","Müzzemmil","Müddessir","Kıyâme","İnsan","Mürselât","Nebe'","Nâziât","Abese","Tekvîr","İnfitâr","Mutaffifîn","İnşikâk","Bürûc","Târık","A'lâ","Gâşiye","Fecr","Beled","Şems","Leyl","Duhâ","İnşirâh","Tîn","Alak","Kadir","Beyyine","Zilzâl","Âdiyât","Kâria","Tekâsür","Asr","Hümeze","Fîl","Kureyş","Mâûn","Kevser","Kâfirûn","Nasr","Tebbet","İhlâs","Felak","Nâs"];
-let surahs=[];
-fetch('https://alquran.cloud').then(r=>r.json()).then(d=>{surahs=d.data;drawSurahs(surahs)});
