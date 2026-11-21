@@ -172,6 +172,59 @@ function addHv(i,n){
   document.getElementById("hvc_"+i).innerText=c.toLocaleString("tr-TR");
 }
 for(var i=0;i<4;i++){document.getElementById("hvc_"+i).innerText=Number(localStorage.getItem("hv_cnt_"+i)||0).toLocaleString("tr-TR")}
-</script>
+<script>
+function copyCard(btn){
+  var card=btn.closest(".card"),lines=new Array();
+  card.querySelectorAll(".tag,h3,.ar,.ok,.tr,.faz").forEach(function(el){lines.push(el.innerText)});
+  if(navigator.clipboard)navigator.clipboard.writeText(lines.join("\n\n"));
+  var old=btn.innerText;btn.innerText="✓ Kopyalandı!";setTimeout(function(){btn.innerText=old},2000);
+}
+
+function filterH(){
+  var q=document.getElementById("hSearch").value.toLowerCase();
+  document.querySelectorAll("#hGrid .card").forEach(function(c){
+    if(c.classList.contains("daily-box")) return;
+    c.style.display=c.innerText.toLowerCase().indexOf(q)!==-1?"flex":"none";
+  });
+}
+
+(function initDaily(){
+  var now = new Date();
+  var dayIndex = Math.floor(now.getTime() / 86400000);
+  var dateStr = now.toLocaleDateString("tr-TR", {day:"numeric", month:"long", year:"numeric", weekday:"long"});
+
+  var sections = new Array(
+    {id:"sec1", label:"GÜNÜN SAHİH HADİSİ"},
+    {id:"sec2", label:"GÜNÜN PEYGAMBER DUASI"},
+    {id:"sec3", label:"GÜNÜN ME'SUR HADİS DUASI"},
+    {id:"sec4", label:"GÜNÜN YÜKSEK EBCED HAVAS DUASI"}
+  );
+
+  sections.forEach(function(sec){
+    var wrap = document.getElementById(sec.id);
+    if(!wrap) return;
+    var cards = wrap.querySelectorAll(".grid .card");
+    if(!cards.length) return;
+
+    var chosen = cards.item(dayIndex % cards.length);
+    var dailyCard = chosen.cloneNode(true);
+    dailyCard.classList.add("daily-box");
+    dailyCard.style.border = "2px solid var(--gold)";
+    dailyCard.style.background = "linear-gradient(145deg, #133b2b, #081e15)";
+    dailyCard.style.marginBottom = "22px";
+    dailyCard.style.boxShadow = "0 0 25px rgba(212,175,55,0.2)";
+
+    var badge = document.createElement("div");
+    badge.style.cssText = "background:var(--gold);color:#05130e;font-weight:700;font-size:12px;padding:6px 14px;border-radius:8px;margin-bottom:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px";
+    badge.innerHTML = "<span>✨ " + sec.label + "</span><span>📅 " + dateStr + "</span>";
+
+    dailyCard.firstElementChild.insertBefore(badge, dailyCard.firstElementChild.firstChild);
+
+    var banner = wrap.querySelector(".banner");
+    if(banner && banner.nextSibling){
+      wrap.insertBefore(dailyCard, banner.nextSibling);
+    }
+  });
+})();
 </body>
 </html>
