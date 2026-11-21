@@ -184,7 +184,6 @@ function filt(){
     return s.at(1).toLowerCase().indexOf(q)!==-1 || String(s.at(0))===q;
   }));
 }
-
 async function openS(num){
   var s=DB.at(num-1);
   document.getElementById("sBox").style.display="none";
@@ -198,12 +197,12 @@ async function openS(num){
   try {
     const res = await Promise.all([
       fetch("https://jsdelivr.net"+num+".json").then(function(r){ return r.json(); }),
-      fetch("https://quranenc.com"+num).then(function(r){ return r.json(); })
+      fetch("https://jsdelivr.net"+num+".json").then(function(r){ return r.json(); })
     ]);
     var surah = res.at(0);
-    var trList = res.at(1).result;
+    var trList = res.at(1).chapter;
     box.innerHTML = surah.verses.map(function(v, i){
-      var meal = (trList && trList.at(i)) ? trList.at(i).translation : "";
+      var meal = (trList && trList.at(i)) ? trList.at(i).text : "";
       return '<div class="ayah">'+
         '<div class="ar">'+v.text+' <span style="font-size:18px;color:var(--gold)">﴿'+v.id+'﴾</span></div>'+
         '<div class="tr-read"><strong>Okunuşu:</strong> '+v.transliteration+'</div>'+
