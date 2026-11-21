@@ -15,9 +15,7 @@
     --text: #e8f0ec;
     --muted: #a0b8ae;
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   body {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #061510, #0a1f1a 40%, #0d2b22);
@@ -25,8 +23,6 @@
     min-height: 100vh;
     overflow-x: hidden;
   }
-
-  /* Decorative pattern */
   body::before {
     content: '';
     position: fixed;
@@ -35,22 +31,8 @@
     pointer-events: none;
     z-index: 0;
   }
-
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    position: relative;
-    z-index: 1;
-  }
-
-  /* Header */
-  header {
-    text-align: center;
-    padding: 40px 20px 30px;
-    position: relative;
-  }
-
+  .container { max-width: 1200px; margin: 0 auto; padding: 20px; position: relative; z-index: 1; }
+  header { text-align: center; padding: 40px 20px 30px; }
   header h1 {
     font-family: 'Amiri', serif;
     font-size: 2.8rem;
@@ -58,23 +40,9 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 8px;
-    letter-spacing: 1px;
   }
-
-  header p {
-    color: var(--muted);
-    font-size: 1.1rem;
-  }
-
-  /* Navigation */
-  nav {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
-    margin: 30px 0 40px;
-  }
-
+  header p { color: var(--muted); font-size: 1.1rem; }
+  nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin: 30px 0 40px; }
   .nav-btn {
     background: var(--card);
     border: 1px solid rgba(212, 175, 55, 0.3);
@@ -86,7 +54,6 @@
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
   }
-
   .nav-btn:hover, .nav-btn.active {
     background: linear-gradient(135deg, var(--green), #0f3d2e);
     border-color: var(--gold);
@@ -94,21 +61,12 @@
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(212, 175, 55, 0.2);
   }
-
-  /* Sections */
-  .section {
-    display: none;
-    animation: fadeIn 0.4s ease;
-  }
-
+  .section { display: none; animation: fadeIn 0.4s ease; }
   .section.active { display: block; }
-
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(15px); }
     to { opacity: 1; transform: translateY(0); }
   }
-
-  /* Cards */
   .card {
     background: var(--card);
     border: 1px solid rgba(212, 175, 55, 0.2);
@@ -117,170 +75,60 @@
     margin-bottom: 20px;
     backdrop-filter: blur(12px);
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    transition: transform 0.3s;
   }
-
-  .card:hover { transform: translateY(-4px); }
-
-  .card h2, .card h3 {
-    color: var(--gold);
-    margin-bottom: 15px;
-    font-family: 'Amiri', serif;
-  }
-
-  /* Grid */
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
-  }
-
-  /* Qibla */
-  .qibla-box {
-    text-align: center;
-    max-width: 420px;
-    margin: 0 auto;
-  }
-
+  .card h2, .card h3 { color: var(--gold); margin-bottom: 15px; font-family: 'Amiri', serif; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+  .qibla-box { text-align: center; max-width: 420px; margin: 0 auto; }
   .compass {
-    width: 280px;
-    height: 280px;
-    border-radius: 50%;
-    border: 8px solid var(--gold);
-    margin: 30px auto;
-    position: relative;
+    width: 280px; height: 280px; border-radius: 50%;
+    border: 8px solid var(--gold); margin: 30px auto; position: relative;
     background: radial-gradient(circle, #0d2b22, #061510);
     box-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
   }
-
   .needle {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 6px;
-    height: 110px;
+    position: absolute; top: 50%; left: 50%; width: 6px; height: 110px;
     background: linear-gradient(to top, #c0392b, #e74c3c);
     transform-origin: bottom center;
     transform: translate(-50%, -100%) rotate(0deg);
-    border-radius: 4px;
-    transition: transform 0.3s ease;
+    border-radius: 4px; transition: transform 0.3s ease;
   }
-
   .needle::after {
-    content: '';
-    position: absolute;
-    bottom: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 16px;
-    height: 16px;
-    background: var(--gold);
-    border-radius: 50%;
+    content: ''; position: absolute; bottom: -8px; left: 50%;
+    transform: translateX(-50%); width: 16px; height: 16px;
+    background: var(--gold); border-radius: 50%;
   }
-
-  .kaaba-icon {
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 28px;
-  }
-
-  /* Surah list */
+  .kaaba-icon { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); font-size: 28px; }
   .surah-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px 20px;
-    background: rgba(0,0,0,0.25);
-    border-radius: 14px;
-    cursor: pointer;
-    transition: all 0.25s;
-    border: 1px solid transparent;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px 20px; background: rgba(0,0,0,0.25); border-radius: 14px;
+    cursor: pointer; transition: all 0.25s; border: 1px solid transparent;
   }
-
-  .surah-item:hover {
-    border-color: var(--gold);
-    background: rgba(26, 92, 69, 0.4);
-  }
-
+  .surah-item:hover { border-color: var(--gold); background: rgba(26, 92, 69, 0.4); }
   .surah-num {
-    width: 40px;
-    height: 40px;
-    background: var(--green);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 600;
-    color: var(--gold-light);
+    width: 40px; height: 40px; background: var(--green); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 600; color: var(--gold-light);
   }
-
-  .badge {
-    font-size: 0.75rem;
-    padding: 4px 10px;
-    border-radius: 20px;
-    background: rgba(212, 175, 55, 0.15);
-    color: var(--gold);
-  }
-
+  .badge { font-size: 0.75rem; padding: 4px 10px; border-radius: 20px; background: rgba(212, 175, 55, 0.15); color: var(--gold); }
   .badge.medeni { background: rgba(46, 134, 193, 0.2); color: #5dade2; }
-
-  /* Arabic text */
   .arabic {
-    font-family: 'Amiri', serif;
-    font-size: 1.6rem;
-    line-height: 2.2;
-    direction: rtl;
-    text-align: right;
-    color: var(--gold-light);
-    margin: 20px 0;
+    font-family: 'Amiri', serif; font-size: 1.6rem; line-height: 2.2;
+    direction: rtl; text-align: right; color: var(--gold-light); margin: 20px 0;
   }
-
-  /* Modal */
   .modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.85);
-    z-index: 1000;
-    overflow-y: auto;
-    padding: 40px 20px;
+    display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85);
+    z-index: 1000; overflow-y: auto; padding: 40px 20px;
   }
-
   .modal-content {
-    max-width: 800px;
-    margin: 0 auto;
-    background: var(--bg);
-    border: 1px solid var(--gold);
-    border-radius: 24px;
-    padding: 30px;
-    position: relative;
+    max-width: 800px; margin: 0 auto; background: var(--bg);
+    border: 1px solid var(--gold); border-radius: 24px; padding: 30px; position: relative;
   }
-
   .close-btn {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    background: none;
-    border: none;
-    color: var(--gold);
-    font-size: 1.8rem;
-    cursor: pointer;
+    position: absolute; top: 20px; left: 20px; background: none; border: none;
+    color: var(--gold); font-size: 1.8rem; cursor: pointer;
   }
-
-  /* Hadis & Dua cards */
-  .hadis-card, .dua-card {
-    border-left: 4px solid var(--gold);
-  }
-
-  footer {
-    text-align: center;
-    padding: 40px 20px;
-    color: var(--muted);
-    font-size: 0.9rem;
-  }
-
+  .hadis-card, .dua-card { border-left: 4px solid var(--gold); }
+  footer { text-align: center; padding: 40px 20px; color: var(--muted); font-size: 0.9rem; }
   @media (max-width: 600px) {
     header h1 { font-size: 2rem; }
     .compass { width: 220px; height: 220px; }
@@ -295,37 +143,23 @@
   </header>
 
   <nav>
-    <button class="nav-btn active" onclick="showSection('home')">Ana Sayfa</button>
-    <button class="nav-btn" onclick="showSection('qibla')">Kıble</button>
-    <button class="nav-btn" onclick="showSection('surahs')">Sureler</button>
-    <button class="nav-btn" onclick="showSection('hadiths')">Hadisler</button>
-    <button class="nav-btn" onclick="showSection('miracles')">Mucizeler</button>
-    <button class="nav-btn" onclick="showSection('duas')">Dualar & Havas</button>
+    <button class="nav-btn active" data-section="home">Ana Sayfa</button>
+    <button class="nav-btn" data-section="qibla">Kıble</button>
+    <button class="nav-btn" data-section="surahs">Sureler</button>
+    <button class="nav-btn" data-section="hadiths">Hadisler</button>
+    <button class="nav-btn" data-section="miracles">Mucizeler</button>
+    <button class="nav-btn" data-section="duas">Dualar & Havas</button>
   </nav>
 
-  <!-- ANA SAYFA -->
   <div id="home" class="section active">
     <div class="grid">
-      <div class="card">
-        <h2>📖 Kur'an-ı Kerim</h2>
-        <p>114 sure, ayetleri, nüzul dönemleri (Mekkî / Medenî) ve Diyanet meali ile okuyabilirsiniz.</p>
-      </div>
-      <div class="card">
-        <h2>🧭 Kıble Yönü</h2>
-        <p>Konumunuza göre gerçek zamanlı kıble yönünü gösteren pusula. Cihazınızı düz tutun.</p>
-      </div>
-      <div class="card">
-        <h2>✨ Kur'an Mucizeleri</h2>
-        <p>İlmi, tarihi ve sayısal mucizelerden seçilmiş örnekler.</p>
-      </div>
-      <div class="card">
-        <h2>🤲 Dualar & Havas</h2>
-        <p>Korunma, rızık, şifa ve sırlı dualar (havas ilminden derlenmiş).</p>
-      </div>
+      <div class="card"><h2>📖 Kur'an-ı Kerim</h2><p>114 sure, ayetleri, nüzul dönemleri (Mekkî / Medenî) ve Diyanet meali ile okuyabilirsiniz.</p></div>
+      <div class="card"><h2>🧭 Kıble Yönü</h2><p>Konumunuza göre gerçek zamanlı kıble yönünü gösteren pusula. Cihazınızı düz tutun.</p></div>
+      <div class="card"><h2>✨ Kur'an Mucizeleri</h2><p>İlmi, tarihi ve sayısal mucizelerden seçilmiş örnekler.</p></div>
+      <div class="card"><h2>🤲 Dualar & Havas</h2><p>Korunma, rızık, şifa ve sırlı dualar (havas ilminden derlenmiş).</p></div>
     </div>
   </div>
 
-  <!-- KIBLE -->
   <div id="qibla" class="section">
     <div class="card qibla-box">
       <h2>Kıble Pusulası</h2>
@@ -335,54 +169,37 @@
         <div class="needle" id="needle"></div>
       </div>
       <p id="qibla-degree" style="font-size:1.4rem; color:var(--gold); margin-top:15px;">--°</p>
-      <p style="color:var(--muted); font-size:0.9rem; margin-top:10px;">
-        Cihazı yatay tutun ve manyetik alan bozulmalarından uzak durun.
-      </p>
+      <p style="color:var(--muted); font-size:0.9rem; margin-top:10px;">Cihazı yatay tutun ve manyetik alan bozulmalarından uzak durun.</p>
     </div>
   </div>
 
-  <!-- SURELER -->
   <div id="surahs" class="section">
     <div class="card">
       <h2>Kur'an Sureleri</h2>
       <p style="margin-bottom:20px; color:var(--muted);">Bir sureye tıklayarak Arapça metin ve Türkçe mealini okuyabilirsiniz.</p>
-      <div id="surah-list" class="grid" style="grid-template-columns:1fr;"></div>
+      <div id="surah-list" style="display:grid; gap:12px;"></div>
     </div>
   </div>
 
-  <!-- HADİSLER -->
   <div id="hadiths" class="section">
-    <div class="card">
-      <h2>Seçme Hadis-i Şerifler</h2>
-      <div id="hadith-list"></div>
-    </div>
+    <div class="card"><h2>Seçme Hadis-i Şerifler</h2><div id="hadith-list"></div></div>
   </div>
 
-  <!-- MUCİZELER -->
   <div id="miracles" class="section">
-    <div class="card">
-      <h2>Kur'an-ı Kerim Mucizeleri</h2>
-      <div id="miracle-list"></div>
-    </div>
+    <div class="card"><h2>Kur'an-ı Kerim Mucizeleri</h2><div id="miracle-list"></div></div>
   </div>
 
-  <!-- DUALAR -->
   <div id="duas" class="section">
     <div class="card">
       <h2>Dualar & Havas İlmi</h2>
-      <p style="color:var(--muted); margin-bottom:20px;">
-        Aşağıdaki dualar klasik kaynaklardan ve havas kitaplarından derlenmiştir. Niyet ve ihlas ile okunmalıdır.
-      </p>
+      <p style="color:var(--muted); margin-bottom:20px;">Aşağıdaki dualar klasik kaynaklardan ve havas kitaplarından derlenmiştir. Niyet ve ihlas ile okunmalıdır.</p>
       <div id="dua-list"></div>
     </div>
   </div>
 
-  <footer>
-    © 2025 Nur-u Kur'an Uygulaması • Allah rızası için yapılmıştır
-  </footer>
+  <footer>© 2025 Nur-u Kur'an Uygulaması • Allah rızası için yapılmıştır</footer>
 </div>
 
-<!-- Modal for Surah -->
 <div class="modal" id="surahModal">
   <div class="modal-content">
     <button class="close-btn" onclick="closeModal()">×</button>
@@ -393,12 +210,18 @@
 
 <script>
 // ========== NAVIGATION ==========
-function showSection(id) {
+function showSection(id, btn) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
   document.getElementById(id).classList.add('active');
-  event.target.classList.add('active');
+  if (btn) btn.classList.add('active');
 }
+
+document.querySelectorAll('.nav-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    showSection(this.dataset.section, this);
+  });
+});
 
 // ========== SURE LİSTESİ ==========
 const surahs = [
@@ -432,7 +255,7 @@ const surahs = [
   {n:28, name:"Kasas", ayet:88, type:"Mekkî"},
   {n:29, name:"Ankebût", ayet:69, type:"Mekkî"},
   {n:30, name:"Rûm", ayet:60, type:"Mekkî"},
-  {n:31, name:""Lokmân", ayet:34, type:"Mekkî"},
+  {n:31, name:"Lokmân", ayet:34, type:"Mekkî"},
   {n:32, name:"Secde", ayet:30, type:"Mekkî"},
   {n:33, name:"Ahzâb", ayet:73, type:"Medenî"},
   {n:34, name:"Sebe'", ayet:54, type:"Mekkî"},
@@ -521,7 +344,7 @@ const surahs = [
 function renderSurahs() {
   const list = document.getElementById('surah-list');
   list.innerHTML = surahs.map(s => `
-    <div class="surah-item" onclick="openSurah(${s.n}, '${s.name}')">
+    <div class="surah-item" data-num="${s.n}" data-name="${s.name}">
       <div style="display:flex; align-items:center; gap:15px;">
         <div class="surah-num">${s.n}</div>
         <div>
@@ -532,6 +355,12 @@ function renderSurahs() {
       <span class="badge ${s.type === 'Medenî' ? 'medeni' : ''}">${s.type}</span>
     </div>
   `).join('');
+
+  document.querySelectorAll('.surah-item').forEach(item => {
+    item.addEventListener('click', function() {
+      openSurah(parseInt(this.dataset.num), this.dataset.name);
+    });
+  });
 }
 
 async function openSurah(num, name) {
@@ -544,167 +373,4 @@ async function openSurah(num, name) {
   modal.style.display = 'block';
 
   try {
-    // Arapça + Türkçe meal
-    const [arRes, trRes] = await Promise.all([
-      fetch(`https://api.alquran.cloud/v1/surah/${num}/quran-uthmani`),
-      fetch(`https://api.alquran.cloud/v1/surah/${num}/tr.diyanet`)
-    ]);
-    
-    const arData = await arRes.json();
-    const trData = await trRes.json();
-
-    let html = '';
-    arData.data.ayahs.forEach((ayah, i) => {
-      html += `
-        <div style="margin-bottom:30px; padding-bottom:20px; border-bottom:1px solid rgba(212,175,55,0.15);">
-          <div class="arabic">${ayah.text} <span style="font-size:0.9rem; color:var(--gold);">﴿${ayah.numberInSurah}﴾</span></div>
-          <p style="color:var(--text); line-height:1.7;">${trData.data.ayahs[i].text}</p>
-        </div>
-      `;
-    });
-    content.innerHTML = html;
-  } catch (e) {
-    content.innerHTML = '<p style="color:#e74c3c;">İnternet bağlantısı gerekli. Lütfen tekrar deneyin.</p>';
-  }
-}
-
-function closeModal() {
-  document.getElementById('surahModal').style.display = 'none';
-}
-
-// ========== HADİSLER ==========
-const hadiths = [
-  {text: "Ameller niyetlere göredir. Herkes için niyet ettiği şey vardır.", source: "Buhârî & Müslim"},
-  {text: "Müslüman, dilinden ve elinden diğer Müslümanların emin olduğu kimsedir.", source: "Buhârî"},
-  {text: "Kolaylaştırın, zorlaştırmayın. Müjdeleyin, nefret ettirmeyin.", source: "Buhârî"},
-  {text: "Güler yüz sadakadır.", source: "Tirmizî"},
-  {text: "Sizin en hayırlınız, ahlakı en güzel olanınızdır.", source: "Buhârî"},
-  {text: "Temizlik imanın yarısıdır.", source: "Müslim"},
-  {text: "Küçüğümüze merhamet etmeyen, büyüğümüze saygı göstermeyen bizden değildir.", source: "Tirmizî"},
-  {text: "Birbirinizi sevmedikçe gerçekten iman etmiş olmazsınız.", source: "Müslim"},
-  {text: "Dua, ibadetin özüdür.", source: "Tirmizî"},
-  {text: "Kim Allah'a ve ahiret gününe inanıyorsa komşusuna ikramda bulunsun.", source: "Buhârî"}
-];
-
-function renderHadiths() {
-  document.getElementById('hadith-list').innerHTML = hadiths.map(h => `
-    <div class="card hadis-card" style="margin-bottom:15px;">
-      <p style="font-size:1.1rem; line-height:1.7;">"${h.text}"</p>
-      <p style="margin-top:12px; color:var(--gold); font-size:0.9rem;">— ${h.source}</p>
-    </div>
-  `).join('');
-}
-
-// ========== MUCİZELER ==========
-const miracles = [
-  {title: "Evrenin Genişlemesi", text: "“Biz göğü büyük bir kudretle bina ettik ve şüphesiz onu genişletmekteyiz.” (Zâriyât 51/47) – Modern bilim 20. yüzyılda evrenin genişlediğini keşfetti."},
-  {title: "Embriyoloji", text: "Kur'an insanın yaratılışını “alaka” (pıhtı/asılı duran), “mudga” (çiğnenmiş et parçası) gibi aşamalarla anlatır. Bu detaylar modern embriyolojinin bulgularıyla uyumludur."},
-  {title: "Dağların Kazık Olması", text: "“Dağları da birer kazık yapmadık mı?” (Nebe 78/7) – Jeoloji, dağların yer kabuğuna kök gibi uzandığını ve denge sağladığını göstermiştir."},
-  {title: "Denizlerin Karışmaması", text: "“İki denizi salıverdi, birbirine kavuşuyorlar. Aralarında bir engel vardır, onu aşamazlar.” (Rahmân 55/19-20)"},
-  {title: "Sayısal Mucizeler", text: "“Gün” kelimesi 365, “ay” kelimesi 12 kez geçer. “Dünya” ve “ahiret” kelimeleri eşit sayıda (115) geçer."}
-];
-
-function renderMiracles() {
-  document.getElementById('miracle-list').innerHTML = miracles.map(m => `
-    <div class="card" style="margin-bottom:15px;">
-      <h3>${m.title}</h3>
-      <p style="line-height:1.7;">${m.text}</p>
-    </div>
-  `).join('');
-}
-
-// ========== DUALAR ==========
-const duas = [
-  {title: "Ayetel Kürsi (Korunma)", arabic: "اللّٰهُ لَا إِلٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ...", text: "Her namazdan sonra ve yatmadan önce okunması sünnettir. Şeytandan korunma için en güçlü dualardandır."},
-  {title: "Felak & Nas Sureleri", arabic: "قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ ... قُلْ أَعُوذُ بِرَبِّ النَّاسِ", text: "Sabah-akşam 3'er defa okunması büyük korunma sağlar (Muavvizeteyn)."},
-  {title: "Rızık Duası", arabic: "اللَّهُمَّ اكْفِنِي بِحَلَالِكَ عَنْ حَرَامِكَ وَأَغْنِنِي بِفَضْلِكَ عَمَّنْ سِوَاكَ", text: "Allah'ım! Helalinle haramından beni koru, fazlınla senden başkasına muhtaç etme."},
-  {title: "Havas - Sıkıntıdan Kurtulma", arabic: "حَسْبُنَا اللّٰهُ وَنِعْمَ الْوَك۪يلُ", text: "“Allah bize yeter, O ne güzel vekildir.” (Âl-i İmrân 3/173) – 450 defa okunması havas kitaplarında tavsiye edilir."},
-  {title: "Şifa Duası", arabic: "أ hal اللهُمَّ رَبَّ النَّاسِ أَذْهِبِ الْبَأْسَ اشْفِ أَنْتَ الشَّافِي...", text: "Peygamber Efendimiz'in şifa duasıdır. Hastanın üzerine üflenerek okunur."},
-  {title: "Korku ve Nazar", arabic: "أَعُوذُ بِكَلِمَاتِ اللّٰهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ", text: "Allah'ın tam kelimelerine, yarattığı her şeyin şerrinden sığınırım. 3 defa okunur."}
-];
-
-function renderDuas() {
-  document.getElementById('dua-list').innerHTML = duas.map(d => `
-    <div class="card dua-card" style="margin-bottom:15px;">
-      <h3>${d.title}</h3>
-      <div class="arabic" style="font-size:1.4rem;">${d.arabic}</div>
-      <p style="line-height:1.7; margin-top:10px;">${d.text}</p>
-    </div>
-  `).join('');
-}
-
-// ========== KIBLE HESAPLAMA ==========
-const KAABA = { lat: 21.4225, lng: 39.8262 };
-let qiblaAngle = 0;
-let currentHeading = 0;
-
-function toRad(d) { return d * Math.PI / 180; }
-function toDeg(r) { return r * 180 / Math.PI; }
-
-function calculateQibla(lat, lng) {
-  const φ1 = toRad(lat);
-  const φ2 = toRad(KAABA.lat);
-  const Δλ = toRad(KAABA.lng - lng);
-
-  const y = Math.sin(Δλ) * Math.cos(φ2);
-  const x = Math.cos(φ1) * Math.sin(φ2) - Math.sin(φ1) * Math.cos(φ2) * Math.cos(Δλ);
-  let bearing = toDeg(Math.atan2(y, x));
-  return (bearing + 360) % 360;
-}
-
-function updateNeedle() {
-  const rotation = qiblaAngle - currentHeading;
-  document.getElementById('needle').style.transform = `translate(-50%, -100%) rotate(${rotation}deg)`;
-}
-
-function initQibla() {
-  if (!navigator.geolocation) {
-    document.getElementById('location-info').textContent = 'Konum servisi desteklenmiyor.';
-    return;
-  }
-
-  navigator.geolocation.getCurrentPosition(pos => {
-    const lat = pos.coords.latitude;
-    const lng = pos.coords.longitude;
-    qiblaAngle = calculateQibla(lat, lng);
-    
-    document.getElementById('location-info').textContent = 
-      `Enlem: ${lat.toFixed(4)}° | Boylam: ${lng.toFixed(4)}°`;
-    document.getElementById('qibla-degree').textContent = `Kıble: ${qiblaAngle.toFixed(1)}°`;
-    updateNeedle();
-  }, () => {
-    document.getElementById('location-info').textContent = 'Konum izni verilmedi.';
-  });
-
-  // Device orientation
-  if (window.DeviceOrientationEvent) {
-    window.addEventListener('deviceorientationabsolute', e => {
-      if (e.alpha !== null) {
-        currentHeading = e.alpha;
-        updateNeedle();
-      }
-    }, true);
-    
-    // Fallback
-    window.addEventListener('deviceorientation', e => {
-      if (e.webkitCompassHeading) {
-        currentHeading = e.webkitCompassHeading;
-      } else if (e.alpha) {
-        currentHeading = 360 - e.alpha;
-      }
-      updateNeedle();
-    });
-  }
-}
-
-// ========== INIT ==========
-document.addEventListener('DOMContentLoaded', () => {
-  renderSurahs();
-  renderHadiths();
-  renderMiracles();
-  renderDuas();
-  initQibla();
-});
-</script>
-</body>
-</html>
+    const [arRes, 
