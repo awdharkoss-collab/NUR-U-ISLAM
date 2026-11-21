@@ -3,67 +3,77 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nur-u Kur'an | İslami İlimler Külliyatı</title>
+<title>Nur-u Kur'an Külliyatı</title>
 <link href="https://googleapis.com" rel="stylesheet">
-<link rel="stylesheet" href="https://cloudflare.com">
 <style>
-:root{--bg:#071912;--card:#0d261c;--hover:#133628;--gold:#d4af37;--light:#f3e5ab;--text:#f0f4f2;--muted:#9eb3a8;--border:rgba(212,175,55,0.3)}
+:root{--bg:#071912;--card:#0d261c;--gold:#d4af37;--light:#f3e5ab;--text:#f0f4f2;--muted:#9eb3a8;--border:rgba(212,175,55,0.35)}
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;min-height:100vh;line-height:1.6}
-header{text-align:center;padding:2.5rem 1rem 1.5rem;border-bottom:1px solid var(--border);background:#05130e}
-.ar-logo{font-family:'Amiri',serif;font-size:3.5rem;color:var(--gold);text-shadow:0 0 20px rgba(212,175,55,0.3)}
-.title{font-family:'Cinzel Decorative',cursive;font-size:1.4rem;color:var(--light);letter-spacing:2px}
-.sub{color:var(--muted);font-size:0.9rem;margin-top:0.4rem}
-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:0.6rem;padding:1rem;background:#071912;position:sticky;top:0;z-index:99;border-bottom:1px solid var(--border)}
-.btn{background:var(--card);border:1px solid var(--border);color:var(--text);padding:0.6rem 1.2rem;border-radius:30px;cursor:pointer;font-size:0.88rem;font-weight:600;transition:0.25s}
-.btn:hover,.btn.active{background:#1d523c;border-color:var(--gold);color:var(--light);box-shadow:0 0 15px rgba(212,175,55,0.25)}
-.wrap{max-width:1150px;margin:2rem auto;padding:0 1.2rem 4rem}
-.tab{display:none}.tab.active{display:block}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.3rem}
-.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.6rem;transition:0.3s;box-shadow:0 8px 25px rgba(0,0,0,0.4)}
-.card:hover{background:var(--hover);border-color:var(--gold);transform:translateY(-3px)}
-.card h3{color:var(--gold);margin-bottom:0.6rem;font-size:1.15rem}
-.card p{color:var(--muted);font-size:0.92rem}
-.tag{display:inline-block;background:rgba(212,175,55,0.18);color:var(--gold);padding:0.25rem 0.7rem;border-radius:6px;font-size:0.8rem;font-weight:700;margin-bottom:0.7rem}
-.search{width:100%;padding:0.9rem 1.2rem;border-radius:10px;border:1px solid var(--border);background:var(--card);color:#fff;font-size:1rem;margin-bottom:1.2rem}
-.surah-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:0.9rem}
-.s-item{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
-.s-item:hover{border-color:var(--gold);background:var(--hover)}
-.reader{background:var(--card);border:1px solid var(--gold);border-radius:14px;padding:1.8rem;display:none}
-.ayah{padding:1.2rem 0;border-bottom:1px solid rgba(212,175,55,0.15)}
-.ar{font-family:'Amiri',serif;font-size:1.9rem;text-align:right;color:var(--light);direction:rtl;line-height:2.1}
-.note{background:rgba(0,0,0,0.35);border-left:3px solid var(--gold);padding:0.8rem;margin-top:0.8rem;font-size:0.88rem;color:var(--muted)}
-.compass{max-width:450px;margin:0 auto;text-align:center;background:var(--card);border:1px solid var(--border);border-radius:18px;padding:2rem}
-.dial{width:210px;height:210px;border-radius:50%;border:4px solid var(--gold);margin:1.5rem auto;display:flex;align-items:center;justify-content:center;background:radial-gradient(#154230,#05130e)}
-.needle{width:6px;height:155px;background:linear-gradient(#d4af37 50%,#44554e 50%);border-radius:4px;transition:0.4s;position:relative}
-.kaaba{position:absolute;top:-18px;left:-10px;color:var(--gold);font-size:1.4rem}
-.z-box{background:rgba(0,0,0,0.4);border:1px solid var(--border);border-radius:10px;padding:0.9rem;margin-top:1rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem}
-.z-btn{background:var(--gold);color:#05130e;border:none;padding:0.5rem 0.9rem;border-radius:6px;font-weight:700;cursor:pointer}
-.z-btn:hover{background:var(--light)}
-audio{width:100%;margin:1rem 0}
+body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;line-height:1.6}
+header{text-align:center;padding:2rem 1rem;border-bottom:1px solid var(--border);background:#04110c}
+.logo{font-family:'Amiri',serif;font-size:3.2rem;color:var(--gold)}
+.nav{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;padding:12px;background:#071912;position:sticky;top:0;z-index:10;border-bottom:1px solid var(--border)}
+.nav a{background:var(--card);border:1px solid var(--border);color:var(--text);padding:8px 16px;border-radius:25px;text-decoration:none;font-size:14px;font-weight:600}
+.nav a:hover,.nav a.act{background:#1b4d38;border-color:var(--gold);color:var(--light)}
+.wrap{max-width:1100px;margin:25px auto;padding:0 15px 50px}
+.sec{display:none}.sec.act{display:block}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px}
+.card h3{color:var(--gold);margin-bottom:8px}
+.card p{color:var(--muted);font-size:14px}
+.tag{display:inline-block;background:rgba(212,175,55,0.2);color:var(--gold);padding:3px 10px;border-radius:5px;font-size:12px;font-weight:700;margin-bottom:8px}
+.ar{font-family:'Amiri',serif;font-size:26px;text-align:right;color:var(--light);direction:rtl;margin:10px 0;line-height:2}
+.note{background:rgba(0,0,0,0.4);border-left:3px solid var(--gold);padding:10px;margin-top:10px;font-size:13px;color:var(--muted)}
+.btn{background:var(--gold);color:#05130e;border:none;padding:8px 14px;border-radius:6px;font-weight:700;cursor:pointer;margin-top:8px}
+.s-item{background:var(--card);border:1px solid var(--border);padding:12px;border-radius:8px;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
+.s-item:hover{border-color:var(--gold)}
+input{width:100%;padding:12px;border-radius:8px;border:1px solid var(--border);background:var(--card);color:#fff;margin-bottom:15px}
+.dial{width:180px;height:180px;border-radius:50%;border:3px solid var(--gold);margin:20px auto;display:flex;align-items:center;justify-content:center}
+.needle{width:5px;height:140px;background:linear-gradient(#d4af37 50%,#445 50%);transition:0.4s}
 </style>
 </head>
 <body>
-<header>
-<div class="ar-logo">نور القرآن</div>
-<div class="title">NUR-U KUR'AN KÜLLİYATI</div>
-<div class="sub">Kur'an-ı Kerim • Tefsir & Nüzul • Hadisler • Kıble • Mucizeler • Havas & 500.000+ Ebced</div>
-</header>
-<nav>
-<button class="btn active" data-tab="home"><i class="fa-solid fa-mosque"></i> Ana Sayfa</button>
-<button class="btn" data-tab="quran"><i class="fa-solid fa-book-quran"></i> Sureler & Tefsir</button>
-<button class="btn" data-tab="qibla"><i class="fa-solid fa-compass"></i> Kıble Yönü</button>
-<button class="btn" data-tab="hadith"><i class="fa-solid fa-scroll"></i> Sahih Hadisler</button>
-<button class="btn" data-tab="miracles"><i class="fa-solid fa-atom"></i> Kur'an Mucizeleri</button>
-<button class="btn" data-tab="havas"><i class="fa-solid fa-wand-magic-sparkles"></i> Havas & Yüksek Ebced (500.000+)</button>
-</nav>
+<header><div class="logo">نور القرآن</div><h2 style="color:var(--light)">NUR-U KUR'AN KÜLLİYATI</h2><p style="color:var(--muted);font-size:13px">Kur'an • Tefsir • Hadisler • Kıble • Mucizeler • Havas & 500.000+ Ebced</p></header>
+<div class="nav">
+<a href="#home" class="act" onclick="tab('home',this)">Ana Sayfa</a>
+<a href="#quran" onclick="tab('quran',this)">Sureler & Tefsir</a>
+<a href="#qibla" onclick="tab('qibla',this)">Kıble Yönü</a>
+<a href="#hadith" onclick="tab('hadith',this)">Sahih Hadisler</a>
+<a href="#miracles" onclick="tab('miracles',this)">Kur'an Mucizeleri</a>
+<a href="#havas" onclick="tab('havas',this)">Havas & 500.000+ Ebced</a>
+</div>
 <div class="wrap">
-<div id="home" class="tab active">
-<div class="grid">
-<div class="card" data-go="quran" style="cursor:pointer"><h3><i class="fa-solid fa-book-quran"></i> Kur'an-ı Kerim & Tefsir</h3><p>114 surenin tamamı, Arapça hatları, Diyanet meali, Mekkî/Medenî nüzul dönemleri, tefsir özetleri ve sesli tilavet.</p></div>
-<div class="card" data-go="qibla" style="cursor:pointer"><h3><i class="fa-solid fa-compass"></i> Gerçek Zamanlı Kıble</h3><p>GPS konumunuza göre Kabe-i Muazzama'nın gerçek açısını ve mesafesini hesaplayan hassas pusula.</p></div>
-<div class="card" data-go="hadith" style="cursor:pointer"><h3><i class="fa-solid fa-scroll"></i> Kütüb-i Sitte Hadisleri</h3><p>Buhari, Müslim, Tirmizi ve Ebu Davud kaynaklarından derlenen sahih hadis-i şerifler.</p></div>
-<div class="card" data-go="miracles" style="cursor:pointer"><h3><i class="fa-solid fa-atom"></i> Kur'an Mucizeleri</h3><p>Modern bilimin keşfettiği astronomik, jeolojik, embriyolojik hakikatler ve sayısal simetriler.</p></div>
-<div class="card" data-go="havas" style="cursor:pointer"><h3><i class="fa-solid fa-wand-magic-sparkles"></i> Havas & 500.000+ Ebced</h3><p>Korunma, rızık fethi, şifa ve 500.000 üzeri yüksek ebced değerine sahip özel Esma ve ayet tertipleri.</p></div>
+<div id="home" class="sec act"><div class="grid">
+<div class="card"><h3>Kur'an-ı Kerim & Tefsir</h3><p>114 surenin tamamı, Arapça hatları, Diyanet meali, Mekkî/Medenî nüzul dönemleri ve sesli tilavet.</p><button class="btn" onclick="goBtn(1)">Surelere Git</button></div>
+<div class="card"><h3>Gerçek Zamanlı Kıble</h3><p>GPS konumunuza göre Kabe-i Muazzama'nın gerçek açısını hesaplayan hassas pusula.</p><button class="btn" onclick="goBtn(2)">Kıbleyi Bul</button></div>
+<div class="card"><h3>Kütüb-i Sitte Hadisleri</h3><p>Buhari, Müslim, Tirmizi ve Ebu Davud kaynaklarından derlenen sahih hadis-i şerifler.</p><button class="btn" onclick="goBtn(3)">Hadisleri Oku</button></div>
+<div class="card"><h3>Kur'an Mucizeleri</h3><p>Modern bilimin keşfettiği astronomik, jeolojik hakikatler ve Kur'an'daki sayısal simetriler.</p><button class="btn" onclick="goBtn(4)">Mucizeleri Gör</button></div>
+<div class="card"><h3>Havas & 500.000+ Ebced</h3><p>Korunma, rızık fethi, şifa ve 500.000 üzeri yüksek ebced değerine sahip özel Esma ve ayet tertipleri.</p><button class="btn" onclick="goBtn(5)">Tertipleri Aç</button></div>
+</div></div>
+<div id="quran" class="sec">
+<div id="reader" class="card" style="display:none;margin-bottom:15px">
+<div style="display:flex;justify-content:space-between"><h3 id="rTitle">Sure</h3><button class="btn" onclick="closeS()">Listeye Dön</button></div>
+<div id="rMeta" class="tag"></div><div id="rTefsir" class="note"></div>
+<audio id="rAudio" controls style="width:100%;margin:10px 0"></audio><div id="rAyahs"></div>
 </div>
+<div id="sBox"><input id="sIn" placeholder="Sure adı veya numarası ara..." onkeyup="filt()"><div id="sList" class="grid">Yükleniyor...</div></div>
 </div>
+<div id="qibla" class="sec"><div class="card" style="max-width:420px;margin:auto;text-align:center">
+<h3>Kıble Pusulası</h3><div class="dial"><div id="ndl" class="needle"></div></div>
+<div id="qTxt" style="color:var(--light)">Konum bekleniyor...</div>
+<button class="btn" onclick="qibla()">Konumumu Bul ve Kıbleyi Göster</button>
+</div></div>
+<div id="hadith" class="sec"><div id="hList" class="grid"></div></div>
+<div id="miracles" class="sec"><div id="mList" class="grid"></div></div>
+<div id="havas" class="sec"><div id="hvList" class="grid"></div></div>
+</div>
+<script>
+function tab(id,el){document.querySelectorAll('.sec').forEach(s=>s.classList.remove('act'));document.querySelectorAll('.nav a').forEach(a=>a.classList.remove('act'));document.getElementById(id).classList.add('act');if(el)el.classList.add('act');return false}
+function goBtn(i){document.querySelectorAll('.nav a')[i].click()}
+const trN=["Fâtiha","Bakara","Âl-i İmrân","Nisâ","Mâide","En'âm","A'râf","Enfâl","Tevbe","Yûnus","Hûd","Yûsuf","Ra'd","İbrâhîm","Hicr","Nahl","İsrâ","Kehf","Meryem","Tâ-Hâ","Enbiyâ","Hac","Mü'minûn","Nûr","Furkân","Şuarâ","Neml","Kasas","Ankebût","Rûm","Lokmân","Secde","Ahzâb","Sebe'","Fâtır","Yâsîn","Sâffât","Sâd","Zümer","Mü'min","Fussilet","Şûrâ","Zuhruf","Duhân","Câsiye","Ahkâf","Muhammed","Fetih","Hucurât","Kâf","Zâriyât","Tûr","Necm","Kamer","Rahmân","Vâkıa","Hadîd","Mücâdele","Haşr","Mümtehine","Saf","Cuma","Münâfikûn","Tegâbün","Talâk","Tahrîm","Mülk","Kalem","Hâkka","Meâric","Nûh","Cin","Müzzemmil","Müddessir","Kıyâme","İnsan","Mürselât","Nebe'","Nâziât","Abese","Tekvîr","İnfitâr","Mutaffifîn","İnşikâk","Bürûc","Târık","A'lâ","Gâşiye","Fecr","Beled","Şems","Leyl","Duhâ","İnşirâh","Tîn","Alak","Kadir","Beyyine","Zilzâl","Âdiyât","Kâria","Tekâsür","Asr","Hümeze","Fîl","Kureyş","Mâûn","Kevser","Kâfirûn","Nasr","Tebbet","İhlâs","Felak","Nâs"];
+let allS=[];
+fetch('https://alquran.cloud').then(r=>r.json()).then(d=>{allS=d.data;drawS(allS)});
+function drawS(a){document.getElementById('sList').innerHTML=a.map(s=>{let n=trN[s.number-1]||s.englishName,d=s.revelationType==='Meccan'?'Mekkî':'Medenî';return`<div class="s-item" onclick="openS(${s.number},'${n}','${d}',${s.numberOfAyahs})"><div><strong style="color:var(--gold)">${s.number}. ${n}</strong><div style="font-size:12px;color:var(--muted)">${d} • ${s.numberOfAyahs} Ayet</div></div><div style="font-family:'Amiri',serif;font-size:22px;color:var(--gold)">${s.name}</div></div>`}).join('')}
+function filt(){let q=document.getElementById('sIn').value.toLowerCase();drawS(allS.filter(s=>(trN[s.number-1]||'').toLowerCase().includes(q)||String(s.number)===q))}
+async function openS(num,n,d,c){document.getElementById('sBox').style.display='none';document.getElementById('reader').style.display='block';document.getElementById('rTitle').innerText=num+'. '+n+' Suresi';document.getElementById('rMeta').innerText=d+' Dönemi • '+c+' Ayet';document.getElementById('rTefsir').innerText=n+' Suresi '+d+' döneminde nazil olmuştur.';document.getElementById('rAudio').src='https://mp3quran.net [ar,tr]=await Promise.all([fetch('https://alquran.cloud/'+num).then(r=>r.json()),fetch('https://alquran.cloud/'+num+'/tr.diyanet').then(r=>r.json())]);document.getElementById('rAyahs').innerHTML=ar.data.ayahs.map((x,i)=>`<div style="padding:10px 0;border-bottom:1px solid #1d4434"><div class="ar">${x.text} (${x.numberInSurah})</div><div style="font-size:14px">${x.numberInSurah}. ${tr.data.ayahs[i].text}</div></div>`).join('')}
+function closeS(){document.getElementById('reader').style.display='none';document.getElementById('sBox').style.display='block';document.getElementById('rAudio').pause()}
+function qibla(){const q=document.getElementById('qTxt');if(!navigator.geolocation)return q.innerText='Konum desteklenmiyor';q.innerText='Hesaplanıyor...';navigator.geolocation.getCurrentPosition(p=>{let l1=p.coords.latitude*Math.PI/180,o1=p.coords.longitude*Math.PI/180,l2=21.4225*Math.PI/180,o2=39.8262*Math.PI/180,dl=o2-o1;let b=(Math.atan2(Math.sin(dl)*Math.cos(l2),Math.cos(l1)*Math.sin(l2)-Math.sin(l1)*Math.cos(l2)*Math.cos(dl))*180/Math.PI+360)%360;document.getElementById('ndl').style.transform=`rotate(${b}deg)`;q.innerHTML='Kıble Açısı: <b>'+b.toFixed(1)+'°</b>'},()=>q.innerText='Konum izni verilmedi')}
